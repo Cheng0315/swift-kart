@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'users/index'
+  root 'users#index'
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
-  get '/signin' => 'sessions/new'
-  post '/signin' => 'sessions/create'
-  get '/logout' => 'sessions/logout'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  get '/logout' => 'sessions#logout'
 end
