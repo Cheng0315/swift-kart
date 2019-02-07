@@ -2,13 +2,17 @@
   <%= flash[:notice] %><br>
 <% end %>
 Hi
-<%if @user %>
-<%= @user.first_name%>
-<%= @user.seller%>
+<%if current_user %>
+<%= current_user.first_name%>
+<%= current_user.seller%>
 <%end%>
 <br>
 
 <% @items.each do |item|%>
 <%= link_to item.name, item_path(item) %><br>
 <% end %>
+
+<% if current_user %>
+Hi s
+<%end%>
 

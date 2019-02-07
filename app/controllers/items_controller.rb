@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    @user = current_user
   
       if @item.nil? 
         flash[:notice] = "the item you're looking for no longer exist or doesn't exists"
