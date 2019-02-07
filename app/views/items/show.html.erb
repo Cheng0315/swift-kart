@@ -1,2 +1,5 @@
 <%= @item.name %>
+<% binding.pry %>
+<% if @item.seller_id == @user.id %>
 <%= link_to 'Delete Item', item_path(@item), method: :delete %>
+<% end %>

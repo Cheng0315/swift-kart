@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController 
 
   def new
-    if current_user.seller
-      @item = Item.new
+    if current_user
+      if current_user.seller
+        @item = Item.new
+      else
+        redirect_to root_path
+      end
     else
-      redirect_to root_path
+      redirect_to signin_path
     end
   end
 
@@ -13,7 +17,6 @@ class ItemsController < ApplicationController
    
     if current_user.seller
       @item.seller_id = current_user.id
-      binding.pry
       @item.save
       redirect_to item_path(@item)
     else
@@ -23,6 +26,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
+    @user = current_user
   
       if @item.nil? 
         flash[:notice] = "the item you're looking for doesn't exists"
@@ -54,10 +58,9 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    binding.pry
-    if @item.seller_id = current_user.id
+
+    if @item.seller_id == current_user.id
       @item.destroy
-      binding.pry
       redirect_to root_path
     else
       redirect_to item_path(@item)
