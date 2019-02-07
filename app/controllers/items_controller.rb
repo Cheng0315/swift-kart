@@ -8,10 +8,14 @@ class ItemsController < ApplicationController
     @item = Item.new(items_params)
 
     if @item.save
-      redirect_to item_path
+      redirect_to item_path(@item)
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
