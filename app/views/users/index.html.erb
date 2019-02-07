@@ -2,4 +2,6 @@
   <%= flash[:notice] %><br>
 <% end %>
 Hi
+<%if @user %>
 <%= @user.id%>
+<%end%>
