@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -42,8 +46,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    
     if current_user
-      @user = current_user
+    
+      if params[:id].to_i != current_user.id
+        redirect_to user_path(current_user)
+      else
+        @user = current_user
+      end
     else
       redirect_to root_path
     end

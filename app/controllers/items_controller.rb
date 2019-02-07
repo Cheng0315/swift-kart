@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     if current_user.seller
       @item.seller_id = current_user.id
       @item.save
-      redirect_to item_path(@item)
+      redirect_to user_item_path(current_user, @item)
     else
       render :new
     end
