@@ -36,7 +36,19 @@ class ItemsController < ApplicationController
       @item.update(update_items_params)
       redirect_to item_path(@item)
     else
+      redirect_to item_path(@item)
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    binding.pry
+    if @item.seller_id = current_user.id
+      @item.destroy
+      binding.pry
       redirect_to root_path
+    else
+      redirect_to item_path(@item)
     end
   end
 
