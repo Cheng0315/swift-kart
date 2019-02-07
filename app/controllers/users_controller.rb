@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if current_user
       @user = current_user
       @user.update(users_params)
-      redirect_to user_path
+      redirect_to user_path(@user)
     else
       redirect_to edit_user_path
     end
