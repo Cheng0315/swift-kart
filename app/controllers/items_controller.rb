@@ -25,7 +25,8 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
   
       if @item.nil? 
-        render :item_unavailable
+        flash[:notice] = "the item you're looking for doesn't exists"
+        redirect_to root_path
       else 
         @item
       end
