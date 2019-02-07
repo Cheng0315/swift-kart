@@ -1,13 +1,16 @@
 class ItemsController < ApplicationController 
 
   def new
-    @item = Item.new(user_id: params[:user_id])
+    @item = Item.new
+    
   end
 
   def create
     @item = Item.new(items_params)
-
-    if @item.save
+   
+    if current_user.seller
+      @item.save
+      binding.pry
       redirect_to item_path(@item)
     else
       render :new
