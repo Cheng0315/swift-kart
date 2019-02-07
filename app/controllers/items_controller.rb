@@ -1,7 +1,11 @@
 class ItemsController < ApplicationController 
 
   def new
-    @item = Item.new
+    if current_user.seller
+      @item = Item.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -18,7 +22,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+  
+      if @item.nil? 
+        render :item_unavailable
+      else 
+        @item
+      end
+      
   end
 
   def edit 
