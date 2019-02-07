@@ -6,7 +6,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    
+    @item = Item.new(items_params)
+
+    if @item.save
+      redirect_to item_path
+    else
+      render :new
+    end
   end
 
   private
