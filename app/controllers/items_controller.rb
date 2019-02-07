@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     @user = current_user
   
       if @item.nil? 
-        flash[:notice] = "the item you're looking for doesn't exists"
+        flash[:notice] = "the item you're looking for no longer exist or doesn't exists"
         redirect_to root_path
       else 
         @item

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
+    @items = Item.all
   end
 
   def new
