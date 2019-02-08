@@ -17,15 +17,17 @@ class ItemsController < ApplicationController
     
     if !current_cart.empty?
       if current_cart.any? {|item| item['id'] == params[:id].to_i}
-        flash[:notice] = 'Item already exist in your cart. Please select the quantity you like in the quantity section.'
-        redirect_to cart_path
+        flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section on checkout.'
+        redirect_to root_path
       else
         current_cart << @item
-        redirect_to cart_path
+        flash[:notice] = 'Successfully added item to cart'
+        redirect_to root_path
       end
     else
       current_cart << @item
-      redirect_to cart_path
+      flash[:notice] = 'Successfully added item to cart'
+      redirect_to root_path
     end
   end
 
@@ -43,7 +45,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-  
+    binding.pry
       if @item.nil? 
         flash[:notice] = "unable to find the item you're looking for"
         redirect_to root_path
