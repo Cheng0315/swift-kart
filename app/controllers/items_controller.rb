@@ -13,9 +13,20 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
-    @item = Item.find(params[:id])
-    current_cart << @item
-    redirect_to root_path
+    @item = Item.find(params[:id].to_i)
+    
+    if !current_cart.empty?
+      if current_cart.any? {|item| item['id'] == params[:id].to_i}
+        flash[:notice] = 'Item already exist in your cart. Please select the quantity you like in the quantity section.'
+        redirect_to cart_path
+      else
+        current_cart << @item
+        redirect_to cart_path
+      end
+    else
+      current_cart << @item
+      redirect_to cart_path
+    end
   end
 
   def create
@@ -34,7 +45,7 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
   
       if @item.nil? 
-        flash[:notice] = "the item you're looking for no longer exist or doesn't exists"
+        flash[:notice] = "unable to find the item you're looking for"
         redirect_to root_path
       else 
         @item
