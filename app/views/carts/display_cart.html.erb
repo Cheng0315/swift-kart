@@ -7,7 +7,9 @@
     <%= item['price']%>
     <%= item['name']%>
     <%= item['description']%> 
-    <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%><br>
+    <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%>
+    <%= select_tag "quantity", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+    <br>
   <%end%>
 <% else %>
   Your cart is empty
