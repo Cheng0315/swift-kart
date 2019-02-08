@@ -10,7 +10,8 @@ Hi
 <br>
 
 <% @items.each do |item|%>
-<%= link_to item.name, item_path(item) %><br>
+<%= link_to item.name, item_path(item) %> 
+<%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item %><br>
 <% end %>
 
 <% if current_user %>

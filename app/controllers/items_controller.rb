@@ -12,6 +12,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def add_to_cart
+    @item = Item.find(params[:id])
+    current_cart << @item
+    redirect_to root_path
+  end
+
   def create
     @item = Item.new(new_items_params)
    

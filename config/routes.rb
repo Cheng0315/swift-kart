@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   
+  get '/items/:id/add_to_cart' => 'items#add_to_cart'
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
