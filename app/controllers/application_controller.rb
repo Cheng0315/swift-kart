@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
 
- 
-  private 
-
+  helper_method :current_user, :current_cart
+  
   def current_cart
     session[:cart] ||= []
   end

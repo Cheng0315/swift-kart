@@ -1,0 +1,10 @@
+
+<% if !current_cart.empty? %>
+  <% current_cart.each do |item| %>
+    <%= item['price']%>
+    <%= item['name']%>
+    <%= item['description']%> <br>
+  <%end%>
+<% else %>
+  Your cart is empty
+<% end %>

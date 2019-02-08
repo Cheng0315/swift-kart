@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
+  resources :carts, only: [:index]
   
+  get '/cart' => 'carts#display_cart'
   get '/items/:id/add_to_cart' => 'items#add_to_cart'
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
