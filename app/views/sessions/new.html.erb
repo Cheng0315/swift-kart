@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
 <%= form_tag ('/signin') do%>
 Email:<br>
 <%= text_field_tag :email%><br>
