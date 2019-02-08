@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Category.create(name: 'Books')
+Category.create(name: 'Clothing')
+Category.create(name: 'Electronics')
+Category.create(name: 'Games')
+Category.create(name: 'Health')
+Category.create(name: 'Jewelry')
+Category.create(name: 'Musical Intruments')
+Category.create(name: 'General')

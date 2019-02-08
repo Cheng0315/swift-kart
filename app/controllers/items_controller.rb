@@ -32,9 +32,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(new_items_params)
+    @item = Item.new(items_params)
 
     if current_user.seller
+      @category = Category.find(items_params[:category_id])
+      @category.items << @item
       current_user.items << @item
       @item.save
       redirect_to user_item_path(current_user, @item)
@@ -67,7 +69,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.user.id == current_user.id
-      @item.update(update_items_params)
+      @item.update(items_params)
       redirect_to item_path(@item)
     else
       redirect_to item_path(@item)
@@ -88,11 +90,9 @@ class ItemsController < ApplicationController
 
   private
 
-  def new_items_params
-    params.require(:item).permit(:name, :price, :description)
+  def items_params
+    params.require(:item).permit(:name, :price, :description, :category_id)
   end
 
-  def update_items_params
-    params.require(:item).permit(:name, :price, :description)
-  end
+  
 end
