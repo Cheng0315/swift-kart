@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:index]
   
   get '/cart' => 'carts#display_cart'
+  get '/cart/delete_item' => 'carts#delete_item'
+
   get '/items/:id/add_to_cart' => 'items#add_to_cart'
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'

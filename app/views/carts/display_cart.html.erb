@@ -1,10 +1,11 @@
-
 <% if !current_cart.empty? %>
   <% current_cart.each do |item| %>
     <%= item['price']%>
     <%= item['name']%>
-    <%= item['description']%> <br>
+    <%= item['description']%> 
+    <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%><br>
   <%end%>
 <% else %>
   Your cart is empty
 <% end %>
+
