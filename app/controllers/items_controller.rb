@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     
     if !current_cart.empty?
       if current_cart.any? {|item| item['id'] == params[:id].to_i}
-        flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section on checkout.'
+        flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section when checkout.'
         redirect_to root_path
       else
         current_cart << @item
@@ -33,9 +33,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(new_items_params)
-   
+
     if current_user.seller
-      @item.seller_id = current_user.id
+      current_user.items << @item
       @item.save
       redirect_to user_item_path(current_user, @item)
     else
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    binding.pry
+ 
       if @item.nil? 
         flash[:notice] = "unable to find the item you're looking for"
         redirect_to root_path
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
 
   def edit 
     @item = Item.find(params[:id])
-    if @item.seller_id == current_user.id
+    if @item.user.id == current_user.id
       render :edit
     else
       redirect_to item_path(@item)
@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.seller_id == current_user.id
+    if @item.user.id == current_user.id
       @item.update(update_items_params)
       redirect_to item_path(@item)
     else
@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
 
-    if @item.seller_id == current_user.id
+    if @item.user.id == current_user.id
       @item.destroy
       redirect_to root_path
     else
@@ -89,7 +89,7 @@ class ItemsController < ApplicationController
   private
 
   def new_items_params
-    params.require(:item).permit(:name, :price, :description, :seller_id)
+    params.require(:item).permit(:name, :price, :description)
   end
 
   def update_items_params

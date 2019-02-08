@@ -22,7 +22,7 @@ class CartsController < ApplicationController
         redirect_to root_path and return 
       end
     else
-      flash[:notice] = "Please sign in or sign up to place your order"
+      flash[:notice] = "Please sign in or sign up to checkout"
       redirect_to signin_path
     end
   end
