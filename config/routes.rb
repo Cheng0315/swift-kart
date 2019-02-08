@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   get '/cart' => 'carts#display_cart'
   get '/cart/delete_item' => 'carts#delete_item'
+  post '/cart/checkout' => 'carts#checkout'
 
   get '/items/:id/add_to_cart' => 'items#add_to_cart'
   get '/signup' => 'users#new'

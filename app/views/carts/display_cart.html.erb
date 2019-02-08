@@ -2,16 +2,33 @@
   <%= flash[:notice] %><br>
 <% end %>
 
-<% if !current_cart.empty? %>
-  <% current_cart.each do |item| %>
-    <%= item['price']%>
-    <%= item['name']%>
-    <%= item['description']%> 
-    <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%>
-    <%= select_tag "quantity", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
-    <br>
-  <%end%>
-<% else %>
-  Your cart is empty
-<% end %>
+<div>
+<%= form_tag cart_checkout_path, method: :post %>
+  <% if !current_cart.empty? %>
+    <% current_cart.each do |item| %>
+      <div>
+        <%= item['price']%>
+        <%= item['name']%>
+        <%= item['description']%> 
+        <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%>
+        <%= select_tag "quantity[]", 
+          "<option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+          <option value='9'>9</option>
+          <option value='10'>10</option>".html_safe%>
+        <br>
+      </div>
+    <%end%>
+  <% else %>
+    Your cart is empty
+  <% end %>
+  <%= submit_tag "Checkout" %>
+</div>
+
 

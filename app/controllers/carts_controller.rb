@@ -7,4 +7,8 @@ class CartsController < ApplicationController
     current_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
     redirect_to cart_path
   end
+
+  def checkout
+    binding.pry
+  end
 end
