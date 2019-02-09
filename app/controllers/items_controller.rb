@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   def index
     if params[:search]
       @items = Item.search(params[:search])
-      binding.pry
     else
       @items = Item.all
     end
