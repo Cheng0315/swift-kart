@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart
+  helper_method :current_user, :current_cart, :guest_cart
   
   def current_cart
-    session[:cart] ||= []
+    @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
   end
 
   def guest_cart

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_202123) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
+    t.boolean "checkout", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(version: 2019_02_06_202123) do
     t.string "name"
     t.string "price"
     t.string "description"
-    t.boolean "checkout", default: false
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", null: false

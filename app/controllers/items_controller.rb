@@ -44,17 +44,21 @@ class ItemsController < ApplicationController
         redirect_to root_path
       end
     else
-      if !current_cart.empty?
-        if current_cart.any? {|item| item['id'] == params[:id].to_i}
+      if !current_cart.items.empty?
+        if current_cart.items.any? {|item| item['id'] == params[:id].to_i}
           flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section when checkout.'
           redirect_to root_path
         else
-          current_cart << @item
+          @cart_item = CartItem.create()
+          current_cart.cart_items << @cart_item
+          @item.cart_items << @cart_item
           flash[:notice] = 'Successfully added item to cart'
           redirect_to root_path
         end
       else
-        current_cart << @item
+        @cart_item = CartItem.create()
+        current_cart.cart_items << @cart_item
+        @item.cart_items << @cart_item
         flash[:notice] = 'Successfully added item to cart'
         redirect_to root_path
       end

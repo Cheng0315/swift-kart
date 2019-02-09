@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   def display_cart
     if current_user
-      @cart = current_cart
+      @cart = current_cart.items
     else
       @cart = guest_cart
     end
@@ -10,7 +10,7 @@ class CartsController < ApplicationController
 
   def delete_item
     if current_user
-      current_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
+      current_cart.items.delete_if {|obj| obj['id'] == params[:id].to_i}
       redirect_to cart_path
     else
       guest_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
@@ -38,17 +38,13 @@ class CartsController < ApplicationController
 
   def checkout
     if current_cart && current_user
-      current_cart.each_with_index do |item, idx|
-        @cart_item = CartItem.create(quantity: params[:quantity][idx])
-        @cart = Cart.create()
-        @cart.cart_items << @cart_item
-        @item = Item.find(item['id'])
-        @item.cart_items << @cart_item
-        current_user.carts << @cart
-        session.delete :cart
-        flash[:notice] = "Thank you for shopping with Swift Kart! Your order has been placed and we will send you a notice when your order is shipped!"
-        redirect_to root_path and return 
+      current_cart.items.each_with_index do |item, idx|
+        cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
+        cart_item.update(quantity: params[:quantity][idx])
       end
+        current_cart.update(checkout: true)
+        flash[:notice] = "Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!"
+        redirect_to cart_user_cart_path and return 
     else
       flash[:notice] = "Please sign in or sign up to checkout"
       redirect_to signin_path
