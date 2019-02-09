@@ -2,9 +2,11 @@
   <%= flash[:notice] %><br>
 <% end %>
 <%= form_tag items_path, method: :get do%>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag 'Search', :name => nil %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories"%>
+  <%= submit_tag 'Search', :name => nil %>
 <% end %>
+
 Hi
 <%if current_user %>
 <%= current_user.first_name%>
