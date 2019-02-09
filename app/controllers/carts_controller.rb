@@ -1,11 +1,21 @@
 class CartsController < ApplicationController
 
   def display_cart
+    if current_user
+      @cart = current_cart
+    else
+      @cart = guest_cart
+    end
   end
 
   def delete_item
-    current_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
-    redirect_to cart_path
+    if current_user
+      current_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
+      redirect_to cart_path
+    else
+      guest_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
+      redirect_to cart_path
+    end
   end
 
   def checkout

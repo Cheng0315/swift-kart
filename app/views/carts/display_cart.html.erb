@@ -4,8 +4,8 @@
 
 <div>
 <%= form_tag cart_checkout_path, method: :post do %>
-  <% if !current_cart.empty? %>
-    <% current_cart.each do |item| %>
+  <% if !@cart.empty? %>
+    <% @cart.each do |item| %>
       <div>
         <%= item['price']%>
         <%= item['name']%>
