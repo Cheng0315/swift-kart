@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController 
 
   def index
-    
     if params[:search]
       if params[:category][:id].blank?
         @items = Item.search(params[:search])

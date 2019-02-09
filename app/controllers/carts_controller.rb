@@ -10,10 +10,11 @@ class CartsController < ApplicationController
 
   def delete_item
     if current_user
-      current_cart.items.delete_if {|obj| obj['id'] == params[:id].to_i}
+      @item = Item.find(params[:id].to_i)
+      current_cart.items.delete(@item)
       redirect_to cart_path
     else
-      guest_cart.delete_if {|obj| obj['id'] == params[:id].to_i}
+      guest_cart.delete_if {|obj| obj["id"] == params[:id].to_i}
       redirect_to cart_path
     end
   end
@@ -25,16 +26,31 @@ class CartsController < ApplicationController
         current_user.carts << @cart
         @cart.save
         session[:cart_id] = @cart.id
-        redirect_to root_path
+        redirect_to cart_add_guest_cart_path
       else
         @cart = current_user.carts.last
         session[:cart_id] = @cart.id
-        redirect_to root_path
+        redirect_to cart_add_guest_cart_path
       end
     else
       redirect_to root_path
     end
   end 
+
+  def add_guest_cart
+    if !guest_cart.empty?
+      guest_cart.each do |item|
+        @item = Item.find(item['id'])
+        @cart_item = CartItem.create()
+        current_cart.cart_items << @cart_item
+        @item.cart_items << @cart_item
+      end
+      session.delete :guest_cart
+      redirect_to root_path and return 
+    else 
+      redirect_to root_path
+    end
+  end
 
   def checkout
     if current_cart && current_user
