@@ -3,7 +3,7 @@
 <% end %>
 
 <div>
-<%= form_tag cart_checkout_path, method: :post %>
+<%= form_tag cart_checkout_path, method: :post do %>
   <% if !current_cart.empty? %>
     <% current_cart.each do |item| %>
       <div>
@@ -29,7 +29,7 @@
   <% else %>
     Your cart is empty
   <% end %>
-  
+  <% end %>
 </div>
 
 

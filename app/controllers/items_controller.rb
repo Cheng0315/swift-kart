@@ -1,5 +1,14 @@
 class ItemsController < ApplicationController 
 
+  def index
+    if params[:search]
+      @items = Item.search(params[:search])
+      binding.pry
+    else
+      @items = Item.all
+    end
+  end
+
   def new
     if current_user
       if current_user.seller
@@ -91,7 +100,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-    params.require(:item).permit(:name, :price, :description, :category_id)
+    params.require(:item).permit(:name, :price, :description, :category_id, :search)
   end
 
   
