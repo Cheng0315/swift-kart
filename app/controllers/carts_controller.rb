@@ -18,6 +18,14 @@ class CartsController < ApplicationController
     end
   end
 
+  def find_or_create_cart
+    if current_user.carts
+      binding.pry
+    else
+      binding.pry
+    end
+  end 
+
   def checkout
     if current_cart && current_user
       current_cart.each_with_index do |item, idx|
