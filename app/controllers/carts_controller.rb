@@ -19,10 +19,20 @@ class CartsController < ApplicationController
   end
 
   def find_or_create_cart
-    if current_user.carts
-      binding.pry
+    if current_user
+      if current_user.carts.empty? || current_user.carts.last.checkout
+        @cart = Cart.new()
+        current_user.carts << @cart
+        @cart.save
+        session[:cart_id] = @cart.id
+        redirect_to root_path
+      else
+        @cart = current_user.carts.last
+        session[:cart_id] = @cart.id
+        redirect_to root_path
+      end
     else
-      binding.pry
+      redirect_to root_path
     end
   end 
 
