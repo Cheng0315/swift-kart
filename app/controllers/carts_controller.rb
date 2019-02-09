@@ -39,11 +39,13 @@ class CartsController < ApplicationController
 
   def add_guest_cart
     if !guest_cart.empty?
-      guest_cart.each do |item|
-        @item = Item.find(item['id'])
-        @cart_item = CartItem.create()
-        current_cart.cart_items << @cart_item
-        @item.cart_items << @cart_item
+      guest_cart.each do |guest_item|
+        if !current_cart.items.any? {|item| item[:id] == guest_item['id']}
+          @item = Item.find(guest_item['id'])
+          @cart_item = CartItem.create()
+          current_cart.cart_items << @cart_item
+          @item.cart_items << @cart_item
+        end
       end
       session.delete :guest_cart
       redirect_to root_path and return 
