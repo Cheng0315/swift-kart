@@ -1,10 +1,15 @@
 Name: <%= @item.name %><br>
 Price: <%= @item.price %><br>
 Description: <%= @item.description %><br>
+Status: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
+
+
 
 <%if current_user %>
   <% if @item.user.id == current_user.id %>
   <%= link_to 'Delete Item', item_path(@item), method: :delete %>
   <%= link_to 'Edit Item', edit_item_path(@item) %>
+  <% else %>
+  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item %><br>
   <% end %>
 <% end %>

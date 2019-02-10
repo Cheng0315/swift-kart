@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_202123) do
     t.string "name"
     t.string "price"
     t.string "description"
+    t.boolean "in_stock"
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
