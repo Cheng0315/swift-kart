@@ -4,6 +4,10 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :carts, through: :cart_items
 
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+
   def self.search(search_term)
     where("name LIKE ?", "%#{search_term}%") 
   end
