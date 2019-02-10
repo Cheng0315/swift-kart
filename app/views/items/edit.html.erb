@@ -1,24 +1,6 @@
-<% if @item.errors.any? %>
-  <div id='error_explaination'>
-    <p>The following error(s) prevented you from updating your item</p>
-    <ul>
-      <%= @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'users/error_msg', locals: {user_or_item: @item, error_msg: @error_msg}%>
 
 <%= form_for @item do |f| %><br>
-<%= f.label :name %><br>
-<%= f.text_field :name %><br>
-<%= f.label :price %><br>
-<%= f.text_field :price %><br>
-<%= f.label :description %><br>
-<%= f.text_field :description %><br>
-<%= f.label :category %><br>
-<%= f.collection_select :category_id, Category.all, :id, :name%><br>
-<%= f.label :status %><br>
-<%= f.select :in_stock, options_for_select([['In stock', true], ['Out of Stock', false]])%><br>
-<%= f.submit value="Update Item" %><br>
+  <%= render partial: 'item_form', locals: {form: f}%>
+  <%= f.submit value="Update Item" %><br>
 <% end %>

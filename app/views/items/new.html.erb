@@ -1,13 +1,4 @@
-<% if @item.errors.any? %>
-  <div id='error_explaination'>
-    <p>The following error(s) prevented you from creating your item</p>
-    <ul>
-      <%= @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'users/error_msg', locals: {user_or_item: @item, error_msg: @error_msg}%>
 
 <%= form_for @item do |f| %><br>
   <%= render partial: 'item_form', locals: {form: f}%>
