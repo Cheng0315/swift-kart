@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
 
   def display_cart
+    if session[:cart_path]
+      session.delete :cart_path
+    end
+
     if current_user
       @cart = current_cart.items
     else
@@ -48,9 +52,9 @@ class CartsController < ApplicationController
         end
       end
       session.delete :guest_cart
-      redirect_to root_path and return 
+      redirect_to this_path(session[:cart_path]) and return 
     else 
-      redirect_to root_path
+      redirect_to this_path(session[:cart_path])
     end
   end
 
@@ -65,6 +69,7 @@ class CartsController < ApplicationController
         redirect_to cart_user_cart_path and return 
     else
       flash[:notice] = "Please sign in or sign up to checkout"
+      session[:cart_path] = cart_path
       redirect_to signin_path
     end
   end

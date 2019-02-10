@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
+
 <% if @carts.empty? %>
   You have not make any orders
 <% else %>
@@ -8,7 +12,7 @@
         Price: <%= item.price %>
         Description: <%= item.description %>
         Quantity: <%= item_quantity(item, cart) %>
-        <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => '/orders'%><br><br>
+        <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => orders_path%><br><br>
       <%end%> 
     <% end %> 
   <% end %>

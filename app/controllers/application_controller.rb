@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if path
       path
     else
-      '/'
+      root_path
     end
   end
 end
