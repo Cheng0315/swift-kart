@@ -1,0 +1,10 @@
+<%= form.label :name %><br>
+<%= form.text_field :name %><br>
+<%= form.label :price %><br>
+<%= form.text_field :price %><br>
+<%= form.label :description %><br>
+<%= form.text_field :description %><br>
+<%= form.label :category %><br>
+<%= form.collection_select :category_id, Category.all, :id, :name%><br>
+<%= form.label :status %><br>
+<%= form.select :in_stock, options_for_select([['In stock', true], ['Out of Stock', false]])%><br>

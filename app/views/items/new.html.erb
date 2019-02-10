@@ -10,15 +10,6 @@
 <% end %>
 
 <%= form_for @item do |f| %><br>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :price %><br>
-  <%= f.text_field :price %><br>
-  <%= f.label :description %><br>
-  <%= f.text_field :description %><br>
-  <%= f.label :category %><br>
-  <%= f.collection_select :category_id, Category.all, :id, :name%><br>
-  <%= f.label :status %><br>
-  <%= f.select :in_stock, options_for_select([['In stock', true], ['Out of Stock', false]])%><br>
+  <%= render partial: 'item_form', locals: {form: f}%>
   <%= f.submit value="Create Item" %><br>
 <% end %>
