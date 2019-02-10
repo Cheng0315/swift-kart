@@ -1,6 +1,6 @@
 <% if @user.errors.any? %>
   <div id='error_explaination'>
-    <p>There were some errors</p>
+    <p>The following error(s) prevented you from signing up</p>
     <ul>
       <%= @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -11,14 +11,7 @@
 
 
 <%= form_for @user do |f| %><br>
-<%= f.label :first_name %><br>
-<%= f.text_field :first_name %><br>
-<%= f.label :last_name %><br>
-<%= f.text_field :last_name %><br>
-<%= f.label :email %><br>
-<%= f.email_field :email %><br>
-<%= f.label :password %><br>
-<%= f.password_field :password %><br>
+<%= render partial: 'form', locals: {form: f}%>
 <%= f.label :seller %><br>
 <%= f.check_box :seller%><br>
 <%= f.submit value="Sign Up" %><br>
