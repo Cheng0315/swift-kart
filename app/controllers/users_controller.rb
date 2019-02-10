@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    binding.pry
+
     if current_user
       @user = current_user
     else
@@ -37,10 +37,19 @@ class UsersController < ApplicationController
 
     if current_user
       @user = current_user
-      @user.update(users_params)
-      redirect_to user_path(@user)
+      @user.first_name = params[:user][:first_name]
+      @user.last_name = params[:user][:last_name]
+      @user.email = params[:user][:email]
+      @user.password_digest = params[:user][:password]
+
+      if @user.valid?
+        @user.update(users_params)
+        redirect_to user_path(@user)
+      else  
+        render :edit
+      end
     else
-      redirect_to edit_user_path
+      redirect_to login_path
     end
   end
 
