@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
     @seller = User.find(item['user_id'])
     @seller.id != current_user.id
   end
+
+  def this_path(path)
+    if path
+      path
+    else
+      '/'
+    end
+  end
 end

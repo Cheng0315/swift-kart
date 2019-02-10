@@ -7,7 +7,8 @@
         <%= link_to item.name, item_path(item) %>
         Price: <%= item.price %>
         Description: <%= item.description %>
-        Quantity: <%= item_quantity(item, cart) %><br>
+        Quantity: <%= item_quantity(item, cart) %>
+        <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => '/orders'%><br><br>
       <%end%> 
     <% end %> 
   <% end %>
