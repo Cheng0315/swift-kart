@@ -1,0 +1,10 @@
+<% if user_or_item.errors.any? %>
+  <div id='error_explaination'>
+    <p><%= error_msg %></p>
+    <ul>
+      <%= user_or_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

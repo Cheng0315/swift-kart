@@ -1,14 +1,4 @@
-<% if @user.errors.any? %>
-  <div id='error_explaination'>
-    <p>The following error(s) prevented you from signing up</p>
-    <ul>
-      <%= @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render partial: 'error_msg', locals: {user_or_item: @user, error_msg: @error_msg}%>
 
 <%= form_for @user do |f| %><br>
 <%= render partial: 'form', locals: {form: f}%>

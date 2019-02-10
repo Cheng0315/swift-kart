@@ -1,13 +1,5 @@
-<% if @user.errors.any? %>
-  <div id='error_explaination'>
-    <p>The following error(s) prevented you from updating your info</p>
-    <ul>
-      <%= @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%binding.pry%>
+<%= render partial: 'error_msg', locals: {user_or_item: @user, error_msg: @error_msg}%>
 
 <%= form_for @user do |f| %><br>
 <%= render partial: 'form', locals: {form: f}%>
