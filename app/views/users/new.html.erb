@@ -1,7 +1,7 @@
 <%= render partial: 'error_msg', locals: {user_or_item: @user, error_msg: @error_msg}%>
 
 <%= form_for @user do |f| %><br>
-<%= render partial: 'form', locals: {form: f}%>
+<%= render partial: 'user_form', locals: {form: f}%>
 <%= f.label :seller %><br>
 <%= f.check_box :seller%><br>
 <%= f.submit value="Sign Up" %><br>

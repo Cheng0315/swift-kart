@@ -8,3 +8,5 @@
 <%= form.collection_select :category_id, Category.all, :id, :name%><br>
 <%= form.label :status %><br>
 <%= form.select :in_stock, options_for_select([['In stock', true], ['Out of Stock', false]])%><br>
+<%= form.label :image %>
+<%= form.file_field :image %><br>

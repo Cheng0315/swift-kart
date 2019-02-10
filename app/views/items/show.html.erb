@@ -1,15 +1,20 @@
-Name: <%= @item.name %><br>
-Price: <%= @item.price %><br>
-Description: <%= @item.description %><br>
-Status: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
+<div>
+  <div style="width:400px; height:auto">
+  <%= image_tag(@item.image, style:"width:100%") %>
+  </div>
+  Name: <%= @item.name %><br>
+  Price: <%= @item.price %><br>
+  Description: <%= @item.description %><br>
+  Status: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
 
-<% if !current_user || not_seller_item(@item)%>
-<%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => @item.id %><br>
-<% end %>
-
-<%if current_user %>
-  <% if @item.user.id == current_user.id %>
-  <%= link_to 'Delete Item', item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
-  <%= link_to 'Edit Item', edit_item_path(@item) %>
+  <% if !current_user || not_seller_item(@item)%>
+  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => @item.id %><br>
   <% end %>
-<% end %>
+
+  <%if current_user %>
+    <% if @item.user.id == current_user.id %>
+    <%= link_to 'Delete Item', item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to 'Edit Item', edit_item_path(@item) %>
+    <% end %>
+  <% end %>
+</div>
