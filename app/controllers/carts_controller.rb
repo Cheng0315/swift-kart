@@ -40,7 +40,7 @@ class CartsController < ApplicationController
   def add_guest_cart
     if !guest_cart.empty?
       guest_cart.each do |guest_item|
-        if !current_cart.items.any? {|item| item[:id] == guest_item['id']}
+        if !current_cart.items.any? {|item| item[:id] == guest_item['id']} && not_seller_item(guest_item)
           @item = Item.find(guest_item['id'])
           @cart_item = CartItem.create()
           current_cart.cart_items << @cart_item
