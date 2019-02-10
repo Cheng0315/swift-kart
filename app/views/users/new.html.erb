@@ -1,3 +1,15 @@
+<% if @user.errors.any? %>
+  <div id='error_explaination'>
+    <p>There were some errors</p>
+    <ul>
+      <%= @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for @user do |f| %><br>
 <%= f.label :first_name %><br>
 <%= f.text_field :first_name %><br>
