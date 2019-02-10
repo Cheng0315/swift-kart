@@ -12,6 +12,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def my_items
+    if current_user && current_user.seller
+      @items = current_user.items
+      render :index
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     if current_user
       if current_user.seller
