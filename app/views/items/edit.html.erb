@@ -1,3 +1,14 @@
+<% if @item.errors.any? %>
+  <div id='error_explaination'>
+    <p>The following error(s) prevented you from updating your item</p>
+    <ul>
+      <%= @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @item do |f| %><br>
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>

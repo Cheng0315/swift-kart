@@ -1,6 +1,6 @@
 <% if @item.errors.any? %>
   <div id='error_explaination'>
-    <p>The following error(s) prevented you from updating your info</p>
+    <p>The following error(s) prevented you from creating your item</p>
     <ul>
       <%= @item.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
