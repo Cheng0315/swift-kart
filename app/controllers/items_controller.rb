@@ -90,13 +90,20 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
  
-      if @item.nil? 
-        flash[:notice] = "unable to find the item you're looking for"
-        redirect_to root_path
-      else 
-        @item
-      end
-      
+    if @item.nil? 
+      flash[:notice] = "unable to find the item you're looking for"
+      redirect_to root_path
+    else 
+      @item
+    end 
+  end
+
+  def orders
+    if current_user
+      @carts = current_user.carts
+    else
+      redirect_to root_path
+    end
   end
 
   def edit 

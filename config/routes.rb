@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/items/:id/add_to_cart' => 'items#add_to_cart'
   get '/my_items' => 'items#my_items'
+  get '/orders' => 'items#orders'
 
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'

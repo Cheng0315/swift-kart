@@ -1,0 +1,14 @@
+<% if @carts.empty? %>
+  You have not make any orders
+<% else %>
+  <% @carts.each do |cart|%>
+    <% if cart.checkout %>
+      <% cart.items.each do |item| %>
+        <%= link_to item.name, item_path(item) %>
+        Price: <%= item.price %>
+        Description: <%= item.description %>
+        Quantity: <%= item_quantity(item, cart) %><br>
+      <%end%> 
+    <% end %> 
+  <% end %>
+<% end %>
