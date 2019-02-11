@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     if params[:search]
       @items = search_items(params[:search], params[:category])
     else
-      redirect_to root_path
+      @items = Items.all
     end
   end
 

@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
     else
       cart << item
       flash[:notice] = 'Successfully added item to cart'
-      redirect_to root_path
+      redirect_to redirect_path(params_path)
     end
   end
 
