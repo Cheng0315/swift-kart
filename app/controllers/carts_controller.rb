@@ -25,14 +25,7 @@ class CartsController < ApplicationController
 
   def find_or_create_cart
     if current_user
-      if current_user.carts.empty? || current_user.carts.last.checkout
-        create_new_cart_for_user
-        redirect_to cart_add_guest_cart_path
-      else
-        @cart = current_user.carts.last
-        session[:cart_id] = @cart.id
-        redirect_to cart_add_guest_cart_path
-      end
+      find_or_create_new_cart_for_user
     else
       redirect_to root_path
     end

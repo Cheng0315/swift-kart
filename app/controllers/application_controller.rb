@@ -22,6 +22,17 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def find_or_create_new_cart_for_user
+    if current_user.carts.empty? || current_user.carts.last.checkout
+      create_new_cart_for_user
+      redirect_to cart_add_guest_cart_path
+    else
+      @cart = current_user.carts.last
+      session[:cart_id] = @cart.id
+      redirect_to cart_add_guest_cart_path
+    end
+  end
+
   def create_new_cart_for_user
     @cart = Cart.new()
     current_user.carts << @cart
