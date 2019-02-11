@@ -33,22 +33,9 @@ class ItemsController < ApplicationController
   def add_to_cart
     @item = Item.find(params[:id].to_i)
     if current_user
-      check_if_item_exists_in_user_cart(@item, params[:redirect_to])
+      check_if_item_exists_in_cart(current_cart, @item, params[:redirect_to])
     else
-      if !guest_cart.empty?
-        if guest_cart.any? {|item| item['id'] == params[:id].to_i}
-          flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
-          redirect_to root_path
-        else
-          guest_cart << @item
-          flash[:notice] = 'Successfully added item to cart'
-          redirect_to root_path
-        end
-      else
-        guest_cart << @item
-        flash[:notice] = 'Successfully added item to cart'
-        redirect_to root_path
-      end
+      check_if_item_exists_in_cart(guest_cart, @item, params[:redirect_to])
     end
   end
 

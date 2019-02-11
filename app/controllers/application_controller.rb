@@ -65,33 +65,35 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_if_item_exists_in_user_cart(item, params_path)
-    if user_cart_is_empty
-      add_item_to_user_cart(item, params_path)
+  def check_if_item_exists_in_cart(cart, item, params_path)
+    if item_exists_in_cart(cart, item)
+      flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
+      redirect_to redirect_path(params_path)
     else
-      if item_exists_in_user_cart(item)
-        flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
-        redirect_to redirect_path(params_path)
-      else
-        add_item_to_user_cart(item, params_path)
-      end
+      add_item_to_cart(cart, item, params_path)
     end
   end
 
-  def item_exists_in_user_cart(item)
-    current_cart.items.any? {|cartitem| cartitem['id'] == item.id}
+  def item_exists_in_cart(cart, item)
+    if cart.class == Array
+      cart.any? {|cart_item| cart_item['id'] == item.id}
+    else
+      cart.items.any? {|cart_item| cart_item['id'] == item.id}
+    end
   end
 
-  def user_cart_is_empty
-    current_cart.items.empty?
-  end
-
-  def add_item_to_user_cart(item, params_path)
-    @cart_item = CartItem.create()
-    current_cart.cart_items << @cart_item
-    item.cart_items << @cart_item
-    flash[:notice] = 'Successfully added item to cart'
-    redirect_to redirect_path(params_path)
+  def add_item_to_cart(cart, item, params_path)
+    if current_user
+      @cart_item = CartItem.create()
+      cart.cart_items << @cart_item
+      item.cart_items << @cart_item
+      flash[:notice] = 'Successfully added item to cart'
+      redirect_to redirect_path(params_path)
+    else
+      cart << item
+      flash[:notice] = 'Successfully added item to cart'
+      redirect_to root_path
+    end
   end
 
   def update_quantity_of_item_in_cart
