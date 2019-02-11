@@ -5,7 +5,7 @@
   Name: <%= @item.name %><br>
   Price: <%= @item.price %><br>
   Description: <%= @item.description %><br>
-  Status: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
+  Availability: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
 
   <% if !current_user || not_seller_item(@item)%>
   <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => @item.id %><br>

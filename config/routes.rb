@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#logout'
+  get '/auth/facebook/callback' => 'sessions#create'
 end
