@@ -2,7 +2,9 @@
   <%= flash[:notice] %><br>
 <% end %>
 <%= form_tag ('/signin') do%>
-Email: <%= text_field_tag :email%><br>
-Password: <%= password_field_tag :password %><br>
+<%= label_tag :email %><br>
+<%= text_field_tag :email%><br>
+<%= label_tag :password %><br>
+<%= password_field_tag :password %><br>
 <%= submit_tag value='Sign In'%>
 <% end %>

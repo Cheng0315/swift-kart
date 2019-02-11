@@ -84,7 +84,6 @@ class ItemsController < ApplicationController
         @item.save
         redirect_to user_item_path(current_user, @item)
       else
-        @error_msg = "The following error(s) prevented you from creating your item"
         render :new
       end
     else
@@ -125,7 +124,6 @@ class ItemsController < ApplicationController
     if @item.user.id == current_user.id && @item.update(items_params)
       redirect_to item_path(@item)
     else
-      @error_msg = "The following error(s) prevented you from updating your item"
       render :edit
     end
   end

@@ -1,4 +1,4 @@
-<%= render partial: 'users/error_msg', locals: {user_or_item: @item, error_msg: @error_msg}%>
+<%= render partial: 'users/error_msg', locals: {user_or_item: @item}%>
 
 <%= form_for @item do |f| %><br>
   <%= render partial: 'item_form', locals: {form: f}%>

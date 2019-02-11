@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to cart_user_cart_path
     else
-      @error_msg = "The following error(s) prevented you from signing up"
       render :new
     end
   end
@@ -41,7 +40,6 @@ class UsersController < ApplicationController
       if @user.update(users_params)
         redirect_to user_path(@user)
       else  
-        @error_msg = "The following error(s) prevented you from updating your info"
         render :edit
       end
 
