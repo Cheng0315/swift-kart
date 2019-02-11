@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def delete_item_in_guest_cart(item_id)
+    guest_cart.delete_if {|item| item["id"] == item_id}
+  end
+
   def redirect_path(path)
     if path
       path

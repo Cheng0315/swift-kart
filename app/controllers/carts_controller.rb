@@ -18,7 +18,7 @@ class CartsController < ApplicationController
       current_cart.items.delete(@item)
       redirect_to cart_path
     else
-      guest_cart.delete_if {|obj| obj["id"] == params[:id].to_i}
+      delete_item_in_guest_cart(params[:id].to_i)
       redirect_to cart_path
     end
   end
