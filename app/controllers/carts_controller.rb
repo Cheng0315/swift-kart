@@ -34,7 +34,7 @@ class CartsController < ApplicationController
 
   def add_guest_cart
     if !guest_cart.empty?
-      add_guest_cart_items_to_user_cart
+      add_guest_items_to_user_cart
       session.delete :guest_cart
       redirect_to redirect_path(session[:cart_path]) and return 
     else 

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = @cart.id
   end
 
-  def add_guest_cart_items_to_user_cart
+  def add_guest_items_to_user_cart
     guest_cart.each do |guest_item|
       if guest_item_does_not_exist_in_user_cart(guest_item)
         @item = Item.find(guest_item['id'])
@@ -66,20 +66,24 @@ class ApplicationController < ActionController::Base
   end
 
   def check_if_item_exists_in_user_cart(item, params_path)
-    if !current_cart.items.empty?
+    if user_cart_is_empty
+      add_item_to_user_cart(item, params_path)
+    else
       if item_exists_in_user_cart(item)
         flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
         redirect_to redirect_path(params_path)
       else
         add_item_to_user_cart(item, params_path)
       end
-    else
-      add_item_to_user_cart(item, params_path)
     end
   end
 
   def item_exists_in_user_cart(item)
     current_cart.items.any? {|cartitem| cartitem['id'] == item.id}
+  end
+
+  def user_cart_is_empty
+    current_cart.items.empty?
   end
 
   def add_item_to_user_cart(item, params_path)
