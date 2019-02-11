@@ -26,6 +26,7 @@ class CartsController < ApplicationController
   def find_or_create_cart
     if current_user
       find_or_create_new_cart_for_user
+      redirect_to cart_add_guest_cart_path
     else
       redirect_to root_path
     end
@@ -33,14 +34,7 @@ class CartsController < ApplicationController
 
   def add_guest_cart
     if !guest_cart.empty?
-      guest_cart.each do |guest_item|
-        if !current_cart.items.any? {|item| item[:id] == guest_item['id']} && not_seller_item(guest_item)
-          @item = Item.find(guest_item['id'])
-          @cart_item = CartItem.create()
-          current_cart.cart_items << @cart_item
-          @item.cart_items << @cart_item
-        end
-      end
+      add_guest_cart_items_to_user_cart
       session.delete :guest_cart
       redirect_to redirect_path(session[:cart_path]) and return 
     else 
@@ -50,13 +44,10 @@ class CartsController < ApplicationController
 
   def checkout
     if current_cart && current_user
-      current_cart.items.each_with_index do |item, idx|
-        cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
-        cart_item.update(quantity: params[:quantity][idx])
-      end
-        current_cart.update(checkout: true)
-        flash[:notice] = "Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!"
-        redirect_to cart_user_cart_path and return 
+      update_quantity_of_item_in_cart
+      current_cart.update(checkout: true)
+      flash[:notice] = "Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!"
+      redirect_to cart_user_cart_path and return 
     else
       flash[:notice] = "Please sign in or sign up to checkout"
       session[:cart_path] = cart_path

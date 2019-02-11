@@ -25,11 +25,9 @@ class ApplicationController < ActionController::Base
   def find_or_create_new_cart_for_user
     if current_user.carts.empty? || current_user.carts.last.checkout
       create_new_cart_for_user
-      redirect_to cart_add_guest_cart_path
     else
       @cart = current_user.carts.last
       session[:cart_id] = @cart.id
-      redirect_to cart_add_guest_cart_path
     end
   end
 
@@ -57,6 +55,13 @@ class ApplicationController < ActionController::Base
 
   def delete_item_in_guest_cart(item_id)
     guest_cart.delete_if {|item| item["id"] == item_id}
+  end
+
+  def update_quantity_of_item_in_cart
+    current_cart.items.each_with_index do |item, idx|
+      cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
+      cart_item.update(quantity: params[:quantity][idx])
+    end
   end
 
   def redirect_path(path)
