@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def create_new_cart_for_user
+    @cart = Cart.new()
+    current_user.carts << @cart
+    @cart.save
+    session[:cart_id] = @cart.id
+  end
+
   def delete_item_in_guest_cart(item_id)
     guest_cart.delete_if {|item| item["id"] == item_id}
   end
