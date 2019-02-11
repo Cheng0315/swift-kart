@@ -5,10 +5,8 @@
 <% else %>
   <% @items.each do |item|%>
     <%= link_to item.name, item_path(item) %>
-    <% if current_user %> 
-      <% if item.user.id != current_user.id %>
-      <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => cart_path %><br>
-      <%end%><br>
-    <%end%>
+    <% if !current_user || not_seller_item(item)%>
+      <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id %><br>
+    <% end %>
   <% end %>
 <% end %>

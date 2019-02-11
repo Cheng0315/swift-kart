@@ -2,11 +2,9 @@ class ItemsController < ApplicationController
 
   def index
     if params[:search]
-      if params[:category][:id].blank?
-        @items = Item.search(params[:search])
-      else
-        @items = Item.search_with_category(params[:search], params[:category][:id].to_i)
-      end
+      @items = seach_items(params[:search], params[:category])
+
+      
     else
       redirect_to root_path
     end

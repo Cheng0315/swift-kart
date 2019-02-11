@@ -57,6 +57,14 @@ class ApplicationController < ActionController::Base
     guest_cart.delete_if {|item| item["id"] == item_id}
   end
 
+  def seach_items(search_term, category)
+    if category[:id].blank?
+      @items = Item.search(search_term)
+    else
+      @items = Item.search_with_category(search_term, category[:id].to_i)
+    end
+  end
+
   def update_quantity_of_item_in_cart
     current_cart.items.each_with_index do |item, idx|
       cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
