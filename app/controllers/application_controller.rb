@@ -57,11 +57,32 @@ class ApplicationController < ActionController::Base
     guest_cart.delete_if {|item| item["id"] == item_id}
   end
 
-  def seach_items(search_term, category)
+  def search_items(search_term, category)
     if category[:id].blank?
       @items = Item.search(search_term)
     else
       @items = Item.search_with_category(search_term, category[:id].to_i)
+    end
+  end
+
+  def add_item_to_user_cart(item, params_path)
+    if !current_cart.items.empty?
+      if current_cart.items.any? {|cartitem| cartitem['id'] == item.id}
+        flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
+        redirect_to redirect_path(params_path)
+      else
+        @cart_item = CartItem.create()
+        current_cart.cart_items << @cart_item
+        item.cart_items << @cart_item
+        flash[:notice] = 'Successfully added item to cart'
+        redirect_to redirect_path(params_path)
+      end
+    else
+      @cart_item = CartItem.create()
+      current_cart.cart_items << @cart_item
+      item.cart_items << @cart_item
+      flash[:notice] = 'Successfully added item to cart'
+      redirect_to redirect_path(params_path)
     end
   end
 

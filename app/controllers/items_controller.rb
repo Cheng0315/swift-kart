@@ -2,9 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     if params[:search]
-      @items = seach_items(params[:search], params[:category])
-
-      
+      @items = search_items(params[:search], params[:category])
     else
       redirect_to root_path
     end
@@ -34,10 +32,12 @@ class ItemsController < ApplicationController
 
   def add_to_cart
     @item = Item.find(params[:id].to_i)
-    if !current_user
+    if current_user
+      add_item_to_user_cart(@item, params[:redirect_to])
+    else
       if !guest_cart.empty?
         if guest_cart.any? {|item| item['id'] == params[:id].to_i}
-          flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section when checkout.'
+          flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
           redirect_to root_path
         else
           guest_cart << @item
@@ -48,25 +48,6 @@ class ItemsController < ApplicationController
         guest_cart << @item
         flash[:notice] = 'Successfully added item to cart'
         redirect_to root_path
-      end
-    else
-      if !current_cart.items.empty?
-        if current_cart.items.any? {|item| item['id'] == params[:id].to_i}
-          flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section when checkout.'
-          redirect_to redirect_path(params[:redirect_to])
-        else
-          @cart_item = CartItem.create()
-          current_cart.cart_items << @cart_item
-          @item.cart_items << @cart_item
-          flash[:notice] = 'Successfully added item to cart'
-          redirect_to redirect_path(params[:redirect_to])
-        end
-      else
-        @cart_item = CartItem.create()
-        current_cart.cart_items << @cart_item
-        @item.cart_items << @cart_item
-        flash[:notice] = 'Successfully added item to cart'
-        redirect_to redirect_path(params[:redirect_to])
       end
     end
   end
