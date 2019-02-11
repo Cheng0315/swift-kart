@@ -52,9 +52,9 @@ class CartsController < ApplicationController
         end
       end
       session.delete :guest_cart
-      redirect_to this_path(session[:cart_path]) and return 
+      redirect_to redirect_path(session[:cart_path]) and return 
     else 
-      redirect_to this_path(session[:cart_path])
+      redirect_to redirect_path(session[:cart_path])
     end
   end
 

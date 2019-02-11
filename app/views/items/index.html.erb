@@ -1,4 +1,6 @@
-<% if @items.empty? %>
+<% if @items.empty? && @view_my_items %>
+  You have no items for sale at the moment
+<% elsif @items.empty? %>
   Unable to find the item you're looking for
 <% else %>
   <% @items.each do |item|%>

@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def my_items
     if current_user && current_user.seller
       @items = current_user.items
+      @view_my_items = true 
       render :index
     else
       redirect_to root_path
@@ -54,20 +55,20 @@ class ItemsController < ApplicationController
       if !current_cart.items.empty?
         if current_cart.items.any? {|item| item['id'] == params[:id].to_i}
           flash[:notice] = 'Item already exists in cart. You may select the quantity you like in the quantity section when checkout.'
-          redirect_to this_path(params[:redirect_to])
+          redirect_to redirect_path(params[:redirect_to])
         else
           @cart_item = CartItem.create()
           current_cart.cart_items << @cart_item
           @item.cart_items << @cart_item
           flash[:notice] = 'Successfully added item to cart'
-          redirect_to this_path(params[:redirect_to])
+          redirect_to redirect_path(params[:redirect_to])
         end
       else
         @cart_item = CartItem.create()
         current_cart.cart_items << @cart_item
         @item.cart_items << @cart_item
         flash[:notice] = 'Successfully added item to cart'
-        redirect_to this_path(params[:redirect_to])
+        redirect_to redirect_path(params[:redirect_to])
       end
     end
   end

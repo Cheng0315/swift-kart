@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_cart, :guest_cart, :not_seller_item
   
+
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
   end
@@ -21,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def this_path(path)
+  def redirect_path(path)
     if path
       path
     else
