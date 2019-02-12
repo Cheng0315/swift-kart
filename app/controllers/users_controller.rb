@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    binding.pry
     if current_user
       @user = current_user
     else

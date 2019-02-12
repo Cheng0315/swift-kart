@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     @seller.id != current_user.id
   end
 
+
+  
   private
 
   def find_or_create_new_cart_for_user

@@ -1,12 +1,9 @@
 <div>
-  <div style="width:400px; height:auto">
-  <%= image_tag(@item.image, style:"width:100%") %>
-  </div>
   Name: <%= @item.name %><br>
-  Price: <%= @item.price %><br>
+  Price: <%= number_to_currency(@item.price) %><br>
   Description: <%= @item.description %><br>
   Availability: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
-
+  Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %><br>
   <% if !current_user || not_seller_item(@item)%>
   <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => @item.id %><br>
   <% end %>
