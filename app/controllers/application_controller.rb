@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
 
   def item_exists_in_cart(cart, item)
     if cart.class == Array
-      cart.any? {|cart_item| cart_item['id'] == item.id}
+      cart.any? {|id| id == item.id}
     else
       cart.items.any? {|cart_item| cart_item['id'] == item.id}
     end
@@ -106,10 +106,21 @@ class ApplicationController < ActionController::Base
       flash[:notice] = 'Successfully added item to cart'
       redirect_to redirect_path(params_path)
     else
-      cart << item
+      cart << item.id
       flash[:notice] = 'Successfully added item to cart'
       redirect_to redirect_path(params_path)
     end
+  end
+
+  def find_all_items_in_guest_cart
+    items = []
+
+    guest_cart.each do |id|
+      item = Item.find(id)
+      items << item
+    end
+
+    items
   end
 
   def update_quantity_of_item_in_cart

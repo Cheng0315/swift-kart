@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     if current_user
       @cart = current_cart.items
     else
-      @cart = guest_cart
+      @cart = find_all_items_in_guest_cart
     end
   end
 
