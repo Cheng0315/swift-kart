@@ -32,7 +32,11 @@ class ItemsController < ApplicationController
 
   def add_to_cart
     @item = Item.find(params[:id].to_i)
-    if current_user
+
+    if guest_cart.count >= 10
+      flash[:notice] = 'Please signin or signup to continue adding items to your cart'
+      redirect_to signin_path
+    elsif current_user
       check_if_item_exists_in_cart(current_cart, @item, params[:redirect_to])
     else
       check_if_item_exists_in_cart(guest_cart, @item, params[:redirect_to])

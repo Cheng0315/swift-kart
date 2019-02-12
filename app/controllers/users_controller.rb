@@ -2,7 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @items = Item.all
+    @todays_deal = todays_deal
+    @trending_items = trending_items
+    @recommended_items = recommended_items
+    @feature_items = feature_items
   end
 
   def new

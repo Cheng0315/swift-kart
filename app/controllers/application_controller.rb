@@ -159,6 +159,22 @@ class ApplicationController < ActionController::Base
     redirect_to cart_user_cart_path
   end
 
+  def todays_deal
+    Item.all.select {|item| item.id == 1 || item.id == 8 || item.id == 15 }
+  end
+
+  def trending_items
+    Item.all.select {|item| item.id == 2 || item.id == 9 || item.id == 16 }
+  end
+
+  def recommended_items
+    Item.all.select {|item| item.id == 3 || item.id == 10 || item.id == 17 }
+  end
+
+  def feature_items
+    Item.all.select {|item| item.id == 4 || item.id == 11 || item.id == 18 }
+  end
+
   def redirect_path(path)
     if path
       path
