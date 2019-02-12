@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :total_price
   
 
   def current_cart
@@ -184,6 +184,10 @@ class ApplicationController < ActionController::Base
 
   def feature_items
     Item.all.select {|item| item.id == 4 || item.id == 11 || item.id == 18 }
+  end
+
+  def total_price(cart)
+    cart.sum {|item| item.price}
   end
 
   def redirect_path(path)

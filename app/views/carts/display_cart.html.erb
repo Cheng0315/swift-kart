@@ -25,6 +25,7 @@
         <br>
       </div>
     <%end%>
+    Subtotal (<%=(pluralize(@cart.count, 'item'))%>) <%= number_to_currency(total_price(@cart)) %>
     <%= submit_tag "Checkout" %>
   <% else %>
     Your cart is empty
