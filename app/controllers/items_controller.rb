@@ -40,19 +40,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-
     if current_user.seller
-      @item = Item.new(items_params)
-      @item.user_id = current_user.id
-      if @item.save
-        @category = Category.find(items_params[:category_id])
-        @category.items << @item
-        current_user.items << @item
-        @item.save
-        redirect_to user_item_path(current_user, @item)
-      else
-        render :new
-      end
+      create_item
     else
       redirect_to root_path
     end

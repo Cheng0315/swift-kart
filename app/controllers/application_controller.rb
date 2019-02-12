@@ -65,6 +65,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def create_item
+    @item = Item.new(items_params)
+    @item.user_id = current_user.id
+    if @item.save
+      @category = Category.find(items_params[:category_id])
+      @category.items << @item
+      current_user.items << @item
+      @item.save
+      redirect_to user_item_path(current_user, @item)
+    else
+      render :new
+    end
+  end
+
   def check_if_item_exists_in_cart(cart, item, params_path)
     if item_exists_in_cart(cart, item)
       flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'

@@ -4,7 +4,7 @@
   Unable to find the item you're looking for
 <% else %>
   <% @items.each do |item|%>
-    <%= link_to item.name, item_path(item) %>
+    <%= link_to item.name, item_path(item) %><br>
     <% if !current_user || not_seller_item(item)%>
       <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => cart_path %><br>
     <% end %>
