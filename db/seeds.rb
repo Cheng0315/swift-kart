@@ -29,7 +29,7 @@ Category.create(name: 'Video Games')
 michael = User.create(first_name: 'Michael', last_name: 'Smith', email: 'a@a.com', password: 'a')
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', email: 'b@b.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', email: 'c@c.com', password: 'c')
-binding.pry
+
 michaels_items = [['Rare Japanese Antique', 250, 'Rare Japanese Antique Army Sake Bottle', true, 1],
 ['Rare Japanese Antique', 456, 'Rare Japanese Antique Army Sake Bottle', true, 2],
 ['Rare Japanese Antique', 68, 'Rare Japanese Antique Army Sake Bottle', true, 3],
