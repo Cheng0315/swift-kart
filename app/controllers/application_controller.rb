@@ -126,6 +126,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def show_user_info
+    if params[:id].to_i != current_user.id
+      redirect_to user_path(current_user)
+    else
+      @user = current_user
+    end
+  end
+
   def signin_with_signin_form
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])

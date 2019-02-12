@@ -42,11 +42,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      if params[:id].to_i != current_user.id
-        redirect_to user_path(current_user)
-      else
-        @user = current_user
-      end
+      show_user_info
     else
       redirect_to root_path
     end
