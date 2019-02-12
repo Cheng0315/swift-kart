@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
     end 
   end
 
-  def orders
+  def my_orders
     if current_user
       @carts = current_user.carts
     else

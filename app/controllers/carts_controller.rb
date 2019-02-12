@@ -43,7 +43,6 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    binding.pry
     if current_cart && current_user
       update_quantity_of_item_in_cart
       current_cart.update(total_price: params[:total_price], checkout: true)
