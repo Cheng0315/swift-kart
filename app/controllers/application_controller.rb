@@ -117,6 +117,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def update_user_info
+    @user = current_user
+    if @user.update(users_params)
+      redirect_to user_path(@user)
+    else  
+      render :edit
+    end
+  end
+
   def signin_with_signin_form
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])

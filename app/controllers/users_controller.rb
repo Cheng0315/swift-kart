@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
     if current_user
       @user = current_user
     else
@@ -35,23 +34,14 @@ class UsersController < ApplicationController
 
   def update
     if current_user
-      @user = current_user
-
-      if @user.update(users_params)
-        redirect_to user_path(@user)
-      else  
-        render :edit
-      end
-
+      update_user_info
     else
       redirect_to login_path
     end
   end
 
   def show
-    
     if current_user
-    
       if params[:id].to_i != current_user.id
         redirect_to user_path(current_user)
       else
