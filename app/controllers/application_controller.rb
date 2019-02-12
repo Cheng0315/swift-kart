@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def not_seller_item(item)
-    @seller = User.find(item['user_id'])
-    @seller.id != current_user.id
+  def not_seller_item(item_id)
+    @item = Item.find(item_id)
+    @item.user.id != current_user.id
   end
 
 
@@ -41,9 +41,9 @@ class ApplicationController < ActionController::Base
   end
 
   def add_guest_items_to_user_cart
-    guest_cart.each do |guest_item|
-      if guest_item_does_not_exist_in_user_cart(guest_item)
-        @item = Item.find(guest_item['id'])
+    guest_cart.each do |item_id|
+      if guest_item_does_not_exist_in_user_cart(item_id)
+        @item = Item.find(item_id)
         @cart_item = CartItem.create()
         current_cart.cart_items << @cart_item
         @item.cart_items << @cart_item
@@ -51,12 +51,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def guest_item_does_not_exist_in_user_cart(guest_item)
-    !current_cart.items.any? {|item| item[:id] == guest_item['id']} && not_seller_item(guest_item)
+  def guest_item_does_not_exist_in_user_cart(item_id)
+    !current_cart.items.any? {|item| item[:id] == item_id} && not_seller_item(item_id)
   end
 
   def delete_item_in_guest_cart(item_id)
-    guest_cart.delete_if {|item| item["id"] == item_id}
+    guest_cart.delete_if {|id| id == item_id}
   end
 
   def search_items(search_term, category)
