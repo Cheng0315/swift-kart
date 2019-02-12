@@ -123,6 +123,23 @@ class ApplicationController < ActionController::Base
     items
   end
 
+  def find_buyers_orders
+    @carts = Cart.where(checkout: true)
+    @buyer_items = find_buyers_items(@carts)
+    @buyer_items
+  end
+
+  def find_buyers_items(carts)
+    arr_of_carts = []
+
+    carts.each do |cart|
+      cart_1 = cart.items.select{|item| item.user_id == current_user.id}
+      arr_of_carts << cart_1 if !cart_1.empty?
+    end
+
+    arr_of_carts.flatten
+  end
+
   def update_quantity_of_item_in_cart
     current_cart.items.each_with_index do |item, idx|
       cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
