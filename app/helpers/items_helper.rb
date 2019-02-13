@@ -15,7 +15,7 @@ module ItemsHelper
     if @item.image.attached?
       image_tag(@item.image, style:"width:100%")
     else
-      image_tag('default_image', style:"width:100%")
+      image_tag('items_images/default_image', style:"width:100%")
     end
   end
 end

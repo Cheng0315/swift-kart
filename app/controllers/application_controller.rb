@@ -132,33 +132,28 @@ class ApplicationController < ActionController::Base
   end
 
   def find_buyers_orders
-    @carts = Cart.where(checkout: true)
-    @buyer_items = find_buyers_items(@carts)
-    @buyer_items
+    @items = current_user.items
+    
+    @buyers_items_info = find_buyers_items(@items)
+    @buyers_items_info
   end
 
-  def find_buyers_items(carts)
-    arr_of_items = []
+  def find_buyers_items(items)
+    arr_of_items_info = []
 
-    carts.each do |cart|
-      @items = cart.items.select{|item| item.user_id == current_user.id}
-
-      if !@items.empty?
-        @items.each do |item|
-          @buyer_name = find_buyer_name(cart)
+    items.each do |item|
+      @carts = item.carts.select{|cart| cart.checkout == true}
+      
+      if !@carts.empty?
+        @carts.each do |cart|
+          @buyer_id = cart.user_id
           @quantity = find_quantity(cart, item)
-          @cart_id = cart.id
-          arr_of_items << [item, @buyer_name, @quantity, @cart_id] 
+          arr_of_items_info << [item, @buyer_id, @quantity, cart.id] 
         end
       end
     end
- 
-    arr_of_items
-  end
-
-  def find_buyer_name(cart)
-    @buyer = User.find(cart.user_id)
-    @buyer.first_name + " " + @buyer.last_name
+    
+    arr_of_items_info
   end
 
   def find_quantity(cart, item)

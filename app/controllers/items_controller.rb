@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
 
   def buyer_orders 
     if current_user && current_user.seller
-      @items = find_buyers_orders
+      @items_info = find_buyers_orders
     else
       redirect_to signin_path
     end
@@ -87,6 +87,7 @@ class ItemsController < ApplicationController
 
   def edit 
     @item = Item.find(params[:id])
+    
     if current_user
       check_if_item_belongs_to_user(@item)
     else
@@ -96,6 +97,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+
     if @item.user.id == current_user.id && @item.update(items_params)
       redirect_to item_path(@item)
     else
