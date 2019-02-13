@@ -12,6 +12,7 @@ You have not make any orders
         Price: <%= number_to_currency(item.price) %>
         Description: <%= item.description %>
         Quantity: <%= item_quantity(item, cart) %>
+        Status: <%= item_status(item, cart)%>
         <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => my_orders_path%><br><br>
       <%end%> 
     <% end %> 
