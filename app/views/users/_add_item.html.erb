@@ -2,8 +2,8 @@
   <% if item.in_stock %>
     <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => cart_path %><br>
   <% else %>
-    Item currently out of stock<br>
+    Out of stock<br>
   <% end %>
-<% else %>
-<%= link_to 'Edit Item', edit_item_path(item) %><br>
+<% elsif current_user && item.user_id == current_user.id %>
+  <%= link_to 'Edit Item', edit_item_path(item) %><br>
 <% end %>
