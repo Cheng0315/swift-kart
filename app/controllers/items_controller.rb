@@ -86,12 +86,10 @@ class ItemsController < ApplicationController
   end
 
   def edit 
-    @item = Item.find(params[:id])
-    
-    if current_user
-      check_if_item_belongs_to_user(@item)
+    if current_user && current_user.items.find_by(id: params[:id])
+      @item = Item.find(params[:id])
     else
-      redirect_to item_path(@item)
+      redirect_to root_path
     end
   end
 
