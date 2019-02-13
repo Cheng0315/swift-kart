@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     if params[:search]
       @items = search_items(params[:search], params[:category])
     else
-      @items = Items.all
+      @items = current_user.items.all
     end
   end
 
@@ -50,13 +50,16 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
- 
-    if @item.nil? 
-      flash[:notice] = "unable to find the item you're looking for"
+   
+    if !@item.nil?
+      if params[:user_id] && params[:user_id].to_i != current_user.id
+        redirect_to root_path
+      else
+        @item
+      end
+    else
       redirect_to root_path
-    else 
-      @item
-    end 
+    end
   end
 
   def my_orders
@@ -86,8 +89,10 @@ class ItemsController < ApplicationController
   end
 
   def edit 
-    if current_user && current_user.items.find_by(id: params[:id])
-      @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+  
+    if current_user
+      check_if_item_belongs_to_user(@item)
     else
       redirect_to root_path
     end

@@ -159,6 +159,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_if_item_belongs_to_user(item)
+    if item.nil?
+      redirect_to root_path
+    else
+      if item.user_id == current_user.id
+        render :edit
+      else
+        redirect_to root_path
+      end
+    end
+  end
+
   def update_user_info
     @user = current_user
     if @user.update(users_params)
