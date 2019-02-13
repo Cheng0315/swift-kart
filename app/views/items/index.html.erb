@@ -5,6 +5,14 @@
 <% else %>
   <% @items.each do |item|%>
     <%= link_to item.name, item_path(item) %><br>
-    <%= render partial: 'users/add_item', locals: {item: item}%>
+    <% if !current_user || not_seller_item(item.id)%>
+      <% if item.in_stock %>
+        <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => cart_path %><br>
+      <% else %>
+        Out of stock<br>
+      <% end %>
+    <% elsif current_user && item.user_id == current_user.id %>
+      <%= link_to 'Edit Item', edit_item_path(item) %><br>
+    <% end %>
   <% end %>
 <% end %>

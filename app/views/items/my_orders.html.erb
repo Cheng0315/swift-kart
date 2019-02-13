@@ -2,17 +2,18 @@
   <%= flash[:notice] %><br>
 <% end %>
 
-<% @carts.empty? %>
+<% if @carts.empty? %>
 You have not make any orders
 <% else %>
-<% @carts.each do |cart|%>
-  <% if cart.checkout %>
-    <% cart.items.each do |item| %>
-      <%= link_to item.name, item_path(item) %>
-      Price: <%= number_to_currency(item.price) %>
-      Description: <%= item.description %>
-      Quantity: <%= item_quantity(item, cart) %>
-      <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => my_orders_path%><br><br>
-    <%end%> 
-  <% end %> 
-<% end %>
+  <% @carts.each do |cart|%>
+    <% if cart.checkout %>
+      <% cart.items.each do |item| %>
+        <%= link_to item.name, item_path(item) %>
+        Price: <%= number_to_currency(item.price) %>
+        Description: <%= item.description %>
+        Quantity: <%= item_quantity(item, cart) %>
+        <%= link_to 'Buy Again', :controller => 'items', :action => 'add_to_cart', :id => item.id, :redirect_to => my_orders_path%><br><br>
+      <%end%> 
+    <% end %> 
+  <% end %>
+<%end%>
