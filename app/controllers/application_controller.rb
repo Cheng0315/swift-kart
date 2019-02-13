@@ -81,6 +81,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_if_item_belongs_to_user(item)
+    if item.user.id == current_user.id
+      render :edit
+    else
+      redirect_to item_path(item)
+    end
+  end
+
   def check_if_item_exists_in_cart(cart, item, params_path)
     if item_exists_in_cart(cart, item)
       flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'

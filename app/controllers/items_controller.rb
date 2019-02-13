@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    if current_user.seller
+    if current_user && current_user.seller
       create_item
     else
       redirect_to root_path
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def buyer_orders 
-    if current_user.seller
+    if current_user && current_user.seller
       @items = find_buyers_orders
     else
       redirect_to signin_path
@@ -76,15 +76,19 @@ class ItemsController < ApplicationController
   end
 
   def ship_items
-    @cart_item = CartItem.find_by(cart_id: params[:cart_id], item_id: params[:item_id])
-    @cart_item.update(shipped: true)
-    redirect_to buyer_orders_path
+    if current_user && current_user.seller
+      @cart_item = CartItem.find_by(cart_id: params[:cart_id], item_id: params[:item_id])
+      @cart_item.update(shipped: true)
+      redirect_to buyer_orders_path
+    else
+      redirec_to root_path
+    end
   end
 
   def edit 
     @item = Item.find(params[:id])
-    if @item.user.id == current_user.id
-      render :edit
+    if current_user
+      check_if_item_belongs_to_user(@item)
     else
       redirect_to item_path(@item)
     end
