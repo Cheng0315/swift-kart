@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.decimal :price
       t.string :description
       t.boolean :in_stock
+      t.boolean :shipped
       t.belongs_to :user
       t.belongs_to :category
 

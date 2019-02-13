@@ -75,6 +75,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def ship_items
+    @cart_item = CartItem.find_by(cart_id: params[:cart_id], item_id: params[:item_id])
+    @cart_item.update(shipped: true)
+    redirect_to buyer_orders_path
+  end
+
   def edit 
     @item = Item.find(params[:id])
     if @item.user.id == current_user.id
@@ -108,7 +114,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-    params.require(:item).permit(:name, :price, :description, :category_id, :search, :in_stock, :image)
+    params.require(:item).permit(:name, :price, :description, :category_id, :search, :in_stock, :image, :shipped)
   end
 
   

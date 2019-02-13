@@ -5,4 +5,7 @@ module ItemsHelper
     @cart_item.quantity
   end
 
+  def item_is_shipped(cart_id, item_id)
+    CartItem.find_by(cart_id: cart_id, item_id: item_id).shipped
+  end
 end

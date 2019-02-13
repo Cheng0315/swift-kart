@@ -4,6 +4,7 @@ class CreateCartItems < ActiveRecord::Migration[5.2]
       t.belongs_to :cart
       t.belongs_to :item
       t.integer :quantity
+      t.boolean :shipped, default: false
 
       t.timestamps
     end

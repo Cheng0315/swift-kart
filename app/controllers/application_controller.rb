@@ -139,7 +139,8 @@ class ApplicationController < ActionController::Base
         @items.each do |item|
           @buyer_name = find_buyer_name(cart)
           @quantity = find_quantity(cart, item)
-          arr_of_items << [item, @buyer_name, @quantity] 
+          @cart_id = cart.id
+          arr_of_items << [item, @buyer_name, @quantity, @cart_id] 
         end
       end
     end

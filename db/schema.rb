@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_221418) do
     t.integer "cart_id"
     t.integer "item_id"
     t.integer "quantity"
+    t.boolean "shipped", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_221418) do
     t.decimal "price"
     t.string "description"
     t.boolean "in_stock"
+    t.boolean "shipped"
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
