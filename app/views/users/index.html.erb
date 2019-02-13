@@ -19,22 +19,22 @@ Hi
 <div>
 <% @todays_deal.each do |item|%>
   <%= link_to item.name, item_path(item) %> 
-  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id %><br>
+  <%= render partial: 'add_item', locals: {item: item}%>
 <% end %><br><br><br>
 
 <% @trending_items.each do |item|%>
   <%= link_to item.name, item_path(item) %> 
-  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id %><br>
+  <%= render partial: 'add_item', locals: {item: item}%>
 <% end %><br><br><br>
 
 <% @recommended_items.each do |item|%>
   <%= link_to item.name, item_path(item) %> 
-  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id %><br>
+  <%= render partial: 'add_item', locals: {item: item}%>
 <% end %><br><br><br>
 
 <% @feature_items.each do |item|%>
   <%= link_to item.name, item_path(item) %> 
-  <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id %><br>
+  <%= render partial: 'add_item', locals: {item: item}%>
 <% end %><br><br><br>
 </div>
 
