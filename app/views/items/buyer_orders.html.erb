@@ -1,0 +1,14 @@
+<% if @items.empty? %>
+  You have no buyer at the moment
+<% else %>
+  <% @items.each do |item|%>
+    <%= link_to item[0].name, item_path(item[0]) %><br>
+    Buyer Name: <%= item[1] %>
+    Quantity: <%= item[2] %>
+    <% if !current_user || not_seller_item(item[0].id)%>
+      <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item[0].id, :redirect_to => cart_path %><br>
+    <% elsif current_user && item[0].user_id == current_user.id %>
+      <%= link_to 'Edit Item', edit_item_path(item) %><br>
+    <% end %>
+  <% end %>
+<% end %>

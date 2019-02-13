@@ -70,8 +70,6 @@ class ItemsController < ApplicationController
   def buyer_orders 
     if current_user.seller
       @items = find_buyers_orders
-      @view_buyer_items = true
-      render :index
     else
       redirect_to signin_path
     end

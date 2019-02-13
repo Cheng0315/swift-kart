@@ -130,14 +130,30 @@ class ApplicationController < ActionController::Base
   end
 
   def find_buyers_items(carts)
-    arr_of_carts = []
+    arr_of_items = []
 
     carts.each do |cart|
-      cart_1 = cart.items.select{|item| item.user_id == current_user.id}
-      arr_of_carts << cart_1 if !cart_1.empty?
-    end
+      @items = cart.items.select{|item| item.user_id == current_user.id}
 
-    arr_of_carts.flatten
+      if !@items.empty?
+        @items.each do |item|
+          @buyer_name = find_buyer_name(cart)
+          @quantity = find_quantity(cart, item)
+          arr_of_items << [item, @buyer_name, @quantity] 
+        end
+      end
+    end
+ 
+    arr_of_items
+  end
+
+  def find_buyer_name(cart)
+    @buyer = User.find(cart.user_id)
+    @buyer.first_name + " " + @buyer.last_name
+  end
+
+  def find_quantity(cart, item)
+    CartItem.find_by(cart_id: cart.id, item_id: item.id).quantity
   end
 
   def update_quantity_of_item_in_cart
