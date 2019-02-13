@@ -1,4 +1,7 @@
 <div>
+  <div style="width:400px; height:auto">
+    <%= item_image(@item.id) %>
+  </div>
   Name: <%= @item.name %><br>
   Price: <%= number_to_currency(@item.price) %><br>
   Description: <%= @item.description %><br>
