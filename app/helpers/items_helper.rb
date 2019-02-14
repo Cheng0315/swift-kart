@@ -41,5 +41,9 @@ module ItemsHelper
     @user.first_name + " " + @user.last_name
   end
 
+  def my_carts_are_empty(carts)
+    carts.count == 1 && !carts[0].checkout
+  end
+
 
 end

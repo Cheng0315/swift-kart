@@ -30,7 +30,7 @@ michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, e
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'b@b.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'c@c.com', password: 'c')
 
-michaels_items = [['Rare 1940 antique gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
+michaels_items = [['Rare 1940 Antique Gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
   ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],
   ['Multicolor Abstract Painting', 199.99, 'Painted by one of the most renowned artist in modern time.', false, 3, 1, "app/assets/images/items_images/painting_1.png", "painting_1.png"],
   ['Assorted Color Plastic Toys', 14.99, 'Great for kids ages 3+', true, 4, 1, "app/assets/images/items_images/toys_1.png", "toys_1.png"],
