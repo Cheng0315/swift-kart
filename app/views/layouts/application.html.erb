@@ -28,39 +28,25 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+    
     <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0" do%>
       <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder:"Search" %>
       <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories"%>
       <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success my-2 my-sm-0" %>
     <% end %>
 
-  </nav>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
       <% if current_user %>
-        <li class="nav-item active">
-          <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item active">
           <a class="nav-link" href="/buyer_orders">Buyers Orders <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="/my_orders">My Orders <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%=current_user.first_name%>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
+        </li>
       <% end %>
       </ul>
       <!--
@@ -70,6 +56,7 @@
       </form> -->
     </div>
   </nav>
+
   
     <% if current_user %>
       <%= link_to 'Log Out', logout_path %>
