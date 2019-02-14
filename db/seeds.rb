@@ -30,45 +30,45 @@ michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, e
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'b@b.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'c@c.com', password: 'c')
 
-michaels_items = [['Rare 1940 antique gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
+michaels_items = [['Rare 1940 antique gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
   ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],
-  ['Multicolor Abstract Painting', 199.99, 'Painted by one of the most renowned artist in modern time', false, 3, 1, "app/assets/images/items_images/painting_1.png", "painting_1.png"],
+  ['Multicolor Abstract Painting', 199.99, 'Painted by one of the most renowned artist in modern time.', false, 3, 1, "app/assets/images/items_images/painting_1.png", "painting_1.png"],
   ['Assorted Color Plastic Toys', 14.99, 'Great for kids ages 3+', true, 4, 1, "app/assets/images/items_images/toys_1.png", "toys_1.png"],
   ['Books', 99.99, "Zero to One, Ego is the Enemy, The Obstacle is the Way, Exponential Organization, The Story of Innovation, Value Proposition Design, The Startup Owner's Manual, and The Corporate Startup" , false, 5, 2, "app/assets/images/items_images/books_1.png", "books_1.png"],
   ['Black Sony Alpha DSLR Camra', 1299.99, 'Rated as one of the best DSLR camra out there.', true, 6, 1, "app/assets/images/items_images/camra.png", "camra.png"],
-  ['2016 Black and Blue Mustang', 250, 'Great condition, low mileage', true, 7, 2, "app/assets/images/items_images/mustang.png", "mustang.png"]]
+  ['2016 Black and Blue Mustang', 250, 'Great condition, low mileage.', true, 7, 2, "app/assets/images/items_images/mustang.png", "mustang.png"]]
 
 michaels_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
   michael.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
-  if image 
-    michael.items.last.image.attach(io: File.open(image), filename: filename)
-  end
+  michael.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
 
 
-amandas_items = [['Rare Japanese Antique', 456456, 'Rare Japanese Antique Army Sake Bottle', true, 8, 1],
-  ['Rare Japanese Antique', 654, 'Rare Japanese Antique Army Sake Bottle', true, 9, 2],
-  ['Rare Japanese Antique', 87686, 'Rare Japanese Antique Army Sake Bottle', true, 10, 1],
-  ['Rare Japanese Antique', 890, 'Rare Japanese Antique Army Sake Bottle', true, 11, 2],
-  ['Rare Japanese Antique', 2342, 'Rare Japanese Antique Army Sake Bottle', true, 12, 1],
-  ['Rare Japanese Antique', 42320, 'Rare Japanese Antique Army Sake Bottle', true, 13, 2],
-  ['Rare Japanese Antique', 26456, 'Rare Japanese Antique Army Sake Bottle', true, 14, 1]]
+amandas_items = [['iPhone X', 999.99, "Apple's latest iphone - iPhone X.", true, 8, 1, "app/assets/images/items_images/iphone_3.png", "iphone_3.png"],
+  ['Black Sleeveless Dress', 79.99, 'Light weight, irressistible dress.', true, 9, 1, "app/assets/images/items_images/black_dress.png", "black_dress.png"],
+  ['27-inch Silver iMac w/ Magic keyboard.', 1399.99, "3.5GHz quad-core 7th-generation Intel Core i5 processor, Retina 5K 5120-by-2880 P3 display", true, 10, 1, "app/assets/images/items_images/imac.png", "imac.png"],
+  ['Cocooil', 9.99, 'Oil for the body.', true, 11, 1, "app/assets/images/items_images/coco_oil.png", "coco_oil.png"],
+  ['Gardening Tools', 24.99, 'Great tools for gardening.', true, 12, 2, "app/assets/images/items_images/gardening_tools.png", "gardening_tools.png"],
+  ['Silver-colored Earrings with Gemstones', 499.99, 'Gorgeous, irresistable earrings.', true, 13, 1, "app/assets/images/items_images/earrings_1.png", "earrings_1.png"],
+  ['Harry Potter and The Chamber of Secrets', 5.99, '2002 Fantasy/Mystery Movie', true, 14, 2, "app/assets/images/items_images/harry_potter.png", "harry_potter.png"]]
 
-amandas_items.each do |name, price, description, in_stock, category_id, condition|
+amandas_items.each do |name, price, description, in_stock, category_id, condition, image, filename |
   amanda.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
+  amanda.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
 
 
-jennys_items = [['Rare Japanese Antique', 57, 'Rare Japanese Antique Army Sake Bottle', true, 15],
-  ['Rare Japanese Antique', 456, 'Rare Japanese Antique Army Sake Bottle', true, 16, 2],
-  ['Rare Japanese Antique', 3453, 'Rare Japanese Antique Army Sake Bottle', true, 17, 1],
-  ['Rare Japanese Antique', 502, 'Rare Japanese Antique Army Sake Bottle', true, 18, 2],
-  ['Rare Japanese Antique', 8797, 'Rare Japanese Antique Army Sake Bottle', true, 19, 2],
-  ['Rare Japanese Antique', 345, 'Rare Japanese Antique Army Sake Bottle', true, 20, 1]]
+jennys_items = [['Fender White Electric Guitar', 599.99, 'Great sound, like new.', true, 15, 2, "app/assets/images/items_images/guitar_1.png", "guitar_1.png"],
+  ['Student Desk and Chair', 69.99, 'Great Desk and comdortable chair, like new.', true, 16, 2, "app/assets/images/items_images/desk_chair.png", "desk_chair.png"],
+  ['Dog Chow', 19.99, 'Healthy and nutritious foods for your dogs.', true, 17, 1, "app/assets/images/items_images/dog_chow.png", "dog_chow.png"],
+  ['Schutt Football Helmet', 49.99, 'Great helmet, like new', true, 18, 2, "app/assets/images/items_images/football_helmet.png", "football_helmet.png"],
+  ['Garage and Backyard Tools', 9.99, 'Clearing out the garage', false, 19, 2, "app/assets/images/items_images/tools_1.png", "tools_1.png"],
+  ['Game', 345, 'Game', true, 20, 1, "app/assets/images/items_images/staple.png", "staple.png"]]
 
-jennys_items.each do |name, price, description, in_stock, category_id, condition|
+jennys_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
   jenny.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
+  jenny.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
