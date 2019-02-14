@@ -23,4 +23,14 @@ module ItemsHelper
       image_tag('items_images/default_image', style:"width:100%")
     end
   end
+
+  def item_condition(item)
+    if item.condition == 1
+      "New"
+    else
+      "Used"
+    end
+  end
+
+
 end

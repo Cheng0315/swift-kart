@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_02_10_221418) do
     t.string "name"
     t.decimal "price"
     t.string "description"
+    t.integer "condition"
     t.boolean "in_stock"
     t.boolean "shipped"
     t.integer "user_id"

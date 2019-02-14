@@ -68,6 +68,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_item
+    
     @item = Item.new(items_params)
     @item.user_id = current_user.id
     if @item.save

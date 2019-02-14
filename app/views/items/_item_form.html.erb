@@ -6,6 +6,8 @@
 <%= form.text_field :description %><br>
 <%= form.label :category %><br>
 <%= form.collection_select :category_id, Category.all, :id, :name%><br>
+<%= form.label :condition %><br>
+<%= form.select :condition, options_for_select([['New', 1], ['Used', 2]])%><br>
 <%= form.label :status %><br>
 <%= form.select :in_stock, options_for_select([['In stock', true], ['Out of Stock', false]])%><br>
 <%= form.label :image %>
