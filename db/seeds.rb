@@ -30,17 +30,21 @@ michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, e
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'b@b.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'c@c.com', password: 'c')
 
-michaels_items = [['Rare Japanese Antique', 250, 'Rare 1940 antique gramophone', true, 1, 1],
-  ['Rare Japanese Antique', 456, 'Rare Japanese Antique Army Sake Bottle', true, 2, 2],
-  ['Rare Japanese Antique', 68, 'Rare Japanese Antique Army Sake Bottle', true, 3, 1],
-  ['Rare Japanese Antique', 876, 'Rare Japanese Antique Army Sake Bottle', true, 4, 2],
-  ['Rare Japanese Antique', 23424, 'Rare Japanese Antique Army Sake Bottle', true, 5, 1],
-  ['Rare Japanese Antique', 345, 'Rare Japanese Antique Army Sake Bottle', true, 6, 1],
-  ['Rare Japanese Antique', 250, 'Rare Japanese Antique Army Sake Bottle', true, 7, 2]]
+michaels_items = [['Rare 1940 antique gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
+  ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],
+  ['Multicolor Abstract Painting', 199.99, 'Painted by one of the most renowned artist in modern time', false, 3, 1, "app/assets/images/items_images/painting_1.png", "painting_1.png"],
+  ['Assorted Color Plastic Toys', 14.99, 'Great for kids ages 3+', true, 4, 1, "app/assets/images/items_images/toys_1.png", "toys_1.png"],
+  ['Books', 99.99, "Zero to One, Ego is the Enemy, The Obstacle is the Way, Exponential Organization, The Story of Innovation, Value Proposition Design, The Startup Owner's Manual, and The Corporate Startup" , false, 5, 2, "app/assets/images/items_images/books_1.png", "books_1.png"],
+  ['Black Sony Alpha DSLR Camra', 1299.99, 'Rated as one of the best DSLR camra out there.', true, 6, 1, "app/assets/images/items_images/camra.png", "camra.png"],
+  ['2016 Black and Blue Mustang', 250, 'Great condition, low mileage', true, 7, 2, "app/assets/images/items_images/mustang.png", "mustang.png"]]
 
-michaels_items.each do |name, price, description, in_stock, category_id, condition|
+michaels_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
   michael.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
+  if image 
+    michael.items.last.image.attach(io: File.open(image), filename: filename)
+  end
 end
+
 
 
 amandas_items = [['Rare Japanese Antique', 456456, 'Rare Japanese Antique Army Sake Bottle', true, 8, 1],

@@ -36,5 +36,10 @@ module ItemsHelper
     item.in_stock ? "In Stock" : "Out of stock"
   end
 
+  def buyer_name(id)
+    @user = User.find(id)
+    @user.first_name + " " + @user.last_name
+  end
+
 
 end
