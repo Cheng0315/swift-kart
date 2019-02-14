@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :total_price
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :total_price, :item_is_shipped
   
 
   def current_cart
@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   
   private
+
+  def item_is_shipped(cart_id, item_id)
+    CartItem.find_by(cart_id: cart_id, item_id: item_id).shipped
+  end
 
   def find_or_create_new_cart_for_user
     if current_user.carts.empty? || current_user.carts.last.checkout

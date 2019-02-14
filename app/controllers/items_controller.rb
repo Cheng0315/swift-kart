@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
 
   def buyer_orders 
     if current_user && current_user.seller
-      @items_info = find_buyers_orders
+      @items_info = find_buyers_orders.sort_by { |k| item_is_shipped(k[3],k[0].id) ? 1 : 0 }
     else
       redirect_to signin_path
     end
