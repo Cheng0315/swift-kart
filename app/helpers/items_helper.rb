@@ -32,5 +32,9 @@ module ItemsHelper
     end
   end
 
+  def item_availability(item)
+    item.in_stock ? "In Stock" : "Out of stock"
+  end
+
 
 end

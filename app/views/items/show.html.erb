@@ -5,7 +5,7 @@
   Name: <%= @item.name %><br>
   Price: <%= number_to_currency(@item.price) %><br>
   Description: <%= @item.description %><br>
-  Availability: <%= @item.in_stock ? "In Stock" : "Out of stock" %><br>
+  Availability: <%= item_availability(@item) %><br>
   Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %><br>
   Condition: <%= item_condition(@item)%> <br>
   <% if !current_user || not_seller_item(@item.id)%>
