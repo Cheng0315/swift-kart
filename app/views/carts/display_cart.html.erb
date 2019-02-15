@@ -31,7 +31,7 @@
   
   
       
-    Subtotal (<%=(pluralize(@cart.count, 'item'))%>): <span id='quantity_price'><%=total_price(@cart)%></span> <br>
+    Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span> <br>
     <%= submit_tag "Checkout" %>
   <% else %>
     Your cart is empty
