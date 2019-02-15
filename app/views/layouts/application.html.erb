@@ -38,16 +38,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
       <% if current_user %>
-        <li class="nav-item active">
-          <a class="nav-link" href="/buyer_orders">Buyers Orders <span class="sr-only">(current)</span></a>
-        </li>
+        <% if current_user.seller %>
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/buyer_orders">Buyers Orders <span class="sr-only">(current)</span></a>
+          </li>
+        <% end %>
         <li class="nav-item active">
           <a class="nav-link" href="/my_orders">My Orders <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/logout">Log Out <span class="sr-only">(current)</span></a>
         </li>
+      <% else %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/signin">Sign In <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/signup">Sign Up <span class="sr-only">(current)</span></a>
+      </li>
       <% end %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/cart">Cart<span class="sr-only">(current)</span></a>
+      </li>
       </ul>
       <!--
       <form class="form-inline my-2 my-lg-0">
@@ -57,21 +72,6 @@
     </div>
   </nav>
 
-  
-    <% if current_user %>
-      <%= link_to 'Log Out', logout_path %>
-      <%= link_to 'My Orders', my_orders_path %>
-      <% if current_user.seller %>
-      <%= link_to 'Buyers Orders', buyer_orders_path %>
-      <%= link_to 'Add New Item', new_user_item_path(current_user) %>
-      <%= link_to 'My Items', my_items_path %>
-      <% end %>
-    <% else %>
-      <%=link_to 'Sign In', signin_path %>
-      <%=link_to 'Sign Up', signup_path %>
-    <%end%>
-    <%= link_to 'Cart', cart_path%>
-    <%=%><br>
     <%= yield %>
 
     </div>
