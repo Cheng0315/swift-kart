@@ -22,7 +22,7 @@
 
   <body>
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     
       <a class="navbar-brand" href="/">Swift-Kart</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,9 @@
     </button>
     
     <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0" do%>
-      <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder:"Search" %>
+      <%= text_field_tag :search, params[:search], class: "form-control mr-lg-1", placeholder:"Search" %>
       <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories"%>
-      <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success my-2 my-sm-0" %>
+      <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-warning" %>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

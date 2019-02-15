@@ -2,11 +2,10 @@
   <%= flash[:notice] %><br>
 <% end %>
 
-<p>Hi</p>
+
 <%if current_user %>
-<%= current_user.first_name%>
-<%= current_user.id%>
-<%= current_user.seller%>
+
+<%= "Welcome #{current_user.first_name}"%>
 <%end%>
 <br>
 
