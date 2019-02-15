@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :total_price, :item_is_shipped
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped
   
 
   def current_cart
@@ -23,10 +23,6 @@ class ApplicationController < ActionController::Base
 
   
   private
-
-  def item_is_shipped(cart_id, item_id)
-    CartItem.find_by(cart_id: cart_id, item_id: item_id).shipped
-  end
 
   def find_or_create_new_cart_for_user
     if current_user.carts.empty? || current_user.carts.last.checkout
@@ -157,6 +153,10 @@ class ApplicationController < ActionController::Base
     CartItem.find_by(cart_id: cart.id, item_id: item.id).quantity
   end
 
+  def item_is_shipped(cart_id, item_id)
+    CartItem.find_by(cart_id: cart_id, item_id: item_id).shipped
+  end
+
   def update_quantity_of_item_in_cart
     current_cart.items.each_with_index do |item, idx|
       cart_item = CartItem.find_by(cart_id: current_cart.id, item_id: item.id)
@@ -232,9 +232,7 @@ class ApplicationController < ActionController::Base
     Item.all.select {|item| item.id == 4 || item.id == 11 || item.id == 18 }
   end
 
-  def total_price(cart)
-    cart.sum {|item| item.price}
-  end
+  
 
   def redirect_path(path)
     if path

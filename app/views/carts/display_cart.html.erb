@@ -5,7 +5,8 @@
 <div>
 <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
   <% if !@cart.empty? %>
-    <% @cart.each do |item| %>
+    
+    <% @cart.each_with_index do |item, idx| %>
       <div>
         <%= number_to_currency(item['price'])%>
         <%= item['name']%>
@@ -21,12 +22,16 @@
           <option value='7'>7</option>
           <option value='8'>8</option>
           <option value='9'>9</option>
-          <option value='10'>10</option>".html_safe%>
+          <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
         <br>
       </div>
-    <%end%>
-
-    Subtotal (<%=(pluralize(@cart.count, 'item'))%>): <%= number_to_currency(total_price(@cart)) %><br>
+      
+      
+    <%end%> 
+  
+  
+      
+    Subtotal (<%=(pluralize(@cart.count, 'item'))%>): <span id='quantity_price'><%=total_price(@cart)%></span> <br>
     <%= submit_tag "Checkout" %>
   <% else %>
     Your cart is empty

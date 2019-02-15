@@ -41,5 +41,4 @@ module ItemsHelper
     carts.count == 1 && !carts[0].checkout
   end
 
-
 end
