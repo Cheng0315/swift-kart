@@ -14,4 +14,7 @@
  *= require_self
  */
 
- 
+#side-bar li{
+  list-style-type: none;
+  margin-left: -25px;
+}

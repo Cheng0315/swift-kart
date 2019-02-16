@@ -28,9 +28,11 @@
           <span class="navbar-toggler-icon"></span>
         </button> 
         <div>
-          <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0" do%>
+          <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0 mx-2 my-auto d-inline w-100" do%>
             <%= text_field_tag :search, params[:search], class: "form-control mr-lg-1", placeholder:"Search" %>
-            <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories"%>
+           
+            <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories", class: "form-control mr-lg-1"%>
+           
             <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
           <% end %>
         </div>
@@ -82,17 +84,38 @@
             </li>
           </ul>
         </div>
-      <!--
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
       </nav>
-    
+      <div class="row">
+        <div class="col-sm-2" id="side-bar">
+        <ul>
+          <li><%= link_to "Antiques", items_path(search: "", "category_id" => 1) %></li>
+          <li><%= link_to "Appliances", items_path(search: "", "category_id" => 2) %></li>
+          <li><%= link_to "Art", items_path(search: "", "category_id" => 3) %></li>
+          <li><%= link_to "Baby", items_path(search: "", "category_id" => 4) %></li>
+          <li><%= link_to "Books", items_path(search: "", "category_id" => 5) %></li>
+          <li><%= link_to "Camras", items_path(search: "", "category_id" => 6) %></li>
+          <li><%= link_to "Cars", items_path(search: "", "category_id" => 7) %></li>
+          <li><%= link_to "Cell Phones", items_path(search: "", "category_id" => 8) %></li>
+          <li><%= link_to "Clothing & Shoes", items_path(search: "", "category_id" => 9) %></li>
+          <li><%= link_to "Computer", items_path(search: "", "category_id" => 10) %></li>
+          <li><%= link_to "Health", items_path(search: "", "category_id" => 11) %></li>
+          <li><%= link_to "Home & Garden", items_path(search: "", "category_id" => 12) %></li>
+          <li><%= link_to "Jewelry", items_path(search: "", "category_id" => 13) %></li>
+          <li><%= link_to "Movies", items_path(search: "", "category_id" => 14) %></li>
+          <li><%= link_to "Musical Instruments", items_path(search: "", "category_id" => 15) %></li>
+          <li><%= link_to "Office", items_path(search: "", "category_id" => 16) %></li>
+          <li><%= link_to "Pet Supplies", items_path(search: "", "category_id" => 17) %></li>
+          <li><%= link_to "Sporting Goods", items_path(search: "", "category_id" => 18) %></li>
+          <li><%= link_to "Tools", items_path(search: "", "category_id" => 19) %></li>
+          <li><%= link_to "Video Games", items_path(search: "", "category_id" => 20) %></li>
+        </ul>
+        </div>
+      
   
-  
-    <%= yield %>
-
+        <div class="col-sm-10">
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
     

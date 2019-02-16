@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController 
 
   def index
-    if params[:search]
+    if params[:search] && params[:category_id]
+      category = Category.find(params[:category_id])
+      @items = search_items(params[:search], category)
+    elsif params[:search]
       @items = search_items(params[:search], params[:category])
     else
       @items = current_user.items.all
