@@ -1,6 +1,8 @@
 <%= render partial: 'users/error_msg', locals: {user_or_item: @item}%>
 
-<%= form_for @item do |f| %><br>
-  <%= render partial: 'item_form', locals: {form: f}%>
-  <%= f.submit value="Create Item" %><br>
-<% end %>
+<div>
+  <%= form_for @item do |f| %><br>
+    <%= render partial: 'item_form', locals: {form: f}%>
+    <%= f.submit value="Create Item" %><br>
+  <% end %>
+</div>

@@ -2,46 +2,42 @@
   <%= flash[:notice] %><br>
 <% end %>
 
-<div class="row">
-  <div class="col-sm-2 side-bar">
-  <%= render partial: 'layouts/left_side_bar'%>
-  </div>
 
-  <div class="col-sm-2">
-  <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
-    <% if !@cart.empty? %>
+<div >
+<%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
+  <% if !@cart.empty? %>
+    
+    <% @cart.each_with_index do |item, idx| %>
+      <div>
+        <%= number_to_currency(item['price'])%>
+        <%= item['name']%>
+        <%= item['description']%> 
+        <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%>
+        <%= select_tag "quantity[]", 
+          "<option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+          <option value='9'>9</option>
+          <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
+        <br>
+      </div>
       
-      <% @cart.each_with_index do |item, idx| %>
-        <div>
-          <%= number_to_currency(item['price'])%>
-          <%= item['name']%>
-          <%= item['description']%> 
-          <%= link_to 'Delete item', :controller => 'carts', :action => 'delete_item', :id => item['id']%>
-          <%= select_tag "quantity[]", 
-            "<option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
-          <br>
-        </div>
-        
-        
-      <%end%> 
-    
-    
-        
-      Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span> <br>
-      <%= submit_tag "Checkout" %>
-    <% else %>
-      Your cart is empty
-    <% end %>
-    <% end %>
-  </div>
+      
+    <%end%> 
+  
+  
+      
+    Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span> <br>
+    <%= submit_tag "Checkout" %>
+  <% else %>
+    Your cart is empty
+  <% end %>
+  <% end %>
 </div>
+
 

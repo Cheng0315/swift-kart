@@ -1,22 +1,18 @@
-<div class="row">
-  <div class="col-sm-2 side-bar">
-  <%= render partial: 'layouts/left_side_bar'%>
-  </div>
 
-  <div class="col-sm-10" >
-    <% if @items_info.empty? %>
-      You have no buyer at the moment
-    <% else %>
-      <% @items_info.each do |item_info|%>
-        <%= link_to item_info[0].name, item_path(item_info[0]) %><br>
-        Buyer Name: <%= buyer_name(item_info[1]) %>
-        Quantity: <%= item_info[2] %>
-        <% if item_is_shipped(item_info[3], item_info[0]) %>
-          Shipped<br>
-        <% else%>
-          <%= link_to 'Mark as shipped', ship_items_path(cart_id: item_info[3], item_id: item_info[0].id) %><br>
-        <% end%>
-      <% end %>
+
+<div >
+  <% if @items_info.empty? %>
+    You have no buyer at the moment
+  <% else %>
+    <% @items_info.each do |item_info|%>
+      <%= link_to item_info[0].name, item_path(item_info[0]) %><br>
+      Buyer Name: <%= buyer_name(item_info[1]) %>
+      Quantity: <%= item_info[2] %>
+      <% if item_is_shipped(item_info[3], item_info[0]) %>
+        Shipped<br>
+      <% else%>
+        <%= link_to 'Mark as shipped', ship_items_path(cart_id: item_info[3], item_id: item_info[0].id) %><br>
+      <% end%>
     <% end %>
-  </div>
+  <% end %>
 </div>

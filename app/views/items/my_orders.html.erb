@@ -2,12 +2,7 @@
   <%= flash[:notice] %><br>
 <% end %>
 
-<div class="row">
-  <div class="col-sm-2 side-bar">
-  <%= render partial: 'layouts/left_side_bar'%>
-  </div>
-
-  <div class="col-sm-10">
+  <div>
     <% if my_carts_are_empty(@carts) %>
       You have not make any orders
     <% else %>
@@ -25,4 +20,3 @@
       <% end %>
     <%end%>
   </div>
-</div>
