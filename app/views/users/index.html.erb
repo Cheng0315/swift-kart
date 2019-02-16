@@ -5,11 +5,7 @@
 <% end %>
 
 
-<%if current_user %>
 
-<%= "Welcome #{current_user.first_name}"%>
-<%end%>
-<br>
 
 
 <div class="row">
@@ -19,26 +15,46 @@
 
   <div class="col-sm-10">
 
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= image_tag("items_images/black_sofa.png") %>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag("items_images/black_dress.png") %>
-    </div>
-    <div class="carousel-item">
-      <%=image_tag("items_images/drill.png") %>
+  <div class="container">
+  <div class="row">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="d-none d-lg-block">
+            <div class="slide-box b-padding">
+              <%= image_tag("items_images/basketball.png", alt:"First slide") %>
+              <%= image_tag("items_images/baseball_mitt.png", alt:"First slide") %>
+              <%= image_tag("items_images/football_helmet.png", alt:"First slide") %>
+            </div>
+          </div>
+      
+        </div>
+        <div class="carousel-item">
+          <div class="d-none d-lg-block">
+            <div class="slide-box">
+              <%= image_tag("items_images/black_dress.png", alt:"First slide") %>
+              <%= image_tag("items_images/red_dress.png", alt:"First slide") %>
+              <%= image_tag("items_images/clothing.png", alt:"First slide") %>
+              <%= image_tag("items_images/white_sweater.png", alt:"First slide") %>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
 
 
