@@ -70,72 +70,81 @@
   </a>
 </div>
 
-
-<div class="container">
-  <h3>Todays Deals</h3>
-  <div class="row">
-    <% @todays_deal.each do |item|%>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="card">
-          <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
-          <div class="card-body d-flex flex-column"
-            <%= link_to item.name, item_path(item) %> 
-            <%= render partial: 'add_item', locals: {item: item}%>
+<div class="index-content">
+  <div class="container">
+    <h3>Todays Deals</h3>
+    <div class="row">
+      <% @todays_deal.each do |item|%>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card">
+            <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
+            <div class="card-body d-flex flex-column">
+              <%= link_to item.name, item_path(item) %>
+              <%= item.description %>
+              <%= number_to_currency(item.price)%>
+              <%= render partial: 'add_item', locals: {item: item}%>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %><br><br><br>
+      <% end %><br><br><br>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <h3>Trendings</h3>
-  <div class="row">
-    <% @trending_items.each do |item|%>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="card">
-          <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
-          <div class="card-body d-flex flex-column"
-            <%= link_to item.name, item_path(item) %> 
-            <%= render partial: 'add_item', locals: {item: item}%>
+  <div class="container">
+    <h3>Trendings</h3>
+    <div class="row">
+      <% @trending_items.each do |item|%>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card">
+            <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
+            <div class="card-body d-flex flex-column" >
+              <%= link_to item.name, item_path(item) %>
+              <%= item.description %>
+              <%= number_to_currency(item.price)%>
+              <%= render partial: 'add_item', locals: {item: item}%>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %><br><br><br>
+      <% end %><br><br><br>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <h3>Recommended</h3>
-  <div class="row">
-    <% @recommended_items.each do |item|%>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="card">
-          <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
-          <div class="card-body d-flex flex-column"
-            <%= link_to item.name, item_path(item) %> 
-            <%= render partial: 'add_item', locals: {item: item}%>
+  <div class="container">
+    <h3>Recommended</h3>
+    <div class="row">
+      <% @recommended_items.each do |item|%>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card">
+            <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
+            <div class="card-body d-flex flex-column">
+              <%= link_to item.name, item_path(item) %>
+              <%= item.description %>
+              <%= number_to_currency(item.price)%>
+              <%= render partial: 'add_item', locals: {item: item}%>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %><br><br><br>
+      <% end %><br><br><br>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <h3>Featured</h3>
-  <div class="row">
-    <% @feature_items.each do |item|%>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="card">
-          <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
-          <div class="card-body d-flex flex-column"
-            <%= link_to item.name, item_path(item) %> 
-            <%= render partial: 'add_item', locals: {item: item}%>
+  <div class="container">
+    <h3>Featured</h3>
+    <div class="row">
+      <% @feature_items.each do |item|%>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card">
+            <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
+            <div class="card-body d-flex flex-column">
+              <%= link_to item.name, item_path(item) %>
+              <%= item.description %>
+              <%= number_to_currency(item.price)%>
+              <%= render partial: 'add_item', locals: {item: item}%>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %><br><br><br>
+      <% end %><br><br><br>
+    </div>
   </div>
 </div>
 
