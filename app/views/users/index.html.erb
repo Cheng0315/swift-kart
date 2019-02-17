@@ -72,32 +72,52 @@
 
 
 <div class="container">
-  <h3>Trending</h3>
-  <% @todays_deal.each do |item|%>
-    <%= link_to item.name, item_path(item) %> 
-    <%= render partial: 'add_item', locals: {item: item}%>
-  <% end %><br><br><br>
+  <h3>Todays Deals</h3>
+  <div class="row">
+    <% @todays_deal.each do |item|%>
+      <div class="col-md-4">
+      <%= link_to item.name, item_path(item) %> 
+      <%= render partial: 'add_item', locals: {item: item}%>
+      </div>
+    <% end %><br><br><br>
+  </div>
+</div>
+
+
+<div class="container">
+  <h3>Trendings</h3>
+  <div class="row">
+    <% @trending_items.each do |item|%>
+      <div class="col-md-4">
+        <%= link_to item.name, item_path(item) %> 
+        <%= render partial: 'add_item', locals: {item: item}%>
+      </div>
+    <% end %><br><br><br>
+  </div>
 </div>
 
 <div class="container">
-  <% @trending_items.each do |item|%>
-    <%= link_to item.name, item_path(item) %> 
-    <%= render partial: 'add_item', locals: {item: item}%>
-  <% end %><br><br><br>
+  <h3>Recommended</h3>
+  <div class="row">
+    <% @recommended_items.each do |item|%>
+      <div class="col-md-4">
+        <%= link_to item.name, item_path(item) %> 
+        <%= render partial: 'add_item', locals: {item: item}%>
+      </div>
+    <% end %><br><br><br>
+  </div>
 </div>
 
 <div class="container">
-  <% @recommended_items.each do |item|%>
-    <%= link_to item.name, item_path(item) %> 
-    <%= render partial: 'add_item', locals: {item: item}%>
-  <% end %><br><br><br>
-</div>
-
-<div class="container">
-  <% @feature_items.each do |item|%>
-    <%= link_to item.name, item_path(item) %> 
-    <%= render partial: 'add_item', locals: {item: item}%>
-  <% end %><br><br><br>
+  <h3>Featured</h3>
+  <div class="row">
+    <% @feature_items.each do |item|%>
+      <div class="col-md-4">
+        <%= link_to item.name, item_path(item) %> 
+        <%= render partial: 'add_item', locals: {item: item}%>
+      </div>
+    <% end %><br><br><br>
+  </div>
 </div>
 
 
