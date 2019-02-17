@@ -31,9 +31,7 @@
           <div>
             <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0 mx-2 my-auto d-inline w-100" do%>
               <%= text_field_tag :search, params[:search], class: "form-control mr-lg-1", placeholder:"Search" %>
-            
               <%= collection_select :category, :id, Category.all, :id, :name, :include_blank => "All Categories", class: "form-control mr-lg-1"%>
-            
               <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
             <% end %>
           </div>
