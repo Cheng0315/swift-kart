@@ -43,7 +43,9 @@
   justify-content: space-between;
 }
 
-
+.btn a {
+  color: white;
+}
 
 @media (min-width: 576px) and (max-width: 767px) {
   .slide-box image_tag {

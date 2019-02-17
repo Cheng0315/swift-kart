@@ -123,7 +123,7 @@
     document.getElementById("quantity_price").innerHTML = "$" + total_sums.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
-  function total_price_9(idx, inside_price, all_items_price) {
+  function total_price_9(idx, item_price, all_items_price) {
     var quantity = document.getElementById(`my_select_${idx}`).value;
 
     if (quantity == 1) {
