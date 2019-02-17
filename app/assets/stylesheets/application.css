@@ -44,7 +44,8 @@
 }
 
 .btn a {
-  color: white;
+ 
+  text-decoration:none
 }
 
 @media (min-width: 576px) and (max-width: 767px) {

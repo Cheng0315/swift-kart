@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/cart/user_cart' => 'carts#find_or_create_cart'
   get '/cart/add_guest_cart' => 'carts#add_guest_cart'
 
-  get '/items/:id/add_to_cart' => 'items#add_to_cart'
+  post '/items/add_to_cart' => 'items#add_to_cart'
   get '/my_items' => 'items#my_items'
   get '/my_orders' => 'items#my_orders'
   get '/buyer_orders' => 'items#buyer_orders'

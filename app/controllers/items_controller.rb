@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
+    
     @item = Item.find(params[:id].to_i)
 
     if current_user
@@ -102,6 +103,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    
     @item = Item.find(params[:id])
 
     if @item.user.id == current_user.id && @item.update(items_params)

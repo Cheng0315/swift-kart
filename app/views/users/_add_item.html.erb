@@ -1,8 +1,8 @@
 <% if !current_user || not_seller_item(item.id)%>
   <% if item.in_stock %>
-  <div class="btn btn-primary mt-auto">
-    <%= link_to 'Add to cart', :controller => 'items', :action => 'add_to_cart', :id => item.id, class: "btn-sm"%><br>
-  </div>
+      <%= form_tag items_add_to_cart_path(id: item.id)  do  %>
+      <%= submit_tag value="Add to cart"%><br>
+      <%end%>
     <% else %>
     Out of stock<br>
   <% end %>
