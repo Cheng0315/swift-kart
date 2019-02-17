@@ -76,8 +76,13 @@
   <div class="row">
     <% @todays_deal.each do |item|%>
       <div class="col-md-4">
-      <%= link_to item.name, item_path(item) %> 
-      <%= render partial: 'add_item', locals: {item: item}%>
+        <div class="card">
+          <%= image_tag("items_images/basketball.png", class:"card-img-top", alt:"First slide") %>
+          <div class="card-body"
+            <%= link_to item.name, item_path(item) %> 
+            <%= render partial: 'add_item', locals: {item: item}%>
+          </div>
+        </div>
       </div>
     <% end %><br><br><br>
   </div>
@@ -89,8 +94,13 @@
   <div class="row">
     <% @trending_items.each do |item|%>
       <div class="col-md-4">
-        <%= link_to item.name, item_path(item) %> 
-        <%= render partial: 'add_item', locals: {item: item}%>
+        <div class="card">
+          <%= image_tag("items_images/basketball.png", class:"card-img-top", alt:"First slide") %>
+          <div class="card-body"
+            <%= link_to item.name, item_path(item) %> 
+            <%= render partial: 'add_item', locals: {item: item}%>
+          </div>
+        </div>
       </div>
     <% end %><br><br><br>
   </div>
@@ -101,8 +111,13 @@
   <div class="row">
     <% @recommended_items.each do |item|%>
       <div class="col-md-4">
-        <%= link_to item.name, item_path(item) %> 
-        <%= render partial: 'add_item', locals: {item: item}%>
+        <div class="card">
+          <%= image_tag("items_images/basketball.png", class:"card-img-top", alt:"First slide") %>
+          <div class="card-body"
+            <%= link_to item.name, item_path(item) %> 
+            <%= render partial: 'add_item', locals: {item: item}%>
+          </div>
+        </div>
       </div>
     <% end %><br><br><br>
   </div>
@@ -113,8 +128,13 @@
   <div class="row">
     <% @feature_items.each do |item|%>
       <div class="col-md-4">
-        <%= link_to item.name, item_path(item) %> 
-        <%= render partial: 'add_item', locals: {item: item}%>
+        <div class="card">
+          <%= image_tag("items_images/basketball.png", class:"card-img-top", alt:"First slide") %>
+          <div class="card-body"
+            <%= link_to item.name, item_path(item) %> 
+            <%= render partial: 'add_item', locals: {item: item}%>
+          </div>
+        </div>
       </div>
     <% end %><br><br><br>
   </div>
