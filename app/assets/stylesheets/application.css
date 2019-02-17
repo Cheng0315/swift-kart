@@ -44,13 +44,27 @@
   justify-content: space-between;
 }
 
-.btn a {
- 
+.index-content a, .btn a {
   text-decoration:none
 }
 
-.index-content a {
-  text-decoration:none
+footer a {
+  text-decoration:none;
+  color: white;
+}
+
+footer a:hover {
+  text-decoration:none;
+  color: gray;
+}
+
+footer {
+  padding-top: 50px;
+}
+
+.footer-padding {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .carousel-control-prev-icon {
@@ -64,6 +78,8 @@
  .index-content-margin {
    padding-top: 35px;
  }
+
+
 
 @media (min-width: 576px) and (max-width: 767px) {
   .slide-box image_tag {
