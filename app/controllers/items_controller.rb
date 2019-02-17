@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
-    
     @item = Item.find(params[:id].to_i)
 
     if current_user

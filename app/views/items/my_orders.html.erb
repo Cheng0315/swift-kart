@@ -14,9 +14,7 @@
             Description: <%= item.description %>
             Quantity: <%= item_quantity(item, cart) %>
             Status: <%= item_status(item, cart)%>
-            <%= form_tag items_add_to_cart_path(id: item.id, :redirect_to => my_orders_path)  do  %>
-              <%= submit_tag value="Buy again"%><br>
-            <%end%>
+            <%= button_to "Buy again", items_add_to_cart_path(id: item.id, :redirect_to => my_orders_path), method: "post", class:"btn btn-sm btn-block btn-primary"%>
           <%end%> 
         <% end %> 
       <% end %>

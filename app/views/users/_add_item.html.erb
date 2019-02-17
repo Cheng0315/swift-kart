@@ -1,15 +1,13 @@
 <% if !current_user || not_seller_item(item.id)%>
   <% if item.in_stock %>
-      <%= form_tag items_add_to_cart_path(id: item.id)  do  %>
-        <%= submit_tag value="Add to cart"%><br>
-      <%end%>
-    <% else %>
+    <div class="mt-auto">
+    <%= button_to "Add to cart", items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%>
+    </div>
+  <% else %>
     Out of stock<br>
   <% end %>
 <% elsif current_user && item.user_id == current_user.id %>
-<div>
-  <%= form_tag edit_item_path(item), method: "get"  do  %>
-    <%= submit_tag value="Edit Item"%><br>
-  <%end%>
+<div class="mt-auto">
+  <%= button_to "Edit Item", edit_item_path(item), method: "get", class:"btn btn-sm btn-block btn-primary"%>
 </div>
 <% end %>

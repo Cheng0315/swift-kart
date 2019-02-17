@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user && params[:id] == current_user.id
+    if current_user && params[:id].to_i == current_user.id
       @user = current_user
     else
       redirect_to signin_path

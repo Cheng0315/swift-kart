@@ -98,9 +98,9 @@
           <div class="card">
             <%= image_tag(item.image, class:"card-img-top", alt:"First slide") %>
             <div class="card-body d-flex flex-column" >
-              <%= link_to item.name, item_path(item) %>
-              <%= item.description %>
-              <%= number_to_currency(item.price)%>
+              <div><%= link_to item.name, item_path(item) %></div>
+              <div><%= item.description %></div>
+              <div><%= number_to_currency(item.price)%></div>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
           </div>
