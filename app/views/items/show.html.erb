@@ -9,9 +9,7 @@
   Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %><br>
   Condition: <%= item_condition(@item)%> <br>
   <%= render partial: 'users/add_item', locals: {item: @item}%>
-  <% if current_user %>
-    <% if @item.user.id == current_user.id %>
-      <%= link_to 'Delete Item', item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
-    <% end %>
-  <% end %>
+  <%= form_tag item_path(@item), method: "delete", data: {confirm: "Are you sure?"}  do  %>
+    <%= submit_tag value="Delete Item"%><br>
+  <%end%>
 </div>
