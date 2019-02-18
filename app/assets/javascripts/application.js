@@ -146,9 +146,3 @@
     total_sums = all_items_price + price1 + price2 + price3 + price4 + price5 + price6 + price7 + price8 + price9 + price10;
     document.getElementById("quantity_price").innerHTML = "$" + total_sums.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
-
-
-
-
-
-

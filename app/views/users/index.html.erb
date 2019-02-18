@@ -84,7 +84,7 @@
             <div class="card-body d-flex flex-column">
               <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
               <%= link_to item.name, item_path(item) %>
-              <%= item.description %><br>
+              <%= truncate(item.description, length: 80) %><br>
               <%= number_to_currency(item.price)%>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
@@ -105,7 +105,7 @@
             <div class="card-body d-flex flex-column" >
               <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
               <%= link_to item.name, item_path(item) %>
-              <%= item.description %><br>
+              <%= truncate(item.description, length: 80) %><br>
               <%= number_to_currency(item.price)%>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
@@ -126,7 +126,7 @@
             <div class="card-body d-flex flex-column">
               <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
               <%= link_to item.name, item_path(item) %>
-              <%= item.description %><br>
+              <%= truncate(item.description, length: 80) %><br>
               <%= number_to_currency(item.price)%>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
@@ -147,7 +147,7 @@
             <div class="card-body d-flex flex-column">
               <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
               <%= link_to item.name, item_path(item) %>
-              <%= item.description %><br>
+              <%= truncate(item.description, length: 80) %><br>
               <%= number_to_currency(item.price)%>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
