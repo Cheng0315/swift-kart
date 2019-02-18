@@ -53,6 +53,34 @@
   margin-bottom: 15px;
 }
 
+#show-image-info {
+  margin-top: 45px;
+}
+
+.price {
+  font-size: 17px;
+}
+
+.condition-new {
+  background: green;
+  width: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.condition-used {
+  background: #b42f0e;
+  width: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.availability {
+  color: green;
+  font-size: 17px;
+}
 
 footer a {
   text-decoration:none;

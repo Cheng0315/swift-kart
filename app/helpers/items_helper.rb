@@ -22,9 +22,9 @@ module ItemsHelper
 
   def item_condition(item)
     if item.condition == 1
-      "New"
+      "<p class='condition-new text-center' >New</p>".html_safe
     else
-      "Used"
+      "<p class='condition-used text-center' >Used</p>".html_safe
     end
   end
 

@@ -3,7 +3,7 @@
 <% end %>
 
 
-<div >
+<div class="container">
 <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
   <% if !@cart.empty? %>
     
@@ -26,12 +26,7 @@
           <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
         <br>
       </div>
-      
-      
-    <%end%> 
-  
-   
-      
+    <%end%>
     Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span> <br>
     <%= submit_tag "Checkout" %>
   <% else %>
