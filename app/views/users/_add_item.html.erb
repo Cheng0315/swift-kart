@@ -4,8 +4,8 @@
     <%= button_to "Add to cart", items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%>
     </div>
   <% else %>
-  <div class="mt-auto text-center">
-    Out of stock<br>
+    <div class="mt-auto text-center">
+      <div class="out-of-stock">Out of stock</div>
     </div>
   <% end %>
 <% elsif current_user && item.user_id == current_user.id %>
