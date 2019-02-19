@@ -185,6 +185,10 @@ footer {
   .li-items-padding {
     padding-left: 60px;
   }
+
+  .cart-items-padding {
+    padding-left: 75px;
+  }
   
 }
 
@@ -200,10 +204,18 @@ footer {
   .li-items-padding {
     padding-left: 40px;
   }
+
+  .cart-items-padding {
+    padding-left: 60px;
+  }
 }
 
 @media (min-width: 1200px) {
   .li-items-padding {
     padding-left: 25px;
+  }
+
+  .cart-items-padding {
+    padding-left: 50px;
   }
 }
