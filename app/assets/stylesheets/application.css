@@ -96,13 +96,14 @@
   margin-bottom: 5px;
 }
 
+.card {
+  margin-bottom: 30px;
+}
+
 .latest-products {
   margin-top: 265px;
 }
 
-.stars-color {
-  color: #ffb800;
-}
 
 footer a {
   text-decoration:none;
@@ -132,10 +133,12 @@ footer {
  }
 
  .index-content-margin {
-   padding-top: 35px;
+   padding-top: 5px;
  }
 
-
+.margin-top {
+  margin-top: 25px;
+}
 
 @media (min-width: 576px) and (max-width: 767px) {
   .slide-box image_tag {
