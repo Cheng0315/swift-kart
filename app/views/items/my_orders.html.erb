@@ -5,18 +5,25 @@
   <% if my_carts_are_empty(@carts) %>
     You have not make any orders
   <% else %>
+    <ul>
     <% @carts.each do |cart|%>
       <% if cart.checkout %>
         <% cart.items.each do |item| %>
-          <%= link_to item.name, item_path(item) %>
-          Price: <%= number_to_currency(item.price) %>
-          Description: <%= item.description %>
-          Quantity: <%= item_quantity(item, cart) %>
-          Status: <%= item_status(item, cart)%>
-          <%= button_to "Buy again", items_add_to_cart_path(id: item.id, :redirect_to => my_orders_path), method: "post", class:"btn btn-sm shorter-btn btn-primary"%>
+          <li class="media border p-3">
+            <%=link_to small_image(item.id), item_path(item), class: "mr-3 mt-3" %>
+            <div class="media-body">
+            <div><%= link_to item.name, item_path(item) %></div>
+            <div>Price: <%= number_to_currency(item.price) %></div>
+            <div>Description: <%= item.description %></div>
+            <div>Quantity: <%= item_quantity(item, cart) %></div>
+            <div>Status: <%= item_status(item, cart)%></div>
+            <%= button_to "Buy again", items_add_to_cart_path(id: item.id, :redirect_to => my_orders_path), method: "post", class:"btn btn-sm shorter-btn btn-primary"%>
+            </div>
+          </li>
         <%end%> 
       <% end %> 
     <% end %>
+    </ul>
   <%end%>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
