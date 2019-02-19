@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <% if @items_info.empty? %>
     You have no buyer at the moment
@@ -15,4 +13,5 @@
       <% end%>
     <% end %>
   <% end %>
+  <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

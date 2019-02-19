@@ -1,24 +1,25 @@
 <div class="container">
   <% if @items.empty? && @view_my_items %>
-    You have no items for sale at the moment
+    <h3>You have no items for sale at the moment</h3>
   <% elsif @items.empty? %>
-    Unable to find the item you're looking for
+    <h3>Unable to find the item you're looking for</h3>
   <% else %>
-      <div class="row margin-top">
-        <% @items.each do |item|%>
-          <div class="col-md-4 d-flex align-items-stretch">
-              <div class="card card-margin">
-                <div class="card-body d-flex flex-column">
-                  <%= link_to item_image(item.id), item_path(item) %>
-                  <%= link_to item.name, item_path(item) %>
-                  <%= truncate(item.description, length: 80) %><br>
-                  <%= number_to_currency(item.price)%>
-                  <%= render partial: 'users/add_item', locals: {item: item}%>
-                </div>
-              </div>
+    <div class="row margin-top">
+      <% @items.each do |item|%>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="card card-margin">
+            <div class="card-body d-flex flex-column">
+              <%= link_to item_image(item.id), item_path(item) %>
+              <%= link_to item.name, item_path(item) %>
+              <%= truncate(item.description, length: 80) %><br>
+              <%= number_to_currency(item.price)%>
+              <%= render partial: 'users/add_item', locals: {item: item}%>
             </div>
+          </div>
+        </div>
       <% end %>
     </div>
   <%end%>
+  <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
 
