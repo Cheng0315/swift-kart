@@ -7,7 +7,12 @@ module ItemsHelper
 
   def item_status(item, cart)
     @cart_item = CartItem.find_by(cart_id: cart.id, item_id: item.id)
-    @cart_item.shipped ? "Shipped! Your item is on its way!" : "Preparing to shiping."
+
+    if @cart_item.shipped 
+      "<span class='shipped-items'>Shipped!</span>".html_safe 
+    else
+      "<span class='unshipped-items'>Processing.</span>".html_safe 
+    end
   end
 
   def item_image(item_id)
