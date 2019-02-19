@@ -29,7 +29,11 @@ module ItemsHelper
   end
 
   def item_availability(item)
-    item.in_stock ? "In Stock" : "Out of stock"
+    if item.in_stock 
+      "<p class='instock' >In stock</p>".html_safe
+    else 
+      "<p class='out-of-stock' >Out of stock</p>".html_safe
+    end
   end
 
   def buyer_name(id)

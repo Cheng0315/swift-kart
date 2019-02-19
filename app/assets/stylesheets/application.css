@@ -77,9 +77,18 @@
   font-weight: bold;
 }
 
-.availability {
+.instock {
   color: green;
   font-size: 17px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.out-of-stock {
+  color: #b42f0e;
+  font-size: 17px;
+  font-weight: bold;
+  display: inline-block;
 }
 
 .latest-products {
