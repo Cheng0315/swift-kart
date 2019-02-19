@@ -1,12 +1,9 @@
 <div class="container">
   <div class="row" id="show-image-info">
-    <div class="col-md-5">
+    <div class="col-md-5 mt-auto">
       <%= item_image(@item.id) %>
     </div>
-
-    <div class="col-md-7">
-      
-
+    <div class="col-md-7 ">
       <h5><%= @item.name %></h5>
       <hr>
       <%= item_condition(@item)%>
@@ -15,9 +12,9 @@
       <p><%= @item.description %></p>
       Availability: <%= item_availability(@item) %>
       <p>Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
-      <%= render partial: 'users/add_item', locals: {item: @item}%>
+      <%= render partial: 'users/short_add_item_btn', locals: {item: @item}%>
       <% if current_user && @item.user_id == current_user.id %>
-        <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-block btn-primary"%>
+        <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-primary shorter-btn"%>
       <% end %>
     </div>
   </div>

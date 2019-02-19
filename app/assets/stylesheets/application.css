@@ -91,6 +91,11 @@
   display: inline-block;
 }
 
+.shorter-btn {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
 .latest-products {
   margin-top: 265px;
 }

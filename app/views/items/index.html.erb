@@ -4,17 +4,21 @@
   <% elsif @items.empty? %>
     Unable to find the item you're looking for
   <% else %>
-    <% @items.each do |item|%>
-      <%= link_to item.name, item_path(item) %><br>
-      <% if !current_user || not_seller_item(item.id)%>
-        <% if item.in_stock %>
-          <%= button_to "Add to cart", items_add_to_cart_path(id: item.id, :redirect_to => cart_path), method: "post", class:"btn btn-sm btn-block btn-primary"%>
-        <% else %>
-          Out of stock<br>
-        <% end %>
-      <% elsif current_user && item.user_id == current_user.id %>
-        <%= button_to "Edit item", edit_item_path(item), method: "get", class:"btn btn-sm btn-block btn-primary"%>
+      <div class="row">
+        <% @items.each do |item|%>
+          <div class="col-md-4 d-flex align-items-stretch">
+              <div class="card">
+                <div class="card-body d-flex flex-column" >
+                  <%= link_to item_image(item.id), item_path(item) %>
+                  <%= link_to item.name, item_path(item) %>
+                  <%= truncate(item.description, length: 80) %><br>
+                  <%= number_to_currency(item.price)%>
+                  <%= render partial: 'users/add_item', locals: {item: item}%>
+                </div>
+              </div>
+            </div>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  <%end%>
 </div>
+
