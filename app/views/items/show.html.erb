@@ -22,3 +22,24 @@
     </div>
   </div>
 </div>
+
+<section class="container">
+  <div class="latest-products" id="todays-deals-items">
+    <h3>Latest Products</h3>
+  </div>
+  <div class="row">
+    <% @latest_products.each do |item|%>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="card">
+          <div class="card-body d-flex flex-column">
+            <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
+            <%= link_to item.name, item_path(item) %>
+            <%= truncate(item.description, length: 80) %><br>
+            <%= number_to_currency(item.price)%>
+            <%= render partial: 'users/add_item', locals: {item: item}%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

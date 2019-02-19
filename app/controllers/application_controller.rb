@@ -228,11 +228,9 @@ class ApplicationController < ActionController::Base
     Item.all.select {|item| item.id == 3 || item.id == 10 || item.id == 17 }
   end
 
-  def feature_items
+  def featured_items
     Item.all.select {|item| item.id == 4 || item.id == 11 || item.id == 18 }
   end
-
-  
 
   def redirect_path(path)
     if path

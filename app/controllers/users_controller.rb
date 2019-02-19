@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @todays_deal = todays_deal
     @trending_items = trending_items
     @recommended_items = recommended_items
-    @feature_items = feature_items
+    @featured_items = featured_items
   end
 
   def new
