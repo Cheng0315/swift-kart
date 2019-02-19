@@ -2,23 +2,25 @@
   <% if @items_info.empty? %>
     You have no buyer at the moment
   <% else %>
-    
+  <div class="container">
     <% @items_info.each do |item_info|%>
-      
-        <%=link_to small_image(item_info[0].id), item_path(item_info[0]), class: "mr-3 mt-3" %>
-        
+      <div class="row border " style="margin-top: 15px;">
+        <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
+          <%=link_to small_image(item_info[0].id), item_path(item_info[0]) %>
+        </div>
+        <div class="col-sm-12 col-md-11 col-lg-11 li-items-padding top-bottom-padding">
           <%= link_to item_info[0].name, item_path(item_info[0]) %><br>
-          Buyer Name: <%= buyer_name(item_info[1]) %>
-          Quantity: <%= item_info[2] %>
+          <div>Buyer Name: <%= buyer_name(item_info[1]) %></div>
+          <div>Quantity: <%= item_info[2] %></div>
           <% if item_is_shipped(item_info[3], item_info[0]) %>
-            Shipped<br>
+            <div style="color: green">Shipped</div>
           <% else%>
-            <%= link_to 'Mark as shipped', ship_items_path(cart_id: item_info[3], item_id: item_info[0].id) %><br>
+          <div><%= link_to 'Mark as shipped', ship_items_path(cart_id: item_info[3], item_id: item_info[0].id) %></div>
           <% end%>
-        
-      
+          </div>
+          </div>
     <% end %>
-   
+    </div>
   <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

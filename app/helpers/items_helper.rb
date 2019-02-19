@@ -11,7 +11,7 @@ module ItemsHelper
     if @cart_item.shipped 
       "<span class='shipped-items'>Shipped!</span>".html_safe 
     else
-      "<span class='unshipped-items'>Processing.</span>".html_safe 
+      "<span class='unshipped-items'>Preparing for shipment.</span>".html_safe 
     end
   end
 
