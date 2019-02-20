@@ -58,6 +58,10 @@
   margin-bottom: 15px;
 }
 
+.fb-signin-padding {
+  padding-top: -5px;
+}
+
 #show-image-info {
   margin-top: 45px;
 }

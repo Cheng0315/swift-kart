@@ -9,10 +9,9 @@
           <%= f.check_box :seller, class: "custom-control-input"%>
           <%= f.label :seller, class: "custom-control-label" %>
         </div>
-        <div class="form-group">
-          <%= f.submit "Create Account", class: "btn btn-primary btn-block" %><br>
-        </div>
+          <%= f.submit "Create Account", class: "btn btn-primary btn-block" %>
       <% end %>
+      <div class="text-center mt-2" ><%= link_to("Already have an account? Sign in" , '/signin') %></div>
     </div>
   </div>
 </div>
