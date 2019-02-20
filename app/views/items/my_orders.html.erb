@@ -1,6 +1,6 @@
 <div class="container">
   <% if flash[:notice] %>
-    <div class="text-center"><%= flash[:notice] %></div>
+    <span class="text-center"><%= flash[:notice].html_safe %></span>
   <% end %>
   <% if my_carts_are_empty(@carts) %>
     You have not make any orders
@@ -9,7 +9,7 @@
     <% @carts.each do |cart|%>
       <% if cart.checkout %>
         <% cart.items.each do |item| %>
-          <div class="row border " style="margin-top: 15px;">
+          <div class="row border " style="margin-top: 20px;">
             <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
               <%=link_to small_image(item.id), item_path(item)%>
             </div> 

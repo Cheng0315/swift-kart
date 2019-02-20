@@ -68,9 +68,9 @@ class ApplicationController < ActionController::Base
   end
 
   def create_item
-    
     @item = Item.new(items_params)
     @item.user_id = current_user.id
+
     if @item.save
       @category = Category.find(items_params[:category_id])
       @category.items << @item
@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.</span>
-    </div>"
+    </div>".html_safe
   end
 
   def add_item_to_cart(cart, item, params_path)
@@ -124,7 +124,14 @@ class ApplicationController < ActionController::Base
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Successfully added item to cart.</span>
-    </div>"
+    </div>".html_safe
+  end
+
+  def success_checkout_message
+    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!</span>
+    </div>".html_safe
   end
 
   def find_all_items_in_guest_cart

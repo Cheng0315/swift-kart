@@ -46,7 +46,7 @@ class CartsController < ApplicationController
     if current_cart && current_user
       update_quantity_of_item_in_cart
       current_cart.update(total_price: params[:total_price], checkout: true)
-      flash[:notice] = "Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!"
+      flash[:notice] = success_checkout_message
       redirect_to cart_user_cart_path and return 
     else
       flash[:notice] = "Please sign in or sign up to checkout"

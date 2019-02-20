@@ -1,6 +1,6 @@
 <div class="container">
   <% if flash[:notice] %>
-    <%= flash[:notice] %><br>
+    <%= flash[:notice].html_safe %><br>
   <% end %>
   <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
     <% if !@cart.empty? %>

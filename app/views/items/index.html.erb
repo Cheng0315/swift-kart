@@ -1,8 +1,8 @@
 <div class="container">
   <% if @items.empty? && @view_my_items %>
-    <h3>You have no items for sale at the moment</h3>
+    You have no items for sale at the moment
   <% elsif @items.empty? %>
-    <h3>Unable to find the item you're looking for</h3>
+    Unable to find the item you're looking for
   <% else %>
     <div class="row margin-top">
       <% @items.each do |item|%>
