@@ -60,4 +60,23 @@ module ItemsHelper
     carts.count == 1 && !carts[0].checkout
   end
 
+  def add_to_cart_w_check_mark(item_id)
+    if current_user
+      @item_arr = current_cart.items.select {|item| item.id == item_id}
+      add_check_mark(@item_arr)
+    else
+      @item_arr = guest_cart.select {|id| id == item_id}
+      add_check_mark(@item_arr)
+    end
+  end
+
+  def add_check_mark(item_arr)
+    if item_arr.empty?
+      "Add to cart"
+    else
+      "<i class='fas fa-check'></i> Add to cart".html_safe
+    end
+  end
+
+
 end

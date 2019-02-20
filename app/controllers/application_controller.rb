@@ -102,7 +102,7 @@ class ApplicationController < ActionController::Base
   def display_item_exist_in_cart_msg
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.</span>
+      <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section on checkout.</span>
     </div>".html_safe
   end
 
