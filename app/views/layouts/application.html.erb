@@ -43,16 +43,16 @@
       <div class="container">
       <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/#todays-deals-items" >Todays Deal <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/#trendings-items" >Trendings <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/#recommended-items"> Recommended <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/#featured-items" >Featured <span class="sr-only">(current)</span></a>
           </li>
         </ul>
@@ -60,17 +60,17 @@
         <ul class="navbar-nav ml-auto">
           <% if current_user %>
             <% if current_user.seller %>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/buyer_orders" >Buyers Orders <span class="sr-only">(current)</span></a>
               </li>
             <% end %>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/my_orders" >My Orders <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Account
               </a>
@@ -81,14 +81,14 @@
               </div>
             </li>
           <% else %>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/signin">Sign In <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
             </li>
           <% end %>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
           </li>
         </ul>
@@ -135,12 +135,12 @@
           </div>
           <div class="col-md-3">
             <div>
-              <h6>Help & Contact</h6>
+              <h6>Stay Connected</h6>
             </div>
             <div>
-              <a href="#">Locations</a><br>
-              <a href="#">Contact us</a><br>
-              <a href="#">Returns & Replacements</a><br>
+              <a href="#"><i class="fab fa-facebook-square"></i> Facebook</a><br>
+              <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a><br>
+              <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
             </div>
           </div>
         </div>

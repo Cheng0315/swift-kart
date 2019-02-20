@@ -238,11 +238,11 @@ class ApplicationController < ActionController::Base
   end
 
   def todays_deal
-    Item.all.select {|item| item.id == 1 || item.id == 8 || item.id == 15 }
+    Item.all.select {|item| item.id == 6 || item.id == 15 || item.id == 16 }
   end
 
   def trending_items
-    Item.all.select {|item| item.id == 2 || item.id == 9 || item.id == 16 }
+    Item.all.select {|item| item.id == 8 || item.id == 21 || item.id == 25 }
   end
 
   def recommended_items
