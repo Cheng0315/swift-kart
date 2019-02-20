@@ -48,6 +48,10 @@
   margin-top: 27px;
 }
 
+.brand-margin a{
+  color: #007bff;
+}
+
 .sign-up-margin {
   margin-top: 12px;
   margin-bottom: -8px;
@@ -144,6 +148,7 @@
   display: inline-block;
   margin-top: -7px;
   margin-bottom: -7px;
+  color: #007bff;
 }
 
 .top-bottom-padding {

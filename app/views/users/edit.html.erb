@@ -11,4 +11,5 @@
       <% end %>
     </div>
   </div>
+  <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
