@@ -1,6 +1,6 @@
 <section class="container">
   <% if flash[:notice] %>
-    <div class="text-center"><%= flash[:notice] %></div>
+    <div class="text-center"><%= flash[:notice].html_safe %></div>
   <% end %>
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
 
   def check_if_item_exists_in_cart(cart, item, params_path)
     if item_exists_in_cart(cart, item)
-      flash[:notice] = 'Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.'
+      flash[:notice] = display_item_exist_in_cart_msg
       redirect_to redirect_path(params_path)
     else
       add_item_to_cart(cart, item, params_path)
@@ -99,18 +99,32 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def display_item_exist_in_cart_msg
+    "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section when checkout.</span>
+    </div>"
+  end
+
   def add_item_to_cart(cart, item, params_path)
     if current_user
       @cart_item = CartItem.create()
       cart.cart_items << @cart_item
       item.cart_items << @cart_item
-      flash[:notice] = 'Successfully added item to cart'
+      flash[:notice] = display_add_to_cart_msg
       redirect_to redirect_path(params_path)
     else
       cart << item.id
-      flash[:notice] = 'Successfully added item to cart'
+      flash[:notice] = display_add_to_cart_msg
       redirect_to redirect_path(params_path)
     end
+  end
+
+  def display_add_to_cart_msg
+    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Successfully added item to cart.</span>
+    </div>"
   end
 
   def find_all_items_in_guest_cart

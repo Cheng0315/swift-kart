@@ -151,7 +151,10 @@
   padding-bottom: 10px;
 }
 
-
+.add-item-msg {
+  margin-top: 12px;
+  margin-bottom: -10px;
+}
 
 footer a {
   text-decoration:none;
