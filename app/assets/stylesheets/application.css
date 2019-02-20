@@ -161,6 +161,10 @@
   margin-bottom: -10px;
 }
 
+.strike-through-price {
+  text-decoration: line-through;
+}
+
 nav .navbar-nav li a{
   color: white !important;
 }

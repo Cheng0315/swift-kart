@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @trending_items = trending_items
     @recommended_items = recommended_items
     @featured_items = featured_items
+    @listing_prices = [1399.99, 699.99, 79.99]
   end
 
   def new

@@ -75,13 +75,14 @@
       <h3>Todays Deals</h3>
     </div>
     <div class="row">
-      <% @todays_deal.each do |item|%>
+      <% @todays_deal.each_with_index do |item, idx|%>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="card">
             <div class="card-body d-flex flex-column">
               <%= link_to image_tag(item.image, class:"card-img-top", alt:"First slide"), item_path(item) %>
               <%= link_to item.name, item_path(item) %>
               <div class="price"><%= number_to_currency(item.price)%></div>
+              <div>List: <span class="strike-through-price"><%= number_to_currency(@listing_prices[idx])%></span></div>
               <%= truncate(item.description, length: 80) %>
               <%= render partial: 'add_item', locals: {item: item}%>
             </div>
