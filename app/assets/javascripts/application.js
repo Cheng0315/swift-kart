@@ -16,6 +16,7 @@
 //= require_tree .
 
 
+
   var price1 = 0;
   var price2 = 0;
   var price3 = 0;
