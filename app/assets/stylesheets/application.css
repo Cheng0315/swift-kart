@@ -127,6 +127,12 @@
   color: #ffb800;
 }
 
+.navbar-brand h3 {
+  display: inline-block;
+  margin-top: -7px;
+  margin-bottom: -7px;
+}
+
 .top-bottom-padding {
   padding-top: 10px;
   padding-bottom: 10px;
