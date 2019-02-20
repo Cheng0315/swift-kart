@@ -29,6 +29,7 @@ Category.create(name: 'Video Games')
 michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, email: 'a@a.com', password: 'a')
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'b@b.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'c@c.com', password: 'c')
+joseph = User.create(first_name: 'Joseph', last_name: 'Peterson', seller: true, email: 'd@d.com', password: 'd')
 
 michaels_items = [['Rare 1940 Antique Gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
   ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],
@@ -70,5 +71,19 @@ jennys_items = [['Fender White Electric Guitar', 599.99, 'Great sound, like new.
 jennys_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
   jenny.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
   jenny.items.last.image.attach(io: File.open(image), filename: filename)
+end
+
+
+
+josephs_items = [['Red and Brown Floral Dress', 49.99, 'lightweight, comfortable dress', true, 9, 1, "app/assets/images/items_images/red_dress.png", "red_dress.png"],
+  ["women's assorted clothes", 79.99, 'Available in all size', true, 9, 1, "app/assets/images/items_images/clothing.png", "clothing.png"],
+  ['Classic Long Sleeve White Sweater', 24.99, 'Classic Design Long Sleeve Sweater', true, 9, 1, "app/assets/images/items_images/white_sweater.png", "white_sweater.png"],
+  ['Schutt Football Helmet', 49.99, 'Great helmet, like new', true, 18, 2, "app/assets/images/items_images/football_helmet.png", "football_helmet.png"],
+  ['Garage and Backyard Tools', 9.99, 'Clearing out the garage', false, 19, 2, "app/assets/images/items_images/tools_1.png", "tools_1.png"],
+  ['Game', 345, 'Game', true, 20, 1, "app/assets/images/items_images/staple.png", "staple.png"]]
+
+josephs_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
+  joseph.items.create(name: name, price: price, description: description, in_stock: in_stock, category_id: category_id, condition: condition)
+  joseph.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
