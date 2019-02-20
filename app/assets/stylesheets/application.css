@@ -44,8 +44,17 @@
   text-decoration:none
 }
 
+.brand-margin {
+  margin-top: 27px;
+}
+
 .sign-up-margin {
-  margin-top: 30px;
+  margin-top: 12px;
+  margin-bottom: -8px;
+}
+
+.signin-margin {
+  margin-top: 12px;
   margin-bottom: 15px;
 }
 
@@ -137,6 +146,8 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+
 
 footer a {
   text-decoration:none;

@@ -9,10 +9,12 @@ class UsersController < ApplicationController
   end
 
   def new
+    
     if current_user
       redirect_to root_path
     else
       @user = User.new
+      render :layout => 'signin_signup'
     end
   end
 
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to cart_user_cart_path
     else
-      render :new
+      render :new, :layout => 'signin_signup'
     end
   end
 
