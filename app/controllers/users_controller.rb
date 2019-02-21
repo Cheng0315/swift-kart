@@ -46,14 +46,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    if current_user
-      show_user_info
-    else
-      redirect_to root_path
-    end
-  end
-
 
 
   private

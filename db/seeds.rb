@@ -65,7 +65,7 @@ jennys_items = [['Fender White Electric Guitar', 599.99, 'Great sound, like new.
   ['Student Desk and Chair', 69.99, 'Great Desk and comfortable chair, like new.', true, 16, 2, "app/assets/images/items_images/desk_chair.png", "desk_chair.png"],
   ['Dog Chow', 19.99, 'Healthy and nutritious foods for your dogs.', true, 17, 1, "app/assets/images/items_images/dog_chow.png", "dog_chow.png"],
   ['Schutt Football Helmet', 49.99, 'Great helmet, like new', true, 18, 2, "app/assets/images/items_images/football_helmet.png", "football_helmet.png"],
-  ['Garage and Backyard Tools', 9.99, 'Cleared out the garage, came across these tools. Hopefully someone will put these to good use.', false, 19, 2, "app/assets/images/items_images/tools_1.png", "tools_1.png"],
+  ['Garage and Backyard Tools', 9.99, 'Cleared out the garage and came across these tools. Hopefully someone will put these to good uses.', false, 19, 2, "app/assets/images/items_images/tools_1.png", "tools_1.png"],
   ['Game', 345, 'Game', true, 20, 1, "app/assets/images/items_images/staple.png", "staple.png"]]
 
 jennys_items.each do |name, price, description, in_stock, category_id, condition, image, filename|
