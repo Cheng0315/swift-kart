@@ -1,7 +1,20 @@
-<section class="container">
+<div class="container">
   <div class="row" id="show-image-info">
     <div class="col-md-5 mt-auto">
-      <%= item_image(@item.id) %>
+      <a data-target="#modal_img" data-toggle="modal" href="#">
+				<div class="ba-0 tp-s">
+          <%= item_image(@item.id) %>
+        </div>	
+      </a>
+      <div aria-hidden="true" class="modal fade " id="modal_img" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body mb-0 p-0">
+              <%= item_image(@item.id) %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-7 ">
       <h5><%= @item.name %></h5>
@@ -19,4 +32,4 @@
     </div>
   </div>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
-</section>
+</div>

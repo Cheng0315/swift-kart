@@ -4,50 +4,48 @@
   <% end %>
   <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
     <% if !@cart.empty? %>
-    <div class="container">
-      <div class="row">
-      <div class="col-sm-12 col-md-9 col-lg-9">
-      <% @cart.each_with_index do |item, idx| %>
-        <div class="row border " style="margin-top: 15px;">
-          <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
-            <%=link_to small_image(item.id), item_path(item) %>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-9 col-lg-9">
+            <% @cart.each_with_index do |item, idx| %>
+              <div class="row border " style="margin-top: 15px;">
+                <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
+                  <%=link_to small_image(item.id), item_path(item) %>
+                </div>
+                <div class="col-sm-12 col-md-11 col-lg-11 cart-items-padding top-bottom-padding">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                      <div><%= item['name']%></div>
+                      <div>Price: <%= number_to_currency(item['price'])%></div>
+                      <div><%= item['description']%> </div>
+                      <div><%= link_to 'Remove item', :controller => 'carts', :action => 'delete_item', :id => item['id']%></div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-2">Quantity: <%= select_tag "quantity[]", 
+                      "<option value='1'>1</option>
+                      <option value='2'>2</option>
+                      <option value='3'>3</option>
+                      <option value='4'>4</option>
+                      <option value='5'>5</option>
+                      <option value='6'>6</option>
+                      <option value='7'>7</option>
+                      <option value='8'>8</option>
+                      <option value='9'>9</option>
+                      <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%end%>
           </div>
-          <div class="col-sm-12 col-md-11 col-lg-11 cart-items-padding top-bottom-padding">
-            <div class="row">
-              <div class="col-sm-12 col-md-9 col-lg-10">
-              <div><%= item['name']%></div>
-              <div>Price: <%= number_to_currency(item['price'])%></div>
-              <div><%= item['description']%> </div>
-              <div><%= link_to 'Remove item', :controller => 'carts', :action => 'delete_item', :id => item['id']%></div>
-              </div>
-              <div class="col-sm-12 col-md-3 col-lg-2">Quantity: <%= select_tag "quantity[]", 
-                "<option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>".html_safe, id: id_of_select_tag(idx), onchange: on_change_funct(idx, item['price'], @cart)%>
-              </div>
-              </div>
-            </div>
+          <div class="col-sm-12 col-md-3 col-lg-3 ">
+            <div style="margin-top: 10px;"><strong>Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
+            <%= submit_tag "Checkout", class:"btn btn-sm btn-primary btn-block" %>
+          </div>
         </div>
-      <%end%>
-      </div>
-      <div class="col-sm-12 col-md-3 col-lg-3 ">
-      <div style="margin-top: 10px;"><strong>Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
-      <%= submit_tag "Checkout", class:"btn btn-sm btn-primary btn-block" %>
-      </div>
-      </div>
       </div>
     <% else %>
       Your cart is empty
-    <% end %>
-    
-    
+    <% end %> 
   <% end %>
   <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
