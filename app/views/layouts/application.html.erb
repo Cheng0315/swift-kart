@@ -18,10 +18,14 @@
     <!-- CSS -->
     <%= stylesheet_link_tag "application", media: 'all' %>
 
+    <!-- cdnjs normalizer and modernizr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js">
+
   </head>
 
   <body>
-
+    <!-- First navbar - Brand and search form -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
         <a class="navbar-brand" href="/"><h3><span class="inh">Swift-</span><span class="nnn"><i class="fas fa-shopping-cart"></i></h3></span></a>
@@ -29,7 +33,7 @@
           <span class="navbar-toggler-icon"></span>
         </button> 
 
-        <div>
+        <div class="search-form">
           <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0 mx-2 my-auto d-inline w-100" do%>
             <%= text_field_tag :search, params[:search], class: "form-control ml-lg-1", placeholder:"Search" %>
             <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
@@ -38,7 +42,7 @@
         </div>
       </div>
     </nav>
-  
+    <!-- Second navbar - links -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
       <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
