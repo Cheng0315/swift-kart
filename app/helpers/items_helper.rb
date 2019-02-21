@@ -1,10 +1,12 @@
 module ItemsHelper
 
+  #find quantity if items in cart
   def item_quantity(item, cart)
     @cart_item = CartItem.find_by(cart_id: cart.id, item_id: item.id)
     @cart_item.quantity
   end
 
+  #find status of an item
   def item_status(item, cart)
     @cart_item = CartItem.find_by(cart_id: cart.id, item_id: item.id)
 
@@ -15,6 +17,7 @@ module ItemsHelper
     end
   end
 
+  #image helper method
   def item_image(item_id)
     @item = Item.find(item_id)
 
@@ -25,6 +28,7 @@ module ItemsHelper
     end
   end
 
+  #small image helper method
   def small_image(item_id)
     @item = Item.find(item_id)
 
@@ -56,10 +60,12 @@ module ItemsHelper
     @user.first_name + " " + @user.last_name
   end
 
+  #check if the user's carts are empty
   def my_carts_are_empty(carts)
     carts.count == 1 && !carts[0].checkout
   end
 
+  #add check mark to 'add to cart' button
   def add_to_cart_w_check_mark(item_id)
     if current_user
       @item_arr = current_cart.items.select {|item| item.id == item_id}
@@ -70,6 +76,7 @@ module ItemsHelper
     end
   end
 
+  #Add check mark if item is already in the user's cart
   def add_check_mark(item_arr)
     if item_arr.empty?
       "Add to cart"

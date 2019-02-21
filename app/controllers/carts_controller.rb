@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+  #display all items in the cart
   def display_cart
     if session[:cart_path]
       session.delete :cart_path
@@ -12,6 +12,7 @@ class CartsController < ApplicationController
     end
   end
 
+  #delete an item in the cart
   def delete_item
     if current_user
       @item = Item.find(params[:id].to_i)
@@ -23,6 +24,7 @@ class CartsController < ApplicationController
     end
   end
 
+  #find or create a new cart for the user
   def find_or_create_cart
     if current_user
       find_or_create_new_cart_for_user
@@ -32,6 +34,7 @@ class CartsController < ApplicationController
     end
   end 
 
+  #add items in guest's cart to user's cart
   def add_guest_cart
     if !guest_cart.empty?
       add_guest_items_to_user_cart
@@ -42,6 +45,7 @@ class CartsController < ApplicationController
     end
   end
 
+  #checkout and update user's cart
   def checkout
     if current_cart && current_user
       update_quantity_of_item_in_cart

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped
   
-
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
   end
@@ -24,6 +23,7 @@ class ApplicationController < ActionController::Base
   
   private
 
+  #Helper methods related to cart
   def find_or_create_new_cart_for_user
     if current_user.carts.empty? || current_user.carts.last.checkout
       create_new_cart_for_user
@@ -59,6 +59,43 @@ class ApplicationController < ActionController::Base
     guest_cart.delete_if {|id| id == item_id}
   end
 
+  #Helper methods related to displaying messages
+  def display_item_exist_in_cart_msg
+    "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section on checkout.</span>
+    </div>".html_safe
+  end
+
+  def add_item_to_cart(cart, item, params_path)
+    if current_user
+      @cart_item = CartItem.create()
+      cart.cart_items << @cart_item
+      item.cart_items << @cart_item
+      flash[:notice] = display_add_to_cart_msg
+      redirect_to redirect_path(params_path)
+    else
+      cart << item.id
+      flash[:notice] = display_add_to_cart_msg
+      redirect_to redirect_path(params_path)
+    end
+  end
+
+  def display_add_to_cart_msg
+    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Successfully added item to cart.</span>
+    </div>".html_safe
+  end
+
+  def success_checkout_message
+    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!</span>
+    </div>".html_safe
+  end
+
+  #Helper methods related to items
   def search_items(search_term, category)
     if category[:id].blank?
       @items = Item.search(search_term)
@@ -97,41 +134,6 @@ class ApplicationController < ActionController::Base
     else
       cart.items.any? {|cart_item| cart_item['id'] == item.id}
     end
-  end
-
-  def display_item_exist_in_cart_msg
-    "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
-      <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section on checkout.</span>
-    </div>".html_safe
-  end
-
-  def add_item_to_cart(cart, item, params_path)
-    if current_user
-      @cart_item = CartItem.create()
-      cart.cart_items << @cart_item
-      item.cart_items << @cart_item
-      flash[:notice] = display_add_to_cart_msg
-      redirect_to redirect_path(params_path)
-    else
-      cart << item.id
-      flash[:notice] = display_add_to_cart_msg
-      redirect_to redirect_path(params_path)
-    end
-  end
-
-  def display_add_to_cart_msg
-    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
-      <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Successfully added item to cart.</span>
-    </div>".html_safe
-  end
-
-  def success_checkout_message
-    "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
-      <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!</span>
-    </div>".html_safe
   end
 
   def find_all_items_in_guest_cart
@@ -197,6 +199,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #Helper methods related to users
   def update_user_info
     @user = current_user
     if @user.update(users_params)

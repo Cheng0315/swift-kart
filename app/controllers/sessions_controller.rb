@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController 
   
+  #signin action
   def new
     if current_user
       redirect_to root_path
@@ -7,6 +8,7 @@ class SessionsController < ApplicationController
     render :layout => 'signin_signup'
   end
 
+  #create session for user
   def create
     if params[:email] 
       signin_with_signin_form
@@ -15,6 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #delete user's session
   def logout
     session.delete :user_id
     session.delete :cart_id

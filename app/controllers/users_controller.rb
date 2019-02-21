@@ -1,5 +1,6 @@
 class UsersController < ApplicationController 
 
+  #home page, find current user, set today's deals, trendings etc
   def index
     @user = current_user
     @todays_deal = todays_deal
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
     @listing_prices = [1399.99, 699.99, 79.99]
   end
 
+  #create new user
   def new
     
     if current_user
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #save user to the database
   def create
     @user = User.new(users_params)
   
@@ -30,6 +33,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #edit user info
   def edit
     if current_user && params[:id].to_i == current_user.id
       @user = current_user
@@ -38,6 +42,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #update user info to the database
   def update
     if current_user
       update_user_info

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController 
 
+  #take user's input from the search form and find items that has a name that include the user's input
   def index
     if params[:search] && params[:category_id]
       category = Category.find(params[:category_id])
@@ -11,6 +12,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #find all items created by the user
   def my_items
     if current_user && current_user.seller
       @items = current_user.items
@@ -21,6 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #create new item
   def new
     if current_user
       if current_user.seller
@@ -33,6 +36,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  #save item to the database
+  def create
+    if current_user && current_user.seller
+      create_item
+    else
+      redirect_to root_path
+    end
+  end
+
+  #add item to cart 
   def add_to_cart
     @item = Item.find(params[:id].to_i)
 
@@ -43,14 +56,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def create
-    if current_user && current_user.seller
-      create_item
-    else
-      redirect_to root_path
-    end
-  end
-
+  #find item and render item show page
   def show
     @item = Item.find_by(id: params[:id])
     @latest_products = Item.last(3).reverse
@@ -66,6 +72,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #find items ordered by the user
   def my_orders
     if current_user
       @carts = current_user.carts
@@ -74,6 +81,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #find items ordered by buyer
   def buyer_orders 
     if current_user && current_user.seller
       @items_info = find_buyers_orders.sort_by { |k| item_is_shipped(k[3],k[0].id) ? 1 : 0 }
@@ -82,6 +90,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #update status of items to 'shipped'
   def ship_items
     if current_user && current_user.seller
       @cart_item = CartItem.find_by(cart_id: params[:cart_id], item_id: params[:item_id])
@@ -92,6 +101,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #find and edit item
   def edit 
     @item = Item.find_by(id: params[:id])
   
@@ -102,6 +112,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #update item in database
   def update
     
     @item = Item.find(params[:id])
@@ -113,6 +124,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #delete item in database
   def destroy
     @item = Item.find(params[:id])
 
