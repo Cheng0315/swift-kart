@@ -14,6 +14,7 @@
  *= require_self
  */
 
+ /*** Carousel ***/
 .carousel {
   width: 100%;
   padding-top: 25px;
@@ -40,6 +41,16 @@
   justify-content: space-between;
 }
 
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+ }
+ 
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+
+/*** Navbar ***/
 .index-content a, .btn a {
   text-decoration:none
 }
@@ -52,6 +63,27 @@
   color: #007bff;
 }
 
+.navbar-brand h3 {
+  display: inline-block;
+  margin-top: -7px;
+  margin-bottom: -7px;
+  color: #007bff;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
+
+nav .navbar-nav li a:hover{
+  color: rgb(173, 167, 167) !important;
+}
+
+nav .navbar-nav li .dropdown-menu a{
+  color: black !important;
+}
+
+
+/*** Signin form ***/
 .sign-up-margin {
   margin-top: 12px;
   margin-bottom: -8px;
@@ -66,6 +98,8 @@
   padding-top: -5px;
 }
 
+
+/*** Item, images and info ***/
 #show-image-info {
   margin-top: 45px;
 }
@@ -115,7 +149,6 @@
   display: inline-block;
 }
 
-
 .out-of-stock {
   color: #b42f0e;
   font-size: 17px;
@@ -144,13 +177,6 @@
   color: #ffb800;
 }
 
-.navbar-brand h3 {
-  display: inline-block;
-  margin-top: -7px;
-  margin-bottom: -7px;
-  color: #007bff;
-}
-
 .top-bottom-padding {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -165,18 +191,8 @@
   text-decoration: line-through;
 }
 
-nav .navbar-nav li a{
-  color: white !important;
-}
 
-nav .navbar-nav li a:hover{
-  color: rgb(173, 167, 167) !important;
-}
-
-nav .navbar-nav li .dropdown-menu a{
-  color: black !important;
-}
-
+/*** Footer ***/
 footer a {
   text-decoration:none;
   color: white;
@@ -196,14 +212,8 @@ footer {
   padding-bottom: 50px;
 }
 
-.carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
- }
- 
- .carousel-control-next-icon {
-   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
- }
 
+/*** Media ***/
 @media (min-width: 576px) and (max-width: 767px) {
   .slide-box image_tag {
     -ms-flex: 0 0 50%;
