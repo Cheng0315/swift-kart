@@ -100,7 +100,7 @@ class ApplicationController < ActionController::Base
     if category[:id].blank?
       @items = Item.search(search_term)
     else
-      @items = Item.search_with_category(search_term, category[:id].to_i)
+      @items = Item.search_items(search_term, category[:id].to_i)
     end
   end
 

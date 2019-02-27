@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if current_user
       redirect_to root_path
     end
-    render :layout => 'signin_signup'
+    render :layout => 'signin_signup' and return
   end
 
   #create session for user

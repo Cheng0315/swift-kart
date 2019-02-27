@@ -26,8 +26,13 @@ class ItemsController < ApplicationController
   #create new item
   def new
     if current_user
-      if current_user.seller
-        @item = Item.new
+      if params[:user_id] && params[:user_id].to_i == current_user.id
+        @user = User.find(params[:user_id].to_i)
+        if @user.seller
+          @item = Item.new
+        else
+          redirect_to root_path
+        end
       else
         redirect_to root_path
       end
