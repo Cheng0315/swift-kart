@@ -9,9 +9,9 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true
 
-  def self.search(search_term)
-    where("name LIKE ?", "%#{search_term}%") 
-  end
+  
+  scope :search, -> (search_term) {where("name LIKE ?", "%#{search_term}%")}
+  
 
   def self.search_with_category(search_term, category_id)
     self.all.select {|item| item.name.include?(search_term) && item.category_id == category_id}
