@@ -65,14 +65,13 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @latest_products = Item.last(3).reverse
-    @reviews = @item.reviews
     
+
     if !@item.nil?
+      @reviews = @item.reviews
+      
       if params[:user_id] && params[:user_id].to_i != current_user.id
         redirect_to root_path
-      else
-        @item
-        @latest_products
       end
     else
       redirect_to root_path

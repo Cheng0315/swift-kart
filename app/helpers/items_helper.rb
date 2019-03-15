@@ -85,5 +85,13 @@ module ItemsHelper
     end
   end
 
+  def current_user_bought_the_item(item)
+    current_user.carts.each do |cart|
+      return true if cart.items.include?(item)
+    end
+
+    false
+  end
+
 
 end

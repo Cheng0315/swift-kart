@@ -38,6 +38,9 @@
       <%= review.created_at.strftime("%B %d, %Y") %><br>
       <%= review.comment %><br>
     <% end %>
+    <% if current_user && current_user_bought_the_item(@item) %>
+      <%= link_to "Write a review", new_item_review_path(@item) %> 
+    <% end %>
   <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
