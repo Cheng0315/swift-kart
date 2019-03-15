@@ -38,7 +38,7 @@
       <%= review.created_at.strftime("%B %d, %Y") %><br>
       <%= review.comment %><br>
     <% end %>
-    <% if current_user && current_user_bought_the_item(@item) %>
+    <% if current_user && current_user_bought_the_item(@item.id) %>
       <%= link_to "Write a review", new_item_review_path(@item) %> 
     <% end %>
   <% end %>

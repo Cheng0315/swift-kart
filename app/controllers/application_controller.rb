@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item
   
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
@@ -230,6 +230,15 @@ class ApplicationController < ActionController::Base
     end
     session[:user_id] = @user.id
     redirect_to cart_user_cart_path
+  end
+
+  def current_user_bought_the_item(item_id)
+    @item = Item.find(item_id)
+    current_user.carts.each do |cart|
+      return true if cart.items.include?(@item)
+    end
+
+    false
   end
 
   def todays_deal
