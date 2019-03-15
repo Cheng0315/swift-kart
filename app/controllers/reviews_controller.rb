@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController 
-  before_action :set_item, only: [:new, :create]
 
   def new
-    if current_user
+    if current_user && params[:id]
+      @item = Item.find(params[:id])
       @review = Review.new
     else
       redirect_to root_path
@@ -32,10 +32,6 @@ class ReviewsController < ApplicationController
 
 
   private
-
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
 
   def reviews_params
     params.require(:review).permit(:user_id, :item_id, :rating, :comment)

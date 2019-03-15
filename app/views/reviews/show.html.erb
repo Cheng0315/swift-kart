@@ -1,3 +1,4 @@
 <%= @review.user.first_name %> <%= @review.user.last_name %><br>
 <%= @review.rating %><br>
+<%= @review.created_at.strftime("%B %d, %Y") %><br>
 <%= @review.comment %><br>
