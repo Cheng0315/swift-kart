@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     @item.user.id != current_user.id
   end
 
-
+  
   
   private
 
