@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 2019_03_15_101227) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
     t.integer "user_id"
     t.integer "item_id"
     t.datetime "created_at", null: false
