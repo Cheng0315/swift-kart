@@ -88,6 +88,13 @@ class ApplicationController < ActionController::Base
     </div>".html_safe
   end
 
+  def display_review_msg
+    "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Write a review is available to only users who have bought the item</span>
+    </div>".html_safe
+  end
+
   def success_checkout_message
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>

@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
     if current_user && params[:item_id] && current_user_bought_the_item(params[:item_id])
       @review = Review.new
     else
+      flash[:notice] = display_review_msg
       redirect_to root_path
     end
   end

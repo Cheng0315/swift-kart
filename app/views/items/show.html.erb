@@ -21,7 +21,7 @@
       <hr>
       <%= item_condition(@item)%>
       <p>Price: <strong class="price" ><%= number_to_currency(@item.price) %></strong></p>
-      <p class="stars-color"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>&nbsp&nbsp<a href="#reviews">Customer reviews</a></p>
+      <p class="stars-color"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>&nbsp&nbsp<%= reviews_link(@item, @reviews).html_safe %>
       <p><%= @item.description %></p>
       Availability: <%= item_availability(@item) %>
       <p>Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
@@ -32,15 +32,16 @@
     </div>
   </div>
   <% if !@reviews.blank? %>
+    <h3 id="reviews">Reviews</h3>
     <% @reviews.each do |review|%>
       <%= review.user.first_name %> <%= review.user.last_name %><br>
       <%= review.rating %><br>
       <%= review.created_at.strftime("%B %d, %Y") %><br>
       <%= review.comment %><br>
     <% end %>
-    <% if current_user && current_user_bought_the_item(@item.id) %>
-      <%= link_to "Write a review", new_item_review_path(@item) %> 
-    <% end %>
+  <% end %>
+  <% if current_user && current_user_bought_the_item(@item.id) %>
+    <%= button_to "Write a review", new_item_review_path(@item), method: "get" %> 
   <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
