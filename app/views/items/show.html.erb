@@ -21,7 +21,7 @@
       <hr>
       <%= item_condition(@item)%>
       <p>Price: <strong class="price" ><%= number_to_currency(@item.price) %></strong></p>
-      <p class="stars-color"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+      <p class="stars-color"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>&nbsp&nbsp<a href="#reviews">Customer reviews</a></p>
       <p><%= @item.description %></p>
       Availability: <%= item_availability(@item) %>
       <p>Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
@@ -31,5 +31,13 @@
       <% end %>
     </div>
   </div>
+  <% if !@reviews.blank? %>
+    <% @reviews.each do |review|%>
+      <%= review.user.first_name %> <%= review.user.last_name %><br>
+      <%= review.rating %><br>
+      <%= review.created_at.strftime("%B %d, %Y") %><br>
+      <%= review.comment %><br>
+    <% end %>
+  <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController 
 
   def new
-    if current_user && params[:id]
-      @item = Item.find(params[:id])
+    if current_user && params[:item_id]
+      @item = Item.find(params[:item_id])
       @review = Review.new
     else
       redirect_to root_path
@@ -12,11 +12,12 @@ class ReviewsController < ApplicationController
   def create 
     if current_user
       @review = Review.new(reviews_params)
+      @item = Item.find(params[:item_id])
       @review.user_id = current_user.id
-      @review.item_id = params[:item_id]
+      @review.item_id = @item.id
 
       if @review.save
-        redirect_to review_path(@review)
+        redirect_to item_path(@item)
       else
         render :new
       end
