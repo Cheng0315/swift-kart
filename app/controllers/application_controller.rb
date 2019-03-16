@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating
   
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
@@ -246,6 +246,41 @@ class ApplicationController < ActionController::Base
     end
 
     false
+  end
+
+  def item_overall_rating(item)
+    avg_rating = item.reviews.average(:rating).to_f
+
+    return '' if avg_rating == 0
+
+    display_stars_rating(avg_rating)
+  end
+
+  def display_stars_rating(rating)
+    stars_str = ""
+
+    round_down_avg = rating.floor
+    mid = rating - round_down_avg
+    hollow_star_rating = 5 - round_down_avg - 1 
+
+    round_down_avg.times do 
+      stars_str += "<i class='fa fa-star fa-fw stars-read-only'></i>"
+    end
+
+    
+    if mid >= 0 && mid < 0.25 && rating != 5
+      stars_str += "<i class='far fa-star fa-fw stars-read-only'></i>"
+    elsif mid >= 0.25 && mid < 0.75
+      stars_str += "<i class='fas fa-star-half-alt stars-read-only'></i>"
+    elsif mid >= 0.75 && mid <= 1
+      stars_str += "<i class='fa fa-star fa-fw stars-read-only'></i>"
+    end
+
+    hollow_star_rating.times do 
+      stars_str += "<i class='far fa-star fa-fw stars-read-only'></i>"
+    end
+
+    stars_str + '&nbsp&nbsp'
   end
 
   def todays_deal

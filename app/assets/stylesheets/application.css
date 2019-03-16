@@ -115,13 +115,8 @@ nav .navbar-nav li .dropdown-menu a{
   -webkit-text-stroke-color: orange;
 }
 
-
-div.users-rating i.fa, p.item-overall-rating i.fa {
-  color:orange;
-}
-
-div.users-rating i.far, p.item-overall-rating i.far, p.item-overall-rating i.fa-star-half-alt {
-  color:orange;
+.stars-read-only {
+  color: orange;
 }
 
 
