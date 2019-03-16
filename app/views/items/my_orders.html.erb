@@ -13,9 +13,10 @@
             <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
               <%=link_to small_image(item.id), item_path(item)%>
             </div> 
-            <div class="col-sm-12 col-md-11 col-lg-11 li-items-padding top-bottom-padding">
+            <div class="col-sm-12 col-md-11 col-lg-11 li-items-padding">
               <div><%= link_to item.name, item_path(item) %></div>
               <div>Price: <%= number_to_currency(item.price) %></div>
+              <div> <%= item_overall_rating(item).html_safe %> </div>
               <div>Description: <%= item.description %></div>
               <div>Quantity: <%= item_quantity(item, cart) %></div>
               <div>Status: <%= item_status(item, cart)%></div>

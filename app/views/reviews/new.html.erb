@@ -1,3 +1,4 @@
+<%= render partial: 'users/error_msg', locals: {user_or_item: @review}%>
 <%= form_for ([@item, @review]) do |f| %>
   <div class='rating-stars' data-rating="">
     <h3>Overall Rating</h3>

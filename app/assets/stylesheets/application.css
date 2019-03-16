@@ -215,7 +215,11 @@ nav .navbar-nav li .dropdown-menu a{
 }
 
 .top-bottom-padding {
-  padding-top: 10px;
+  padding-top: 13px;
+  padding-bottom: 10px;
+}
+.li-items-padding {
+  padding-top: 7px;
   padding-bottom: 10px;
 }
 
