@@ -21,7 +21,7 @@
       <hr>
       <%= item_condition(@item)%>
       <p>Price: <strong class="price" ><%= number_to_currency(@item.price) %></strong></p>
-      <p class="stars-color"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>&nbsp&nbsp<%= reviews_link(@item, @reviews).html_safe %>
+      <p class="item-overall-rating"><%= item_overall_rating(@item).html_safe %><%= reviews_link(@item, @reviews).html_safe %></p>
       <p><%= @item.description %></p>
       Availability: <%= item_availability(@item) %>
       <p>Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
@@ -35,7 +35,7 @@
     <h3 id="reviews">Reviews</h3>
     <% @reviews.each do |review|%>
       <div><%= review.user.first_name %> <%= review.user.last_name %></div>
-      <div class="users-rating"><%= users_rating(review.rating).html_safe %></div>
+      <div class="users-rating"><%= display_stars_rating(review.rating).html_safe %></div>
       <div><%= review.created_at.strftime("%B %d, %Y") %></div>
       <div><%= review.comment %></div>
     <% end %>

@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
   def display_review_msg
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Write a review is available to only users who have bought the item</span>
+      <span class='text-center'>Write a review is only available to users who have bought the item</span>
     </div>".html_safe
   end
 

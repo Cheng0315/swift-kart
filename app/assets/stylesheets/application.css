@@ -116,13 +116,13 @@ nav .navbar-nav li .dropdown-menu a{
 }
 
 
-.users-rating > i.fa {
+div.users-rating i.fa, p.item-overall-rating i.fa {
   color:#FFCC36;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: orange;
 }
 
-.users-rating > i.far {
+div.users-rating i.far, p.item-overall-rating i.far, p.item-overall-rating i.fa-star-half-alt {
   color:orange;
 }
 

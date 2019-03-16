@@ -89,24 +89,46 @@ module ItemsHelper
     if reviews.blank?
       "<a href='/items/#{item.id}/reviews/new'>Be the first to review this item</a>"
     else
-      "<a href='#reviews'>Customer reviews</a>"
+      "<a href='#reviews'>#{reviews.count} Customer reviews</a>"
     end
   end
 
-  def users_rating(rating)
-    stars = ""
-    hollow_stars = 5 - rating
+  def item_overall_rating(item)
+    avg_rating = item.reviews.average(:rating).to_f
 
-    rating.times do 
-      stars += "<i class='fa fa-star fa-fw'></i>"
-    end
+    return '' if avg_rating == 0
 
-    hollow_stars.times do 
-      stars += "<i class='far fa-star fa-fw'></i>"
-    end
-
-    stars
+    display_stars_rating(avg_rating)
   end
+
+  def display_stars_rating(rating)
+    stars_str = ""
+
+    round_down_avg = rating.floor
+    mid = rating - round_down_avg
+    hollow_star_rating = 5 - round_down_avg - 1 
+
+    round_down_avg.times do 
+      stars_str += "<i class='fa fa-star fa-fw'></i>"
+    end
+
+    
+    if mid >= 0 && mid < 0.25 && rating != 5
+      stars_str += "<i class='far fa-star fa-fw'></i>"
+    elsif mid >= 0.25 && mid < 0.75
+      stars_str += "<i class='fas fa-star-half-alt'></i>"
+    elsif mid >= 0.75 && mid <= 1
+      stars_str += "<i class='fa fa-star fa-fw'></i>"
+    end
+
+    hollow_star_rating.times do 
+      stars_str += "<i class='far fa-star fa-fw'></i>"
+    end
+
+    stars_str + '&nbsp&nbsp'
+  end
+
+  
 
 
 end
