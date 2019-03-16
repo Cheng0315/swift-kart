@@ -49,7 +49,7 @@ end
 amandas_items = [['iPhone X', 999.99, "Apple's latest iphone - iPhone X.", true, 8, 1, "app/assets/images/items_images/iphone_3.png", "iphone_3.png"],
   ['Black Sleeveless Dress', 79.99, 'Light weight, irressistible dress.', true, 9, 1, "app/assets/images/items_images/black_dress.png", "black_dress.png"],
   ['27-inch Silver iMac w/ Magic keyboard.', 1399.99, "3.5GHz quad-core 7th-generation Intel Core i5 processor, Retina 5K 5120-by-2880 P3 display", true, 10, 1, "app/assets/images/items_images/imac.png", "imac.png"],
-  ['Cocooil', 9.99, 'Oil for the body.', true, 11, 1, "app/assets/images/items_images/coco_oil.png", "coco_oil.png"],
+  ['CocoOil', 9.99, 'Oil for the body.', true, 11, 1, "app/assets/images/items_images/coco_oil.png", "coco_oil.png"],
   ['Gardening Tools', 24.99, 'Great tools for gardening.', true, 12, 2, "app/assets/images/items_images/gardening_tools.png", "gardening_tools.png"],
   ['Silver-colored Earrings with Gemstones', 499.99, 'Gorgeous, irresistable earrings.', true, 13, 1, "app/assets/images/items_images/earrings_1.png", "earrings_1.png"],
   ['Harry Potter and The Chamber of Secrets', 5.99, '2002 Fantasy/Mystery Movie', true, 14, 2, "app/assets/images/items_images/harry_potter.png", "harry_potter.png"]]
@@ -86,3 +86,8 @@ josephs_items.each do |name, price, description, in_stock, category_id, conditio
   joseph.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
+reviews = [[1, 8, 3, 'Great product but way overprice!'], [1, 17, 4, 'My dog loves it!!'], [1, 21, 5, 'Bought this dress for my wife. She loves it!'], [2, 3, 5, 'Love this painting!!!'], [2, 15, 4, 'Love it!'], [2, 25, 4, 'Great Mitt!!!'], [3, 4, 5, 'My kids love these toys!'], [3, 11, 4, 'One of the better oil out there for the body.'], [3, 6, 5, 'Love this camra!!!'], [4, 10, 4, 'Great product'], [4, 16, 4, 'A perfect desk for my college daughter.'], [4, 18, 4, 'Bought this for my boy and he loves it'], [4, 6, 4, 'Great camra!']]
+
+reviews.each do |review|
+  Review.create(user_id: review[0], item_id: review[1], rating: review[2], comment: review[3])
+end
