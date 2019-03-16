@@ -9,13 +9,12 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def create 
+  def create
     if current_user
       @review = Review.new(reviews_params)
       @item = Item.find(params[:item_id])
       @review.user_id = current_user.id
       @review.item_id = @item.id
-
       if @review.save
         redirect_to item_path(@item)
       else

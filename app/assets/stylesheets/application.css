@@ -104,11 +104,15 @@ nav .navbar-nav li .dropdown-menu a{
 /* Hover state of the stars */
 .rating-stars ul > li.star.hover > i.fa {
   color:#FFCC36;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
 }
 
 /* Selected state of the stars */
 .rating-stars ul > li.star.selected > i.fa {
   color:#FFCC36;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
 }
 
 
