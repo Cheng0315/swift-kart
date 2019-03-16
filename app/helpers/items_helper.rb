@@ -87,7 +87,7 @@ module ItemsHelper
 
   def reviews_link(item, reviews)
     if reviews.blank?
-      "<a href='/items/#{item.id}/reviews/new'>Be the first to review this item</a>"
+      "<a href='/items/#{item.id}/reviews/new' onClick='window.location.reload()'>Be the first to review this item</a>"
     else
       "<a href='#reviews'>#{reviews.count} Customer reviews</a>"
     end

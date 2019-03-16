@@ -117,9 +117,7 @@ nav .navbar-nav li .dropdown-menu a{
 
 
 div.users-rating i.fa, p.item-overall-rating i.fa {
-  color:#FFCC36;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: orange;
+  color:orange;
 }
 
 div.users-rating i.far, p.item-overall-rating i.far, p.item-overall-rating i.fa-star-half-alt {
