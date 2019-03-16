@@ -21,7 +21,8 @@
               <div>Quantity: <%= item_quantity(item, cart) %></div>
               <div>Status: <%= item_status(item, cart)%></div>
               <%= button_to "Buy again", items_add_to_cart_path(id: item.id, :redirect_to => my_orders_path), method: "post", class:"btn btn-sm shorter-btn btn-primary"%>
-            </div>  
+              <%= button_to "Write a review", new_item_review_path(@item), method: "get", class:"btn btn-sm shorter-btn btn-primary" %> 
+              </div>  
           </div> 
         <%end%> 
       <% end %> 

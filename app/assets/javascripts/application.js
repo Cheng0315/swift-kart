@@ -74,5 +74,12 @@ $(document).ready(function(){
     }
 
     $('#review_rating').attr('value', onStar)
-  }); 
+  });
+  
+  $(".add-to-cart-btn").on("click", function(event) {
+    event.preventDefault();
+    alert('yoo')
+
+    console.log(this)
+  })
 });
