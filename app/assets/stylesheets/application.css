@@ -116,6 +116,17 @@ nav .navbar-nav li .dropdown-menu a{
 }
 
 
+.users-rating > i.fa {
+  color:#FFCC36;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+}
+
+.users-rating > i.far {
+  color:orange;
+}
+
+
 /*** Signin form ***/
 .sign-up-margin {
   margin-top: 12px;

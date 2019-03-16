@@ -34,10 +34,10 @@
   <% if !@reviews.blank? %>
     <h3 id="reviews">Reviews</h3>
     <% @reviews.each do |review|%>
-      <%= review.user.first_name %> <%= review.user.last_name %><br>
-      <%= review.rating %><br>
-      <%= review.created_at.strftime("%B %d, %Y") %><br>
-      <%= review.comment %><br>
+      <div><%= review.user.first_name %> <%= review.user.last_name %></div>
+      <div class="users-rating"><%= users_rating(review.rating).html_safe %></div>
+      <div><%= review.created_at.strftime("%B %d, %Y") %></div>
+      <div><%= review.comment %></div>
     <% end %>
   <% end %>
   <% if current_user && current_user_bought_the_item(@item.id) %>

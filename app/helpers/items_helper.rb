@@ -93,5 +93,20 @@ module ItemsHelper
     end
   end
 
+  def users_rating(rating)
+    stars = ""
+    hollow_stars = 5 - rating
+
+    rating.times do 
+      stars += "<i class='fa fa-star fa-fw'></i>"
+    end
+
+    hollow_stars.times do 
+      stars += "<i class='far fa-star fa-fw'></i>"
+    end
+
+    stars
+  end
+
 
 end

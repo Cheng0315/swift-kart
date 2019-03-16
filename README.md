@@ -9,10 +9,10 @@ To use this application, clone this repository, run bundle install, rails active
 # Contributing Bugfixes or Features
 
 For submitting something back,
-- Fork this repository
-- Create a local development branch for the bugfix
-- Commit a change, and push your local branch to your github fork
-- Send me a pull request for your changes to be included
+* Fork this repository
+* Create a local development branch for the bugfix
+* Commit a change, and push your local branch to your github fork
+* Send me a pull request for your changes to be included
 
 # License
 
