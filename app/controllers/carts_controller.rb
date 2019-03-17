@@ -12,16 +12,6 @@ class CartsController < ApplicationController
     end
   end
 
-  def items_count
-    if current_user
-      @items_count = current_cart.items.count + 1
-    else
-      @items_count = guest_cart.count + 1
-    end
-    
-    render plain: @items_count
-  end
-
   #delete an item in the cart
   def delete_item
     if current_user

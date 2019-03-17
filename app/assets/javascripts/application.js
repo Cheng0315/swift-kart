@@ -54,20 +54,14 @@ $(document).on('turbolinks:load', function(){
       type: "POST",
       url: this.action,
       data: $(this).serialize()
+    }).done(function(items_count) {
+      $('#num-of-items').text(items_count)
     })
       
     $(`form.button_to button#${id}`).html("<i class='fas fa-spinner fa-fw fa-spin'></i>&nbsp Processing");
     setTimeout( function() {$(`form.button_to button#${id}`).html("<i class='fas fa-check'>&nbsp</i> Add to cart"); },450);
-
-    $.get('/cart/items_count').done(function(items_count) {
-      
-      $('#num-of-items').text(items_count)
-      console.log(items_count);
-    });
     
- 
     event.preventDefault();
-    return false
   });
 
   $('#stars li').on('mouseover', function(){

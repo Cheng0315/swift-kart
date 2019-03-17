@@ -59,6 +59,9 @@ class ItemsController < ApplicationController
     else
       check_if_item_exists_in_cart(guest_cart, @item, params[:redirect_to])
     end
+    
+    @items_count = current_cart.items.count
+    render plain: @items_count
   end
 
   #find item and render item show page
