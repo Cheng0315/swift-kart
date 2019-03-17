@@ -42,7 +42,23 @@
     document.getElementById("quantity_price").innerHTML = "$" + total_sums.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
+
+  $("form.button_to").on('click', function(event) {
+    
+    var id = $(this).attr('data-id');
+   
+    console.log(this.method);
+    
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize()
+    })
+
+  
+    event.preventDefault();
+  });
 
   $('#stars li').on('mouseover', function(){
     var onStar = parseInt($(this).data('value'), 10); 
@@ -73,13 +89,8 @@ $(document).ready(function(){
       $(stars[i]).addClass('selected');
     }
 
-    $('#review_rating').attr('value', onStar)
+    $('#review_rating').attr('value', onStar);
   });
   
-  $(".add-to-cart-btn").on("click", function(event) {
-    event.preventDefault();
-    alert('yoo')
-
-    console.log(this)
-  })
+  
 });

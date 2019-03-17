@@ -67,20 +67,6 @@ class ApplicationController < ActionController::Base
     </div>".html_safe
   end
 
-  def add_item_to_cart(cart, item, params_path)
-    if current_user
-      @cart_item = CartItem.create()
-      cart.cart_items << @cart_item
-      item.cart_items << @cart_item
-      flash[:notice] = display_add_to_cart_msg
-      redirect_to redirect_path(params_path)
-    else
-      cart << item.id
-      flash[:notice] = display_add_to_cart_msg
-      redirect_to redirect_path(params_path)
-    end
-  end
-
   def display_add_to_cart_msg
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -91,7 +77,7 @@ class ApplicationController < ActionController::Base
   def display_review_msg
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Please buy the item before you can write a review about the item</span>
+      <span class='text-center'>Please buy the item before you can write a review</span>
     </div>".html_safe
   end
 
@@ -128,8 +114,8 @@ class ApplicationController < ActionController::Base
 
   def check_if_item_exists_in_cart(cart, item, params_path)
     if item_exists_in_cart(cart, item)
-      flash[:notice] = display_item_exist_in_cart_msg
-      redirect_to redirect_path(params_path)
+      #flash[:notice] = display_item_exist_in_cart_msg
+      #redirect_to redirect_path(params_path)
     else
       add_item_to_cart(cart, item, params_path)
     end
@@ -140,6 +126,20 @@ class ApplicationController < ActionController::Base
       cart.any? {|id| id == item.id}
     else
       cart.items.any? {|cart_item| cart_item['id'] == item.id}
+    end
+  end
+
+  def add_item_to_cart(cart, item, params_path)
+    if current_user
+      @cart_item = CartItem.create()
+      cart.cart_items << @cart_item
+      item.cart_items << @cart_item
+      #flash[:notice] = display_add_to_cart_msg
+      #redirect_to redirect_path(params_path)
+    else
+      cart << item.id
+      #flash[:notice] = display_add_to_cart_msg
+      #redirect_to redirect_path(params_path)
     end
   end
 

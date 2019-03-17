@@ -2,8 +2,8 @@
   <% if item.in_stock %>
     <div class="mt-auto">
     
-    <!-- <%= link_to add_to_cart_w_check_mark(item.id).html_safe, items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%> -->
-    <%= link_to 'add to cart', items_add_to_cart_path(id: item.id), method: "POST", class:"btn btn-sm btn-block btn-primary add-to-cart-btn"%>
+    <!-- <%= link_to items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%> -->
+    <%= button_to add_to_cart_w_check_mark(item.id).html_safe, items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-block btn-primary add-to-cart-btn", data: {id: item.id}%>
     </div>
   <% else %>
     <div class="mt-auto text-center">
