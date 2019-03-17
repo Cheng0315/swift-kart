@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/cart/checkout' => 'carts#checkout'
   get '/cart/user_cart' => 'carts#find_or_create_cart'
   get '/cart/add_guest_cart' => 'carts#add_guest_cart'
+  get '/cart/items_count' => 'carts#items_count'
 
   post '/items/add_to_cart' => 'items#add_to_cart'
   get '/my_items' => 'items#my_items'

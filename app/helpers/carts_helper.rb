@@ -27,13 +27,6 @@ module CartsHelper
     cart.sum {|item| item.price} 
   end
 
-  def count_items_in_cart
-    if current_user && !current_cart.items.empty?
-      current_cart.items.count
-    elsif !guest_cart.empty?
-      guest_cart.count
-    end
-  end
 
   
 end

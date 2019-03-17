@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating
+  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating, :count_items_in_cart
   
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
 
   def add_item_to_cart(cart, item, params_path)
     if current_user
-      @cart_item = CartItem.create()
+      @cart_item = CartItem.create(cart_id: cart.id, item_id: item.id)
       cart.cart_items << @cart_item
       item.cart_items << @cart_item
       #flash[:notice] = display_add_to_cart_msg
@@ -281,6 +281,14 @@ class ApplicationController < ActionController::Base
     end
 
     stars_str + '&nbsp&nbsp'
+  end
+
+  def count_items_in_cart
+    if current_user && !current_cart.items.empty?
+      current_cart.items.count
+    elsif !guest_cart.empty?
+      guest_cart.count
+    end
   end
 
   def todays_deal
