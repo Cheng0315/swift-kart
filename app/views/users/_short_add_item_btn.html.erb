@@ -1,7 +1,7 @@
 <% if !current_user || not_seller_item(item.id)%>
   <% if item.in_stock %>
     <div class="mt-auto">
-    <%= button_to "Add to cart", items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-primary shorter-btn"%>
+    <%= button_to "Add to cart", items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-primary shorter-btn add-to-cart-btn"%>
     </div>
   <% else %>
   <div class="mt-auto">
