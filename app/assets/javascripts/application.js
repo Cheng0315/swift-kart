@@ -44,19 +44,21 @@
 
 $(document).on('turbolinks:load', function(){
 
-  $("form.button_to").on('click', function(event) {
+  $(".add-to-cart-btn").parent().on('click', function(event) {
     
-    var id = $(this).attr('data-id');
+    var id = $(this).children('button').attr('id');
    
-    console.log(this.method);
+    console.log(id);
     
     $.ajax({
       type: "POST",
       url: this.action,
       data: $(this).serialize()
     })
-
-  
+      
+    $(`form.button_to button#${id}`).html("<i class='fas fa-spinner fa-fw fa-spin'></i>&nbsp Processing");
+    setTimeout( function() {$(`form.button_to button#${id}`).html("<i class='fas fa-check'>&nbsp</i> Add to cart"); },500);
+ 
     event.preventDefault();
   });
 

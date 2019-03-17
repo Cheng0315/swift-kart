@@ -81,7 +81,7 @@ module ItemsHelper
     if item_arr.empty?
       "Add to cart"
     else
-      "<i class='fas fa-check'></i> Add to cart".html_safe
+      "<i class='fas fa-check'>&nbsp</i> Add to cart".html_safe
     end
   end
 

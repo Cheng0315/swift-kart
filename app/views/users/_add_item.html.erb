@@ -3,8 +3,10 @@
     <div class="mt-auto">
     
     <!-- <%= link_to items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%> -->
-    <%= button_to add_to_cart_w_check_mark(item.id).html_safe, items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-block btn-primary add-to-cart-btn", data: {id: item.id}%>
-    </div>
+    <%= button_to items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-block btn-primary add-to-cart-btn", id: "item_#{item.id}" do%>
+    <%= add_to_cart_w_check_mark(item.id).html_safe %>
+    <% end %>
+      </div>
   <% else %>
     <div class="mt-auto text-center">
       <div class="out-of-stock">Out of stock</div>
