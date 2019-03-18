@@ -39,7 +39,7 @@
             <%end%>
           </div>
           <div class="col-sm-12 col-md-3 col-lg-3 ">
-            <div style="margin-top: 10px;"><strong>Subtotal: <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
+            <div style="margin-top: 10px;"><strong>Subtotal (<span id="items-total"><%=pluralize(count_items_in_cart, 'item')%></span>): <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
             <%= submit_tag "Checkout", class:"btn btn-sm btn-primary btn-block" %>
           </div>
         </div>

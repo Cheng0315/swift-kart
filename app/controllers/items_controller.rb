@@ -60,7 +60,12 @@ class ItemsController < ApplicationController
       check_if_item_exists_in_cart(guest_cart, @item, params[:redirect_to])
     end
     
-    @items_count = current_cart.items.count
+    if current_user
+      @items_count = current_cart.items.count
+    else
+      @items_count = guest_cart.count
+    end
+    
     render plain: @items_count
   end
 
