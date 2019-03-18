@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
       @review.user_id = current_user.id
       @review.item_id = @item.id
       if @review.save
-        redirect_to item_path(@item)
+        render json: @review.to_json(include: [user: {only: [:first_name, :last_name]}])
       else
         render :new
       end

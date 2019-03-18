@@ -32,6 +32,7 @@
     </div>
   </div>
   <% if !@reviews.blank? %>
+    <div class="list-reviews">
     <h3 id="reviews">Reviews</h3>
     <% @reviews.each do |review|%>
       <div><i class="fas fa-user fa-lg"></i> <%= review.user.first_name %> <%= review.user.last_name %></div>
@@ -39,11 +40,35 @@
       <div><%= review.created_at.strftime("%B %d, %Y") %></div>
       <div><%= review.comment %></div>
     <% end %>
+    </div>
   <% end %>
   <% if current_user && current_user_bought_the_item(@item.id) %>
-    <!-- <%= button_to "Write a review", new_item_review_path(@item), method: "get" %> -->
-    <div id="show_page_review_form_div"></div>
-    <button type="button" id="render_review_form" data-item_id="<%=@item.id%>">Write a review</button>
-  <% end %>
+    <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
+      <div class='rating-stars' data-rating="">
+        <h6>Overall Rating</h6>
+        <ul id='stars'>
+          <li class='star' title='Poor' data-value='1'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Fair' data-value='2'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Good' data-value='3'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Excellent' data-value='4'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Amazing' data-value='5'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+        </ul>
+      </div>
+      <%= f.hidden_field :rating, :value => ""%>
+      <h6><%= f.label :comment %></h6>
+      <%= f.text_area :comment %><br>
+      <%= f.submit 'Submit Review'%><br>
+    <% end %>
+    <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

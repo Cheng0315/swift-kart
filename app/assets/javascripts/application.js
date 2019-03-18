@@ -19,7 +19,31 @@
 //= require_tree .
 
 
+Handlebars.registerHelper('times', function(n, block) {
+  var accum = '';
+  for(var i = 0; i < n; ++i)
+      accum += block.fn(i);
+  return accum;
+});
 
+Handlebars.registerHelper('dateFormat', function(date) {
+  var d= new Date(date*1000);
+  
+  return d
+});
+
+function dateFormat(date) {
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  let newD = new Date(date)
+  let d = newD.getDate();
+  let m = newD.getMonth();
+  let y = date.substring(0, 4);
+  console.log(date)
+
+  return monthNames[m] + " " + d + ', ' + y
+}
   
 
   $(document).on('turbolinks:load', function(){
@@ -70,11 +94,27 @@
 
 
   $(document).on('turbolinks:load', function(){
-    $("#render_review_form").on('click', function() {
+    
+    /*$("#render_review_form").on('click', function() {
       let token = $('meta[name="csrf-token"]').attr('content')
       let item_id = $(this).data('item_id')
-      console.log(item_id)
+      $("#render_review_form").hide()
       $("#show_page_review_form_div").html(HandlebarsTemplates['review_form']({token: token, item_id: item_id}))
+    })*/
+
+    $("#dynamic_submit_form").on('submit', function(event) {
+      
+      $.ajax({
+        type: "POST",
+        url: this.action,
+        data: $(this).serialize()
+      }).done(function(review) {
+        let user = review.user
+        review.created_at = dateFormat(review.created_at);
+        $('.list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
+       
+      })
+      event.preventDefault();
     })
   })
   
