@@ -86,7 +86,7 @@ josephs_items.each do |name, price, description, in_stock, category_id, conditio
   joseph.items.last.image.attach(io: File.open(image), filename: filename)
 end
 
-reviews = [[1, 8, 3, 'Great product but way overprice!'], [1, 17, 4, 'My dog loves it!!'], [1, 21, 5, 'Bought this dress for my wife. She loves it!'], [2, 3, 5, 'Love this painting!!!'], [2, 15, 4, 'Love it!'], [2, 25, 4, 'Great Mitt!!!'], [3, 4, 5, 'My kids love these toys!'], [3, 11, 4, 'One of the better oil out there for the body.'], [3, 6, 5, 'Love this camra!!!'], [4, 10, 4, 'Great product'], [4, 16, 4, 'A perfect desk for my college daughter.'], [4, 18, 4, 'Bought this for my boy and he loves it'], [4, 6, 4, 'Great camra!']]
+reviews = [[1, 8, 4, 'Amazing phone and great features and long lasting battery!'], [1, 17, 4, 'My dog loves it!!'], [1, 21, 5, 'Bought this dress for my wife. She loves it!'], [2, 3, 5, 'Love this painting!!!'], [2, 15, 4, 'Love it!'], [2, 25, 4, 'Great Mitt!!!'], [3, 4, 5, 'My kids love these toys!'], [3, 11, 4, 'One of the better oil out there for the body.'], [3, 6, 5, 'Love this camra!!!'], [4, 10, 4, 'Great product'], [4, 16, 4, 'A perfect desk for my college daughter.'], [4, 18, 4, 'Bought this for my boy and he loves it'], [4, 6, 4, 'Great camra!']]
 
 reviews.each do |review|
   Review.create(user_id: review[0], item_id: review[1], rating: review[2], comment: review[3])

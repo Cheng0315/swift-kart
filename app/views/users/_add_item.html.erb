@@ -1,8 +1,6 @@
 <% if !current_user || not_seller_item(item.id)%>
   <% if item.in_stock %>
     <div class="mt-auto">
-    
-    <!-- <%= link_to items_add_to_cart_path(id: item.id), method: "post", class:"btn btn-sm btn-block btn-primary"%> -->
     <%= button_to items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-block btn-primary add-to-cart-btn", id: "item_#{item.id}" do%>
     <%= add_to_cart_w_check_mark(item.id).html_safe %>
     <% end %>
