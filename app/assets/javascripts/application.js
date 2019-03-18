@@ -14,6 +14,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require handlebars
+//= require_tree ./templates
 //= require_tree .
 
 
@@ -65,6 +67,16 @@
       $("#items-total").text(pluralize(totalQuantitySums))
     })
   })
+
+
+  $(document).on('turbolinks:load', function(){
+    $("#render_review_form").on('click', function() {
+      let token = $('meta[name="csrf-token"]').attr('content')
+      let item_id = $(this).data('item_id')
+      console.log(item_id)
+      $("#show_page_review_form_div").html(HandlebarsTemplates['review_form']({token: token, item_id: item_id}))
+    })
+  })
   
   
 
@@ -89,6 +101,7 @@ $(document).on('turbolinks:load', function(){
     
     event.preventDefault();
   });
+
 
   $('#stars li').on('mouseover', function(){
     var onStar = parseInt($(this).data('value'), 10); 

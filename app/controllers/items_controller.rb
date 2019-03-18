@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
 
     if !@item.nil?
       @reviews = @item.reviews
-      
+      @new_review = Review.new
       if params[:user_id] && params[:user_id].to_i != current_user.id
         redirect_to root_path
       end

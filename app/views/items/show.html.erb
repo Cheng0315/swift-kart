@@ -34,14 +34,16 @@
   <% if !@reviews.blank? %>
     <h3 id="reviews">Reviews</h3>
     <% @reviews.each do |review|%>
-      <div><%= review.user.first_name %> <%= review.user.last_name %></div>
+      <div><i class="fas fa-user fa-lg"></i> <%= review.user.first_name %> <%= review.user.last_name %></div>
       <div class="users-rating"><%= display_stars_rating(review.rating).html_safe %></div>
       <div><%= review.created_at.strftime("%B %d, %Y") %></div>
       <div><%= review.comment %></div>
     <% end %>
   <% end %>
   <% if current_user && current_user_bought_the_item(@item.id) %>
-    <%= button_to "Write a review", new_item_review_path(@item), method: "get" %> 
+    <!-- <%= button_to "Write a review", new_item_review_path(@item), method: "get" %> -->
+    <div id="show_page_review_form_div"></div>
+    <button type="button" id="render_review_form" data-item_id="<%=@item.id%>">Write a review</button>
   <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
