@@ -26,24 +26,25 @@ Handlebars.registerHelper('times', function(n, block) {
   return accum;
 });
 
-Handlebars.registerHelper('dateFormat', function(date) {
-  var d= new Date(date*1000);
-  
-  return d
-});
-
 function dateFormat(date) {
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  let newD = new Date(date)
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let newD = new Date(date);
   let d = newD.getDate();
   let m = newD.getMonth();
   let y = date.substring(0, 4);
-  console.log(date)
 
   return monthNames[m] + " " + d + ', ' + y
 }
+
+function pluralize(quantity) {
+  if (quantity === 1) {
+    return '1 items'
+  } else {
+    return `${quantity} items`
+  }
+}
+
+
   
 
   $(document).on('turbolinks:load', function(){
@@ -60,13 +61,7 @@ function dateFormat(date) {
     
     let totalQuantity = parseInt($("#num-of-items").text());
 
-    function pluralize(quantity) {
-      if (quantity === 1) {
-        return '1 items'
-      } else {
-        return `${quantity} items`
-      }
-    }
+    
 
     $(".select-quantity").change(function() {
       let idx = parseFloat($(this).attr('data-idx'));
@@ -111,8 +106,9 @@ function dateFormat(date) {
       }).done(function(review) {
         let user = review.user
         review.created_at = dateFormat(review.created_at);
+        review.stars = 5 - review.rating;
         $('.list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
-       
+        $("#dynamic_submit_form").hide()
       })
       event.preventDefault();
     })
