@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem 'active_model_serializers'
 gem 'jquery-rails'
 gem 'thin'
 

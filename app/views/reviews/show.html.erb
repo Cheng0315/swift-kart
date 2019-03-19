@@ -1,6 +1,7 @@
 <div class="container">
   <div class="reviews_show_page">
-    <%= @review.user.first_name %> <%= @review.user.last_name %><br>
+    <h3>Customer Review</h3>
+    <%= link_to user_full_name(@review.user), user_path(@review.user) %><br>
     <%= display_stars_rating(@review.rating).html_safe%><br>
     <%= @review.created_at.strftime("%B %d, %Y") %><br>
     <%= @review.comment %><br>

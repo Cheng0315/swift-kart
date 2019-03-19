@@ -159,6 +159,8 @@ select {
 .fa-heart {
   color: red;
 }
+
+
 /*** Item, images and info ***/
 #show-image-info {
   margin-top: 45px;
@@ -253,6 +255,7 @@ select {
 
 .strike-through-price {
   text-decoration: line-through;
+  color: red;
 }
 
 

@@ -1,6 +1,6 @@
 <div class="container">
-<%= @user.first_name %><br>
-<%= @user.last_name %><br>
+<h5><%= user_full_name(@user) %></h5>
+<%= @user.email %><br>
 <%= @user.id %><br>
   <div class="row margin-top">
     <% @items_for_sale.each do |item|%>
