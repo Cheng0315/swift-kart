@@ -107,7 +107,7 @@ function pluralize(quantity) {
         let user = review.user
         review.created_at = dateFormat(review.created_at);
         review.stars = 5 - review.rating;
-        $('.list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
+        $('#list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
         $("#dynamic_submit_form").hide()
       })
       event.preventDefault();

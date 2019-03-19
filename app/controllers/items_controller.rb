@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
     
 
     if !@item.nil?
-      @reviews = @item.reviews
+      @reviews = @item.reviews.sort { |a,b| b.created_at <=> a.created_at }
       @new_review = Review.new
       if params[:user_id] && params[:user_id].to_i != current_user.id
         redirect_to root_path
@@ -128,7 +128,6 @@ class ItemsController < ApplicationController
 
   #update item in database
   def update
-    
     @item = Item.find(params[:id])
 
     if @item.user.id == current_user.id && @item.update(items_params)

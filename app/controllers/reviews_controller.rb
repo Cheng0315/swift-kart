@@ -16,7 +16,10 @@ class ReviewsController < ApplicationController
       @review.user_id = current_user.id
       @review.item_id = @item.id
       if @review.save
-        render json: @review.to_json(include: [user: {only: [:first_name, :last_name]}])
+        respond_to do |format|
+          format.json {render json: @review.to_json(include: [user: {only: [:first_name, :last_name]}])}
+          format.html {redirect_to item_path(@item, anchor: 'list-reviews')}
+        end
       else
         render :new
       end

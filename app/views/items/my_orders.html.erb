@@ -20,7 +20,9 @@
               <div>Description: <%= item.description %></div>
               <div>Quantity: <%= item_quantity(item, cart) %></div>
               <div>Status: <%= item_status(item, cart)%></div>
-              <%= button_to "Buy again", items_add_to_cart_path(id: item.id), class:"btn btn-sm shorter-btn btn-primary add-to-cart-btn"%>
+              <%= button_to items_add_to_cart_path(id: item.id), class:"btn btn-sm btn-primary shorter-btn add-to-cart-btn", id: "item_#{item.id}" do%>
+                <% add_to_cart_w_check_mark(item.id).html_safe %>
+              <% end %>
               <%= button_to "Write a review", new_item_review_path(@item), method: "get", class:"btn btn-sm shorter-btn btn-primary" %> 
               </div>  
           </div> 
