@@ -110,7 +110,7 @@ function pluralize(quantity) {
           review.created_at = dateFormat(review.created_at);
           review.hollowStars = 5 - review.rating;
 
-          $('#list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
+          $('#list-reviews').append(HandlebarsTemplates['append_review']({review: review, user: user}))
           $("#dynamic_submit_form").hide()
 
         } else {

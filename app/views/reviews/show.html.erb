@@ -1,4 +1,9 @@
-<%= @review.user.first_name %> <%= @review.user.last_name %><br>
-<%= @review.rating %><br>
-<%= @review.created_at.strftime("%B %d, %Y") %><br>
-<%= @review.comment %><br>
+<div class="container">
+  <div class="reviews_show_page">
+    <%= @review.user.first_name %> <%= @review.user.last_name %><br>
+    <%= display_stars_rating(@review.rating).html_safe%><br>
+    <%= @review.created_at.strftime("%B %d, %Y") %><br>
+    <%= @review.comment %><br>
+  </div>
+  <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
+</div>
