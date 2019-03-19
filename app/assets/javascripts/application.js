@@ -123,7 +123,27 @@ function pluralize(quantity) {
     })
   })
   
-  
+
+
+  $(document).on('turbolinks:load', function(){
+    $(".reviews-btn").on("click", function() {
+      let review_id = parseInt($(this).attr('data-review_id'))
+      
+      if ($(this).attr('id') === 'next-review') {
+        review_id += 1
+      } else {
+        review_id -= 1
+      }
+      
+      $.get(`/reviews/${review_id}.json`, function(data) {
+        
+      })
+
+      event.preventDefault();
+    })
+  })
+
+
 
 $(document).on('turbolinks:load', function(){
 

@@ -6,5 +6,7 @@
     <%= @review.created_at.strftime("%B %d, %Y") %><br>
     <%= @review.comment %><br>
   </div>
+  <button type="button" class="reviews-btn" id="previous-review" data-review_id="<%=@review.id%>">Previous</button>
+  <button type="button" class="reviews-btn" id="next-review" data-review_id="<%=@review.id%>">Next</button>
   <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
