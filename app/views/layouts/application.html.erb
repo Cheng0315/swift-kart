@@ -79,7 +79,9 @@
                 Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/my_items" >My items</a>
+                <% if current_user.seller %>
+                  <a class="dropdown-item" href="/my_items" >My items</a>
+                <% end %>
                 <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" >Edit info</a>
                 <a class="dropdown-item" href="/logout" >Log out</a>
               </div>

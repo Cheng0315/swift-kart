@@ -21,7 +21,10 @@ class ReviewsController < ApplicationController
           format.html {redirect_to item_path(@item, anchor: 'list-reviews')}
         end
       else
-        render :new
+        respond_to do |format|
+          format.json {}
+          format.html {render :new}
+        end
       end
     else
       redirect_to root_path

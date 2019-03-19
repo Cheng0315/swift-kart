@@ -31,17 +31,17 @@
       <% end %>
     </div>
   </div>
-  <% if !@reviews.blank? %>
-    <div id="list-reviews">
+  <div id="list-reviews">
     <h3 id="reviews">Reviews</h3>
-    <% @reviews.each do |review|%>
-      <div><i class="fas fa-user fa-lg"></i> <%= review.user.first_name %> <%= review.user.last_name %></div>
-      <div class="users-rating"><%= display_stars_rating(review.rating).html_safe %></div>
-      <div><%= review.created_at.strftime("%B %d, %Y") %></div>
-      <div><%= review.comment %></div>
+    <% if !@reviews.blank? %>
+      <% @reviews.each do |review|%>
+        <div><i class="fas fa-user fa-lg"></i> <%= review.user.first_name %> <%= review.user.last_name %></div>
+        <div class="users-rating"><%= display_stars_rating(review.rating).html_safe %></div>
+        <div><%= review.created_at.strftime("%B %d, %Y") %></div>
+        <div><%= review.comment %></div>
+      <% end %>
     <% end %>
-    </div>
-  <% end %>
+  </div>
   <% if current_user && current_user_bought_the_item(@item.id) %>
     <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
       <div class='rating-stars' data-rating="">
