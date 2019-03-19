@@ -32,6 +32,11 @@ class ReviewsController < ApplicationController
 
   end
 
+  def total_reviews
+    @total_reviews = Review.all.count
+    render json: {total_reviews: @total_reviews}.to_json
+  end
+
   def show 
     @review = Review.find(params[:id])
     respond_to do |format|
@@ -39,6 +44,8 @@ class ReviewsController < ApplicationController
       format.html {render :show}
     end
   end
+
+  
 
 
   private

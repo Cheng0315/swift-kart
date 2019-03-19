@@ -44,6 +44,17 @@ function pluralize(quantity) {
   }
 }
 
+function enableAndDisableBtn(review_id, total_reviews) {
+  if (review_id >= total_reviews) {
+    document.getElementById("next-review").disabled = true;
+  } else if (review_id <= 1) {
+    document.getElementById("previous-review").disabled = true;
+  } else {
+    document.getElementById("next-review").disabled = false;
+    document.getElementById("previous-review").disabled = false;
+  }
+}
+
 
   
 
@@ -126,6 +137,13 @@ function pluralize(quantity) {
 
 
   $(document).on('turbolinks:load', function(){
+    let total_reviews = null;
+
+    $.get(`/total_reviews.json`, function(reviews) {
+      total_reviews = reviews.total_reviews
+    })
+
+
     $(".reviews-btn").on("click", function() {
       let review_id = null;
       
@@ -133,36 +151,39 @@ function pluralize(quantity) {
         let current_id = parseInt($(this).attr('data-next_id'))
         review_id = current_id + 1
         
-        $(this).attr('data-next_id', review_id)
-        $(this).prev().attr('data-previous_id', review_id)
+        if (review_id <= total_reviews) {
+          $(this).attr('data-next_id', review_id)
+          $(this).prev().attr('data-previous_id', review_id)
+        }
       } else {
         let current_id = parseInt($(this).attr('data-previous_id'))
         review_id = current_id - 1
 
-        $(this).next().attr('data-next_id', review_id)
-        $(this).attr('data-previous_id', review_id)
+        if (review_id <= total_reviews) {
+          $(this).next().attr('data-next_id', review_id)
+          $(this).attr('data-previous_id', review_id)
+        }
       }
+
+      if (review_id > total_reviews) {
+        document.getElementById("next-review").disabled = true;
+      } else if (review_id < 1){
+        document.getElementById("previous-review").disabled = true;
+      } else {
       
       $.get(`/reviews/${review_id}.json`, function(review) {
         review.created_at = dateFormat(review.created_at);
         review.hollowStars = 5 - review.rating;
 
-        if (review_id >= review.total_reviews) {
-          document.getElementById("next-review").disabled = true;
-        } else if (review_id === 1) {
-          document.getElementById("previous-review").disabled = true;
-        } else {
-          document.getElementById("next-review").disabled = false;
-          document.getElementById("previous-review").disabled = false;
-        }
+        enableAndDisableBtn(review_id, total_reviews)
 
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
       })
-
+    }
       event.preventDefault();
     })
   })
-
+  
 
 
 $(document).on('turbolinks:load', function(){
@@ -194,8 +215,7 @@ $(document).on('turbolinks:load', function(){
     $(this).parent().children('li.star').each(function(e){
       if (e < onStar) {
         $(this).addClass('hover');
-      }
-      else {
+      } else {
         $(this).removeClass('hover');
       }
     });

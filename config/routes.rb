@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create, :show]
 
   resources :carts, only: [:index]
+
+  get '/total_reviews' => 'reviews#total_reviews'
   
   get '/cart' => 'carts#display_cart'
   get '/cart/delete_item' => 'carts#delete_item'
