@@ -1,0 +1,21 @@
+<div class="container">
+<%= @user.first_name %><br>
+<%= @user.last_name %><br>
+<%= @user.id %><br>
+  <div class="row margin-top">
+    <% @items_for_sale.each do |item|%>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="card card-margin">
+          <div class="card-body d-flex flex-column">
+            <%= link_to item_image(item.id), item_path(item) %>
+            <%= link_to item.name, item_path(item) %>
+            <div> <%= item_overall_rating(item).html_safe %> </div>
+            <div class="price"><%= number_to_currency(item.price)%></div>
+            <%= truncate(item.description, length: 80) %>
+            <%= render partial: 'users/add_item', locals: {item: item}%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

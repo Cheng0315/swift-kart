@@ -24,7 +24,7 @@
       <p class="item-overall-rating"><%= item_overall_rating(@item).html_safe %><%= reviews_link(@item, @reviews).html_safe %></p>
       <p><%= @item.description %></p>
       Availability: <%= item_availability(@item) %>
-      <p>Sold by: <%= @item.user.first_name %> <%= @item.user.last_name %></p>
+      <p>Sold by: <%= link_to user_full_name(@item.user), user_path(@item.user) %></p>
       <%= render partial: 'users/short_add_item_btn', locals: {item: @item}%>
       <% if current_user && @item.user_id == current_user.id %>
         <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-primary shorter-btn"%>
@@ -35,8 +35,8 @@
     <h3 id="reviews">Reviews</h3>
     <% if !@reviews.blank? %>
       <% @reviews.each do |review|%>
-        <div><i class="fas fa-user fa-lg"></i> <%= review.user.first_name %> <%= review.user.last_name %></div>
-        <div class="users-rating"><%= display_stars_rating(review.rating).html_safe %></div>
+        <div><i class="fas fa-user fa-lg"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
+        <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
         <div><%= review.created_at.strftime("%B %d, %Y") %></div>
         <div><%= review.comment %></div>
       <% end %>

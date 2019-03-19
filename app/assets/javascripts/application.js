@@ -104,19 +104,21 @@ function pluralize(quantity) {
         url: this.action,
         data: $(this).serialize()
       }).done(function(review) {
-        console.log(review)
+
         if (review) {
           let user = review.user
           review.created_at = dateFormat(review.created_at);
-          review.stars = 5 - review.rating;
+          review.hollowStars = 5 - review.rating;
 
           $('#list-reviews').append(HandlebarsTemplates['list_reviews']({review: review, user: user}))
           $("#dynamic_submit_form").hide()
+
         } else {
           location.reload();
           alert('Please fill in all the fields!')
         }
       })
+      
       event.preventDefault();
     })
   })

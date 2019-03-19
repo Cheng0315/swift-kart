@@ -1,6 +1,6 @@
 <div><i class="fas fa-user fa-lg"></i> {{user.first_name}} {{user.last_name}} </div>
 {{#review}}
-<div class="users-rating">{{#times rating}}<i class="fas fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}{{#times stars}}<i class="far fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}</div>
+<div class="users-rating">{{#times rating}}<i class="fas fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}{{#times hollowStars}}<i class="far fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}</div>
 <div> {{created_at}}</div>
 <div> {{comment}}</div>
 {{/review}}

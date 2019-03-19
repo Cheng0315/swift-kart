@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_cart, :guest_cart, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating, :count_items_in_cart
+  helper_method :current_user, :current_cart, :guest_cart, :user_full_name, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating, :count_items_in_cart
   
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
     @item.user.id != current_user.id
   end
 
-  
+  def user_full_name(user)
+    user.first_name + ' ' + user.last_name
+  end
   
   private
 
@@ -271,7 +273,7 @@ class ApplicationController < ActionController::Base
     if mid >= 0 && mid < 0.25 && rating != 5
       stars_str += "<i class='far fa-star fa-fw stars-read-only'></i>"
     elsif mid >= 0.25 && mid < 0.75
-      stars_str += "<i class='fas fa-star-half-alt stars-read-only'></i>"
+      stars_str += "<i class='fas fa-star-half-alt fa-fw stars-read-only'></i>"
     elsif mid >= 0.75 && mid <= 1
       stars_str += "<i class='fa fa-star fa-fw stars-read-only'></i>"
     end
@@ -290,6 +292,8 @@ class ApplicationController < ActionController::Base
       guest_cart.count
     end
   end
+
+  
 
   def todays_deal
     Item.all.select {|item| item.id == 6 || item.id == 15 || item.id == 16 }

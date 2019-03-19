@@ -99,6 +99,10 @@ select {
   font-family: 'Font Awesome 5 Free';
 }
 
+.users-rating a {
+  text-decoration: none;
+}
+
 /* Idle State of the stars */
 .rating-stars ul > li.star > i.fa {
   font-size:2em; /* Change the size of the stars */

@@ -33,6 +33,12 @@ class UsersController < ApplicationController
     end
   end
 
+  #show user's info
+  def show
+    @user = User.find(params[:id])
+    @items_for_sale = @user.items
+  end
+
   #edit user info
   def edit
     if current_user && params[:id].to_i == current_user.id
