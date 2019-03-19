@@ -147,6 +147,15 @@ function pluralize(quantity) {
         review.created_at = dateFormat(review.created_at);
         review.hollowStars = 5 - review.rating;
 
+        if (review_id >= review.total_reviews) {
+          document.getElementById("next-review").disabled = true;
+        } else if (review_id === 1) {
+          document.getElementById("previous-review").disabled = true;
+        } else {
+          document.getElementById("next-review").disabled = false;
+          document.getElementById("previous-review").disabled = false;
+        }
+
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
       })
 

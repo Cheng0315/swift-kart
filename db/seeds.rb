@@ -26,10 +26,10 @@ Category.create(name: 'Sporting Goods')
 Category.create(name: 'Tools')
 Category.create(name: 'Video Games')
 
-michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, email: 'a@a.com', password: 'a')
-amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'b@b.com', password: 'b')
-jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'c@c.com', password: 'c')
-joseph = User.create(first_name: 'Joseph', last_name: 'Peterson', seller: true, email: 'd@d.com', password: 'd')
+michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, email: 'michaelsmith@gmail.com', password: 'a')
+amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'amandawilliam@yahoo.com', password: 'b')
+jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'jennymiller@gmail.com', password: 'c')
+joseph = User.create(first_name: 'Joseph', last_name: 'Peterson', seller: true, email: 'jpeterson@outlook.com', password: 'd')
 
 michaels_items = [['Rare 1940 Antique Gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
   ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],
