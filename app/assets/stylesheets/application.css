@@ -50,6 +50,12 @@
 }
 
 
+/*** Button ***/
+.edit-btn {
+  margin-bottom: 5px;
+}
+
+
 /*** Navbar ***/
 .index-content a, .btn a {
   text-decoration:none

@@ -11,7 +11,6 @@
     </div>
   <% end %>
 <% elsif current_user && item.user_id == current_user.id %>
-<div class="mt-auto">
-  <%= button_to "Edit Item", edit_item_path(item), method: "get", class:"btn btn-sm btn-block btn-primary"%>
-</div>
+  <div class="edit-btn mt-auto"> <%= button_to "Edit Item", edit_item_path(item), method: "get", class:"btn btn-sm btn-block btn-primary"%></div>
+  <div class="delete-btn mt-auto"> <%= button_to "Delete Item", item_path(item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-block btn-primary"%></div>
 <% end %>
