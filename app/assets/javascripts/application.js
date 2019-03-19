@@ -127,16 +127,27 @@ function pluralize(quantity) {
 
   $(document).on('turbolinks:load', function(){
     $(".reviews-btn").on("click", function() {
-      let review_id = parseInt($(this).attr('data-review_id'))
+      let review_id = null;
       
       if ($(this).attr('id') === 'next-review') {
-        review_id += 1
+        let current_id = parseInt($(this).attr('data-next_id'))
+        review_id = current_id + 1
+        
+        $(this).attr('data-next_id', review_id)
+        $(this).prev().attr('data-previous_id', review_id)
       } else {
-        review_id -= 1
+        let current_id = parseInt($(this).attr('data-previous_id'))
+        review_id = current_id - 1
+
+        $(this).next().attr('data-next_id', review_id)
+        $(this).attr('data-previous_id', review_id)
       }
       
-      $.get(`/reviews/${review_id}.json`, function(data) {
-        
+      $.get(`/reviews/${review_id}.json`, function(review) {
+        review.created_at = dateFormat(review.created_at);
+        review.hollowStars = 5 - review.rating;
+
+        $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
       })
 
       event.preventDefault();
