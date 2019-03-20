@@ -1,8 +1,8 @@
 <div class="container">
-  <h4>Write a review</h4>
+  <h3 class="write-review-header">Write a review</h3>
   <div class="container">
-    <div class="row border" style="margin-top: 20px;">
-      <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding remove-bottom-padding">
+    <div class="row border" >
+      <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
         <%=link_to small_image(@item.id), item_path(@item)%>
       </div> 
       <div class="col-sm-12 col-md-11 col-lg-11 li-items-padding">
@@ -16,7 +16,7 @@
 <%= render partial: 'users/error_msg', locals: {user_or_item: @review}%>
 <%= form_for ([@item, @review]) do |f| %>
   <div class='rating-stars' data-rating="">
-    <h5>Overall Rating</h5>
+    <h5 class="write-review-rating">Overall Rating</h5>
     <ul id='stars'>
       <li class='star' title='Poor' data-value='1'>
         <i class='fa fa-star fa-fw'></i>
@@ -36,9 +36,9 @@
     </ul>
   </div>
   <%= f.hidden_field :rating, :value => ""%>
-  <h5><%= f.label :'Write your review' %></h5>
-  <%= f.text_area :comment, rows:"4", style:"width: 100%", class:"review_text_area", placeholder:" What do you like or dislike about this product?"%><br>
-  <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn'%><br>
+  <h5><label class="write-review-comment">Write your review</label></h5>
+  <%= f.text_area :comment, rows:"4", style:"width: 100%", class:"review_text_area", placeholder:"What do you like or dislike about this product?"%><br>
+  <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
 <% end %>
 <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

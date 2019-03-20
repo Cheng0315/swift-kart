@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-7 col-lg-4">
       <h5 class="text-center signin-margin">Sign in to Swift-Kart</h5>
       <% if flash[:notice] %>
-        <%= flash[:notice] %><br>
+        <span class="error-msg"><%= flash[:notice] %></span><br>
       <% end %>
       <%= form_tag ('/signin') do%>
         <div class="form-group">
