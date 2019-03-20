@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-5">
-      <h4 class="text-center sign-up-margin">Add Item</h4>
+      <h4 class="text-center sign-up-margin">Add A New Product</h4>
       <%= render partial: 'users/error_msg', locals: {user_or_item: @item}%>
       <%= form_for @item do |f| %><br>
         <%= render partial: 'item_form', locals: {form: f}%>

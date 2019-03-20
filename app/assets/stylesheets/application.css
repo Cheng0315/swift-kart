@@ -276,7 +276,7 @@ select {
 
 .write-review-header {
   margin-top: 20px;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
 }
 
 .write-review-rating {
@@ -286,7 +286,7 @@ select {
 
 .write-review-comment {
   margin-top: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .error-msg {
@@ -295,6 +295,11 @@ select {
 
 .submit-review-btn {
   margin-top: 3px;
+}
+
+.customer-review {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 

@@ -26,21 +26,23 @@
       Availability: <%= item_availability(@item) %>
       <p>Sold by: <%= link_to user_full_name(@item.user), user_path(@item.user) %></p>
       <%= render partial: 'users/short_add_item_btn', locals: {item: @item}%>
-      <% if current_user && @item.user_id == current_user.id %>
+      <% if current_user && @item.user_id === current_user.id %>
         <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-primary shorter-btn"%>
       <% end %>
     </div>
   </div>
-  <div id="list-reviews">
-    <h3 id="reviews">Reviews</h3>
-    <% if !@reviews.blank? %>
-      <% @reviews.each do |review|%>
-        <div><i class="fas fa-user fa-lg"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
-        <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
-        <div><%= review.created_at.strftime("%B %d, %Y") %></div>
-        <div><%= review.comment %></div>
+  <div class="row" id="list-reviews">
+    <div class="col-md-8">
+      <h3 id="reviews">Reviews</h3>
+      <% if !@reviews.blank? %>
+        <% @reviews.each do |review|%>
+          <div><i class="fas fa-user fa-lg"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
+          <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
+          <div><%= review.created_at.strftime("%B %d, %Y") %></div>
+          <div><%= review.comment %></div>
+        <% end %>
       <% end %>
-    <% end %>
+    <div>
   </div>
   <% if current_user && current_user_bought_the_item(@item.id) && @item.reviews.count > 0%>
     <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>

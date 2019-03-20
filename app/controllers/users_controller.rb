@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   #create new user
   def new
-    
     if current_user
       redirect_to root_path
     else

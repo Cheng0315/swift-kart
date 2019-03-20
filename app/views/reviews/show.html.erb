@@ -1,15 +1,17 @@
 <div class="container">
-  <h3>Customer Review</h3>
-  <div id="reviews_show_page">
-    <i class="fas fa-user fa-lg"></i><%= link_to user_full_name(@review.user), user_path(@review.user) %><br>
-    <%= display_stars_rating(@review.rating).html_safe%><br>
-    <%= @review.created_at.strftime("%B %d, %Y") %><br>
-    <%= @review.comment %><br>
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="customer-review">Customer Review</h3>
+      <div id="reviews_show_page">
+        <i class="fas fa-user fa-lg"></i> <%= link_to user_full_name(@review.user), user_path(@review.user) %><br>
+        <%= display_stars_rating(@review.rating).html_safe%><br>
+        <%= @review.created_at.strftime("%B %d, %Y") %><br>
+        <%= @review.comment %><br>
+      </div>
+      <button type="button" class="reviews-btn" id="previous-review" data-previous_id="<%=@review.id%>">Previous</button>
+      <button type="button" class="reviews-btn" id="next-review" data-next_id="<%=@review.id%>">Next</button>
+      <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
+      </div>
+    </div>
   </div>
-  <button type="button" class="reviews-btn" id="previous-review" data-previous_id="<%=@review.id%>">Previous</button>
-  <button type="button" class="reviews-btn" id="next-review" data-next_id="<%=@review.id%>">Next</button>
-  <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
-
-#<button type="button" class="reviews-btn" id="previous-review" data-review_id="{{subtract id}}">Previous</button>
-  #<button type="button" class="reviews-btn" id="next-review" data-review_id="{{add id}}">Next</button>
