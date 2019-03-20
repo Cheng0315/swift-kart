@@ -76,7 +76,7 @@ end
 
 
 josephs_items = [['Red and Brown Floral Dress', 49.99, 'lightweight, comfortable dress', true, 9, 1, "app/assets/images/items_images/red_dress.png", "red_dress.png"],
-  ["Women's Assorted Clothes", 79.99, 'Available in all size', true, 9, 1, "app/assets/images/items_images/clothing.png", "clothing.png"],
+  ["Women's Assorted Clothes", 79.99, 'Available in all sizes', true, 9, 1, "app/assets/images/items_images/clothing.png", "clothing.png"],
   ['Classic Long Sleeve White Sweater', 24.99, 'Classic Design Long Sleeve Sweater', true, 9, 1, "app/assets/images/items_images/white_sweater.png", "white_sweater.png"],
   ['Wilson Evolution Basketball', 44.99, 'The preferred ball of many high school and college athletes, the Wilson® Evolution® Game Basketball.', true, 18, 1, "app/assets/images/items_images/basketball.png", "basketball.png"],
   ['Pro Preferred Custom Glove', 449.99, 'Pro Preferred custom gloves are worn by Pro players and can be personalized with thousands of options', true, 18, 1, "app/assets/images/items_images/baseball_mitt.png", "baseball_mitt.png"]]
