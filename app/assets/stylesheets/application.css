@@ -88,6 +88,9 @@ nav .navbar-nav li .dropdown-menu a{
   color: black !important;
 }
 
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
 
 /*** Ratings Stars ***/
 .rating-stars ul {
