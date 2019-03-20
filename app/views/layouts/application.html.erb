@@ -80,18 +80,21 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% if current_user.seller %>
-                  <a class="dropdown-item" href="/my_items" >My items</a>
+                  <a class="dropdown-item" href="/my_items" >My Items</a>
                 <% end %>
-                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" >Edit info</a>
-                <a class="dropdown-item" href="/logout" >Log out</a>
+                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit" >My Info</a>
+                <a class="dropdown-item" href="/logout" >Log Out</a>
               </div>
             </li>
           <% else %>
-            <li class="nav-item">
-              <a class="nav-link" href="/signin">Sign In <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
+            <li class="nav-item dropdown" data-turbolinks="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/signin">Sign In <span class="sr-only">(current)</span></a>
+                <a class="dropdown-item" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
+              </div>
             </li>
           <% end %>
           <li class="nav-item">
