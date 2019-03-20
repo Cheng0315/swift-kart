@@ -239,7 +239,7 @@ select {
 }
 
 .margin-top {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .stars-color {
@@ -307,11 +307,14 @@ select {
 }
 
 
-.my-orders-header {
+.orders-header {
   margin-top: 12px;
   margin-bottom: 15px;
 }
 
+.search-header {
+  margin-top: 12px;
+}
 
 /*** Footer ***/
 footer a {

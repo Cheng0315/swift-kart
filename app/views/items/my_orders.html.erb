@@ -5,7 +5,7 @@
   <% if my_carts_are_empty(@carts) %>
     You have not make any orders
   <% else %>
-    <h3 class="my-orders-header text-center">My Orders</h3>
+    <h3 class="orders-header text-center">My Orders</h3>
     <div class="container">
     <% @carts.each do |cart|%>
       <% if cart.checkout %>
