@@ -55,6 +55,14 @@ function enableAndDisableBtn(review_id, total_reviews) {
   }
 }
 
+function isReviewShowPath(pathname) {
+  if (pathname == pathname.match(/\/reviews\/\d+$/g)) {
+    return true
+  } else {
+    return false
+  }
+}
+
 
   
 
@@ -159,10 +167,13 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on('turbolinks:load', function(){
     let total_reviews = null;
-
-    $.get(`/total_reviews.json`, function(reviews) {
-      total_reviews = reviews.total_reviews
-    })
+    let pathname = window.location.pathname; 
+    
+    if (isReviewShowPath(pathname)) {
+      $.get(`/total_reviews.json`, function(reviews) {
+        total_reviews = reviews.total_reviews
+      })
+    }
 
 
     $(".reviews-btn").on("click", function() {
