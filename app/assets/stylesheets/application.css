@@ -226,6 +226,10 @@ select {
   margin-bottom: 5px;
 }
 
+.item-btn-padding {
+  padding-top: 6px;
+}
+
 .card {
   margin-bottom: 30px;
 }
@@ -300,6 +304,12 @@ select {
 .customer-review {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+
+.my-orders-header {
+  margin-top: 12px;
+  margin-bottom: 15px;
 }
 
 

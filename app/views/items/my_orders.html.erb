@@ -5,11 +5,12 @@
   <% if my_carts_are_empty(@carts) %>
     You have not make any orders
   <% else %>
+    <h3 class="my-orders-header text-center">My Orders</h3>
     <div class="container">
     <% @carts.each do |cart|%>
       <% if cart.checkout %>
         <% cart.items.each do |item| %>
-          <div class="row border " style="margin-top: 20px;">
+          <div class="row border" style="margin-bottom:20px;">
             <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
               <%=link_to small_image(item.id), item_path(item)%>
             </div> 

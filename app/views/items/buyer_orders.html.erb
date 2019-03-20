@@ -2,6 +2,7 @@
   <% if @items_info.empty? %>
     You have no buyer at the moment
   <% else %>
+  <h3 class="my-orders-header text-center">Buyers Orders</h3>
   <div class="container">
     <% @items_info.each do |item_info|%>
       <div class="row border " style="margin-top: 15px;">
@@ -17,8 +18,8 @@
           <% else%>
           <div><%= link_to 'Mark as shipped', ship_items_path(cart_id: item_info[3], item_id: item_info[0].id) %></div>
           <% end%>
-          </div>
-          </div>
+        </div>
+      </div>
     <% end %>
     </div>
   <% end %>
