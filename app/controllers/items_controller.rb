@@ -3,10 +3,7 @@ class ItemsController < ApplicationController
   #take user's input from the search form and find items that has a name that include the user's input
   def index
     @search_term = params[:search]
-    if params[:search] && params[:category_id]
-      category = Category.find(params[:category_id])
-      @items = search_items(params[:search], category)
-    elsif params[:search]
+    if params[:search]
       @items = search_items(params[:search], params[:category])
     else
       @items = current_user.items.all

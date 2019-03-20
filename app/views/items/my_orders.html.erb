@@ -3,7 +3,7 @@
     <span class="text-center"><%= flash[:notice].html_safe %></span>
   <% end %>
   <% if my_carts_are_empty(@carts) %>
-    You have not make any orders
+    <h5 class="search-header text-center">You have not make any orders</h5>
   <% else %>
     <h3 class="orders-header text-center">My Orders</h3>
     <div class="container">

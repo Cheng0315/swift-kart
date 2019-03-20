@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   
   scope :category_search, -> (category_id) {where("category_id = ?", category_id)}
 
-  def self.search_items(search_term, category_id) 
+  def self.search_with_category_id(search_term, category_id) 
     self.category_search(category_id).search(search_term)
   end
 

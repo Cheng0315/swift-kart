@@ -45,7 +45,7 @@
         </div>
       </div>
     <% else %>
-      Your cart is empty
+    <h5 class="search-header text-center">Your cart is empty</h5>
     <% end %> 
   <% end %>
   <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>

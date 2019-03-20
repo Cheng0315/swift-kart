@@ -92,10 +92,12 @@ class ApplicationController < ActionController::Base
 
   #Helper methods related to items
   def search_items(search_term, category)
-    if category[:id].blank?
+    if search_term.blank?
+      redirect_to root_path
+    elsif category[:id].blank?
       @items = Item.search(search_term)
     else
-      @items = Item.search_items(search_term, category[:id].to_i)
+      @items = Item.search_with_category_id(search_term, category[:id].to_i)
     end
   end
 
