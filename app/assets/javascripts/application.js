@@ -118,9 +118,11 @@ function enableAndDisableBtn(review_id, total_reviews) {
 
         if (review) {
           let user = review.user
+          let total_reviews = parseInt($('a#total_reviews').data('total_reviews'))
           review.created_at = dateFormat(review.created_at);
           review.hollowStars = 5 - review.rating;
-
+          
+          $('#total_reviews').html(`<a href='#reviews' id='total_reviews' data-total_reviews='${total_reviews + 1}'>${total_reviews + 1} customers reviews</a>`)
           $('#list-reviews').append(HandlebarsTemplates['append_review']({review: review, user: user}))
           $("#dynamic_submit_form").hide()
 

@@ -42,7 +42,7 @@
       <% end %>
     <% end %>
   </div>
-  <% if current_user && current_user_bought_the_item(@item.id) %>
+  <% if current_user && current_user_bought_the_item(@item.id) && @item.reviews.count > 0%>
     <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
       <div class='rating-stars' data-rating="">
         <h6>Overall Rating</h6>
