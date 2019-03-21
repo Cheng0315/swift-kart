@@ -25,86 +25,96 @@
   </head>
 
   <body>
-    <!-- First navbar - Brand and search form -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <div class="container">
-        <a class="navbar-brand" href="/"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> 
-
-        <div class="search-form">
-          <%= form_tag items_path, method: :get, :class => "form-inline my-2 my-lg-0 mx-2 my-auto d-inline w-100" do%>
-            <%= text_field_tag :search, params[:search], class: "form-control ml-lg-1", placeholder:"Search" %>
-            <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
-            <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
-          <% end %>
+    <header class="container"> 
+      <div class="row header-margin">
+        <div class="col-lg-2 col-md-4">
+          <a href="/" style="display: inline-block"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button> 
+        </div>
+        <div class="col-lg-10 col-md-8">
+          <div class="search-form">
+              <%= form_tag items_path, method: :get, {:class => 'ml-auto'} do%>
+                <div class="row">
+                  <div class="col-lg-7 col-md-5 nopadding" >
+                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
+                  </div>
+                  <div class="col-lg-3 col-md-4 nopadding" >
+                    <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
+                  </div>
+                  <div class="col-lg-1 col-md-1 nopadding" >
+                    <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
+                  </div>
+                </div>
+              <% end %>
+          </div>
         </div>
       </div>
-    </nav>
-    <!-- Second navbar - links -->
+    </header>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/#todays-deals-items" >Todays Deal <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#trendings-items" >Trendings <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#recommended-items"> Recommended <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#featured-items" >Featured <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/#todays-deals-items" >Todays Deal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#trendings-items" >Trendings <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#recommended-items"> Recommended <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#featured-items" >Featured <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
 
-        <ul class="navbar-nav ml-auto" data-turbolinks="false">
-          <% if current_user %>
-            <% if current_user.seller %>
+          <ul class="navbar-nav ml-auto" data-turbolinks="false">
+            <% if current_user %>
+              <% if current_user.seller %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Product <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/buyer_orders" >Buyers Orders <span class="sr-only">(current)</span></a>
+                </li>
+              <% end %>
               <li class="nav-item">
-                <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Product <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/my_orders" >My Orders <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/buyer_orders" >Buyers Orders <span class="sr-only">(current)</span></a>
+              <li class="nav-item dropdown" data-turbolinks="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <% if current_user.seller %>
+                    <a class="dropdown-item" href="/my_items" >My Products</a>
+                  <% end %>
+                  <a class="dropdown-item" href="/users/<%=current_user.id%>/edit">Update My Info</a>
+                  <a class="dropdown-item" href="/logout" >Log Out</a>
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item dropdown" data-turbolinks="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/signin">Sign In <span class="sr-only">(current)</span></a>
+                  <a class="dropdown-item" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
+                </div>
               </li>
             <% end %>
             <li class="nav-item">
-              <a class="nav-link" href="/my_orders" >My Orders <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown" data-turbolinks="false">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                Account
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if current_user.seller %>
-                  <a class="dropdown-item" href="/my_items" >My Products</a>
-                <% end %>
-                <a class="dropdown-item" href="/users/<%=current_user.id%>/edit">Update My Info</a>
-                <a class="dropdown-item" href="/logout" >Log Out</a>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item dropdown" data-turbolinks="false">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                Account
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/signin">Sign In <span class="sr-only">(current)</span></a>
-                <a class="dropdown-item" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
-              </div>
-            </li>
-          <% end %>
-          <li class="nav-item">
-            <a class="nav-link" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
+          </ul>
+        </div>
       </div>
     </nav>
-      
+    
     <section id="main-content">
       <%= yield %>
     </section>
