@@ -118,8 +118,6 @@ class ApplicationController < ActionController::Base
 
   def check_if_item_exists_in_cart(cart, item, params_path)
     if item_exists_in_cart(cart, item)
-      #flash[:notice] = display_item_exist_in_cart_msg
-      #redirect_to redirect_path(params_path)
     else
       add_item_to_cart(cart, item, params_path)
     end
@@ -138,12 +136,8 @@ class ApplicationController < ActionController::Base
       @cart_item = CartItem.create(cart_id: cart.id, item_id: item.id)
       cart.cart_items << @cart_item
       item.cart_items << @cart_item
-      #flash[:notice] = display_add_to_cart_msg
-      #redirect_to redirect_path(params_path)
     else
       cart << item.id
-      #flash[:notice] = display_add_to_cart_msg
-      #redirect_to redirect_path(params_path)
     end
   end
 
@@ -160,9 +154,7 @@ class ApplicationController < ActionController::Base
 
   def find_buyers_orders
     @items = current_user.items
-    
     @buyers_items_info = find_buyers_items(@items)
-    @buyers_items_info
   end
 
   def find_buyers_items(items)

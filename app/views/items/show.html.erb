@@ -30,7 +30,7 @@
       <p>Sold by: <%= link_to user_full_name(@item.user), user_path(@item.user) %></p>
       <%= render partial: 'users/short_add_item_btn', locals: {item: @item}%>
       <% if current_user && @item.user_id === current_user.id %>
-        <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-primary shorter-btn"%>
+        <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Delete this item?"}, class:"btn btn-sm btn-primary shorter-btn"%>
       <% end %>
     </div>
   </div>
