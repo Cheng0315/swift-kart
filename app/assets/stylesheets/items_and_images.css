@@ -1,0 +1,86 @@
+/*** Item, images and info ***/
+#show-image-info {
+  margin-top: 45px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.small-image {
+  display: block;
+}
+
+.shipped-items {
+  color: green;
+}
+
+.unshipped-items {
+  color: #854331;
+}
+
+.flex-container {
+  display: flex;
+  align-items: stretch;
+}
+
+.condition-new {
+  background: green;
+  width: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.condition-used {
+  background: #b42f0e;
+  width: 50px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.instock {
+  color: green;
+  font-size: 17px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.out-of-stock {
+  color: #b42f0e;
+  font-size: 17px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.latest-products {
+  margin-top: 50px;
+}
+
+.item-btn-padding {
+  padding-top: 6px;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.top-bottom-padding {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.li-items-padding {
+  padding-top: 7px;
+  padding-bottom: 10px;
+}
+
+.add-item-msg {
+  margin-top: 12px;
+  margin-bottom: -10px;
+}

@@ -1,0 +1,56 @@
+.review_text_area {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid rgb(192, 206, 219);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.write-review-header {
+  margin-top: 14px;
+  margin-bottom: 15px;
+}
+
+.write-review-rating {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.write-review-comment {
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.submit-review-btn {
+  margin-top: 3px;
+}
+
+.customer-review {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#list-reviews #reviews{
+  margin-top: 5px;
+}
+
+
+.review-list-margin {
+  margin-top: 25px;
+}
+
+.flex-review-txt-area {
+  max-width: 767px;
+  flex-basis: auto; 
+  flex-grow: 1;
+}
+
+.review-thxs-msg {
+  margin-top: 12px;
+  color: #007bff;
+}
+
+.reviews-btn {
+  width: 100px;
+}

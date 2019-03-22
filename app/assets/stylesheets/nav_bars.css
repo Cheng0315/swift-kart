@@ -1,0 +1,76 @@
+/*** Navbar ***/
+.index-content a, .btn a {
+  text-decoration:none
+}
+
+.brand-margin {
+  margin-top: 27px;
+}
+
+.brand-margin a{
+  color: #007bff;
+}
+
+#navbar-logo h3 {
+  text-decoration:none;
+  display: inline-block;
+  color: #007bff;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
+
+nav .navbar-nav li a:hover{
+  color: rgb(173, 167, 167) !important;
+}
+
+nav .navbar-nav li .dropdown-menu a{
+  color: black !important;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.navbar-toggler-icon {
+  color:black;
+}
+
+.header-margin {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.brand-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.brand-column {
+  flex: 10%;
+  padding-top: 8px;
+  padding-bottom: 5px;
+}
+
+.search-column {
+  flex: 76%;
+  padding-top: 8px;
+  padding-bottom: 5px;
+}
+
+.cart-column {
+  flex: 5%;
+  padding-top: 8px;
+  padding-bottom: 5px;
+}
+
+li.dropdown .dropdown-menu {
+  margin-bottom: 10px;
+}
