@@ -364,6 +364,9 @@ select {
 }
 
 
+.reviews-btn {
+  width: 100px;
+}
 
 
 /*** Footer ***/
@@ -386,12 +389,6 @@ footer {
   padding-bottom: 50px;
 }
 
-
-
-
-
-
-
 .top-nav {
   display: flex;
   flex-wrap: wrap;
@@ -402,9 +399,6 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-
-
 
 .brand-column {
   flex: 10%;

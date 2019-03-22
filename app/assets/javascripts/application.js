@@ -128,13 +128,6 @@ $(document).on('turbolinks:load', function(){
 
 
   $(document).on('turbolinks:load', function(){
-    
-    /*$("#render_review_form").on('click', function() {
-      let token = $('meta[name="csrf-token"]').attr('content')
-      let item_id = $(this).data('item_id')
-      $("#render_review_form").hide()
-      $("#show_page_review_form_div").html(HandlebarsTemplates['review_form']({token: token, item_id: item_id}))
-    })*/
 
     $("#dynamic_submit_form").on('submit', function(event) {
       
