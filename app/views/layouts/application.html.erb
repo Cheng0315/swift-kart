@@ -25,33 +25,38 @@
   </head>
 
   <body>
-    <header class="container"> 
-      <div class="row header-margin">
-        <div class="col-lg-2 col-md-4">
-          <a href="/" style="display: inline-block"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-          </button> 
-        </div>
-        <div class="col-lg-10 col-md-8">
-          <div class="search-form">
-              <%= form_tag items_path, method: :get, {:class => 'ml-auto'} do%>
-                <div class="row">
-                  <div class="col-lg-7 col-md-5 nopadding" >
-                    <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
-                  </div>
-                  <div class="col-lg-3 col-md-4 nopadding" >
-                    <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
-                  </div>
-                  <div class="col-lg-1 col-md-1 nopadding" >
-                    <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
-                  </div>
-                </div>
-              <% end %>
-          </div>
+    <div class="container row1">
+      <div class="colum1" >
+        <a href="/" id="navbar-logo"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+        <div class="show-me">
+          <a class="nav-link top-cart" style="display: inline-block;" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
         </div>
       </div>
-    </header>
+  
+      <div class="colum2">
+        <%= form_tag items_path, method: :get do%>
+          <div class="row1">
+            <div class="colum9" >
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
+            </div>
+            <div class="colum8" >
+              <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
+            </div>
+            <div class="colum7" >
+              <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  
+      
+      <div class="colum3 hideme">
+        <a class="nav-link top-cart" style="display: inline-block;" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
+      </div>
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
