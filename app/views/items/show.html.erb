@@ -30,8 +30,10 @@
       <p>Sold by: <%= link_to user_full_name(@item.user), user_path(@item.user) %></p>
       <%= render partial: 'users/short_add_item_btn', locals: {item: @item}%>
       <% if current_user && @item.user_id === current_user.id %>
-        <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Delete this item?"}, class:"btn btn-sm btn-primary shorter-btn"%>
-      <% end %>
+        <div class="flex-button">
+          <%= button_to "Delete Item", item_path(@item), method: "delete", data: {confirm: "Delete this item?"}, class:"btn btn-sm btn-primary shorter-btn"%>
+        </div>
+        <% end %>
     </div>
   </div>
   <hr style="margin-top: 25px;">
@@ -77,7 +79,7 @@
         <div class="flex-review-txt-area">
           <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
         </div>
-        <div class="flex-add-to-cart-btn">
+        <div class="flex-button">
           <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
         </div>
         <% end %>
