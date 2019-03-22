@@ -4,8 +4,11 @@ class ReviewsController < ApplicationController
     if current_user && params[:item_id] && current_user_bought_the_item(params[:item_id])
       @review = Review.new
       @item = Item.find(params[:item_id])
-    else
+    elsif params[:item_id]
+      @item = Item.find(params[:item_id])
       flash[:notice] = display_review_msg
+      redirect_to item_path(@item)
+    else
       redirect_to root_path
     end
   end
