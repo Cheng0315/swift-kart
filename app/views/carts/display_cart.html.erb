@@ -15,7 +15,7 @@
                 <div class="col-sm-12 col-md-11 col-lg-11 cart-items-padding top-bottom-padding">
                   <div class="row">
                     <div class="col-sm-12 col-md-9 col-lg-10">
-                      <div><%= item['name']%></div>
+                      <div><%= link_to item['name'], item_path(item)%></div>
                       <div> <%= item_overall_rating(item).html_safe %> </div>
                       <div>Price: <%= number_to_currency(item['price'])%></div>
                       <div><%= item['description']%> </div>
