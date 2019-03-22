@@ -34,11 +34,11 @@
   <hr style="margin-top: 25px;">
   <div class="row">
     <div class="col-lg-8" id="list-reviews">
-    
+     
       <h3 id="reviews">Reviews</h3>
       <% if !@reviews.blank? %>
         <% @reviews.each do |review|%>
-          <div><i class="fas fa-user fa-lg"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
+          <div><i class="fas fa-user fa-lg review-list-margin"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
           <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
           <div><%= review.created_at.strftime("%B %d, %Y") %></div>
           <div><%= review.comment %></div>
@@ -47,32 +47,37 @@
     </div>
   </div>
   <% if current_user && current_user_bought_the_item(@item.id) && @item.reviews.count > 0%>
-    <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
-      <div class='rating-stars' data-rating="">
-        <h6>Overall Rating</h6>
-        <ul id='stars'>
-          <li class='star' title='Poor' data-value='1'>
-            <i class='fa fa-star fa-fw'></i>
-          </li>
-          <li class='star' title='Fair' data-value='2'>
-            <i class='fa fa-star fa-fw'></i>
-          </li>
-          <li class='star' title='Good' data-value='3'>
-            <i class='fa fa-star fa-fw'></i>
-          </li>
-          <li class='star' title='Excellent' data-value='4'>
-            <i class='fa fa-star fa-fw'></i>
-          </li>
-          <li class='star' title='Amazing' data-value='5'>
-            <i class='fa fa-star fa-fw'></i>
-          </li>
-        </ul>
+    <div style="margin-top: 20px;">
+      <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
+        <div class='rating-stars' data-rating="">
+          <h5>Write a review</h5>
+          <h6>Overall rating</h6>
+          <ul id='stars'>
+            <li class='star' title='Poor' data-value='1'>
+              <i class='fa fa-star fa-fw'></i>
+            </li>
+            <li class='star' title='Fair' data-value='2'>
+              <i class='fa fa-star fa-fw'></i>
+            </li>
+            <li class='star' title='Good' data-value='3'>
+              <i class='fa fa-star fa-fw'></i>
+            </li>
+            <li class='star' title='Excellent' data-value='4'>
+              <i class='fa fa-star fa-fw'></i>
+            </li>
+            <li class='star' title='Amazing' data-value='5'>
+              <i class='fa fa-star fa-fw'></i>
+            </li>
+          </ul>
+        </div>
+        <%= f.hidden_field :rating, :value => ""%>
+        <h6><%= f.label :comment, style:"margin-bottom: -20px" %></h6>
+        <div class="flex-review-txt-area">
+        <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
+        </div>
+          <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
+      <% end %>
       </div>
-      <%= f.hidden_field :rating, :value => ""%>
-      <h6><%= f.label :comment %></h6>
-      <%= f.text_area :comment %><br>
-      <%= f.submit 'Submit Review'%><br>
-    <% end %>
     <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>

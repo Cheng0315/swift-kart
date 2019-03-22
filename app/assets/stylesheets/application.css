@@ -347,6 +347,21 @@ select {
   margin-top: 5px;
 }
 
+.review-list-margin {
+  margin-top: 25px;
+}
+
+.flex-review-txt-area {
+  min-width: 200px;
+  max-width: 300px;
+  flex-basis: auto; /* default value */
+  flex-grow: 1;
+}
+
+.review-thxs-msg {
+  margin-top: 12px;
+  color: #007bff;
+}
 
 
 
