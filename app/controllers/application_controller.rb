@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
 
   #Helper methods related to items
   def search_items(search_term, category)
-    if search_term.blank?
+    if search_term.blank? && category[:id].blank?
       redirect_to root_path
     elsif category[:id].blank?
       @items = Item.search(search_term)
