@@ -75,10 +75,12 @@
         <%= f.hidden_field :rating, :value => ""%>
         <h6><%= f.label :comment, style:"margin-bottom: -20px" %></h6>
         <div class="flex-review-txt-area">
-        <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
+          <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
         </div>
+        <div class="flex-add-to-cart-btn">
           <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
-      <% end %>
+        </div>
+        <% end %>
       </div>
     <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
