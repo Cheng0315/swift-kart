@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row border" >
       <div class="user-profile-padding-img">
-        <i class="fas fa-user fa-5x" style="background-color:green; padding: 20px;"></i>
+        <i class="fas fa-user fa-5x user-profile-img"></i>
       </div> 
       <div class="user-profile-padding-txt">
         <div>Name: <%= user_full_name(@user) %></div>
@@ -12,7 +12,7 @@
     </div> 
   </div>
   <% if !@items_for_sale.empty? %>
-    <h5 class="user-profile-padding-header"><%= @user.first_name %>'s <%= 'item'.pluralize(@items_for_sale.count)%></h5>
+    <h4 class="user-profile-padding-header"><%= @user.first_name %>'s <%= 'item'.pluralize(@items_for_sale.count)%></h4>
     <div class="row margin-top">
       <% @items_for_sale.each do |item|%>
         <div class="col-md-4 d-flex align-items-stretch">

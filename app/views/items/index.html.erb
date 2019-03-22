@@ -1,11 +1,11 @@
 <div class="container">
   <% if @items.empty? && @view_my_items %>
-  <h5 class="search-header text-center">You have no items for sale</h5>
+  <h5 class="search-header text-center">You have no item for sale</h5>
   <% elsif @items.empty? %>
     <h5 class="search-header text-center">Couldn't to find the item you're looking for</h5>
   <% else %>
     <% if @view_my_items %>
-      <h3 class="orders-header text-center">My Products</h3>
+      <h3 class="orders-header text-center">My Items</h3>
     <% else %>
       <h5 class="search-header text-center"><%= pluralize(@items.count, 'result') %> for '<%= @search_term %>'</h5>
     <% end %>

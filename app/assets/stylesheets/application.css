@@ -287,7 +287,7 @@ select {
 }
 
 .write-review-header {
-  margin-top: 15px;
+  margin-top: 14px;
   margin-bottom: 15px;
 }
 
@@ -325,15 +325,22 @@ select {
 }
 
 .user-profile-padding-txt {
-  padding: 9px 15px 10px 15px;
+  padding: 9px 15px 10px 20px;
 }
 
 .user-profile-padding-header {
-  padding: 13px 15px 0px 15px;
+  padding: 22px 15px 0px 0px;
+  margin-bottom: -4px;
 }
 
 .user-profile-padding-img {
-  padding: 15px 0px 15px 15px;
+  padding: 15px 0px 15px 20px;
+}
+
+.user-profile-img {
+  color:white; 
+  background-color:#e5e5e5; 
+  padding: 20px;
 }
 
 
