@@ -100,7 +100,7 @@ class ApplicationController < ActionController::Base
       @items = Item.search_with_category_id(search_term, category[:id].to_i)
     end
   end
-
+ 
   def create_item
     @item = Item.new(items_params)
     @item.user_id = current_user.id

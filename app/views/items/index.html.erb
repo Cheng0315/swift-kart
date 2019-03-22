@@ -6,6 +6,8 @@
   <% else %>
     <% if @view_my_items %>
       <h3 class="orders-header text-center">My Items</h3>
+    <% elsif @category && @search_term.empty?%>
+      <h5 class="search-header text-center"><%= pluralize(@items.count, 'result') %> for '<%= @category.name %>'</h5>
     <% else %>
       <h5 class="search-header text-center"><%= pluralize(@items.count, 'result') %> for '<%= @search_term %>'</h5>
     <% end %>

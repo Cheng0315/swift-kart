@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   #take user's input from the search form and find items that has a name that include the user's input
   def index
     @search_term = params[:search]
+    @category = Category.find(params[:category][:id]) if !params[:category][:id].empty?
+
     if params[:search]
       @items = search_items(params[:search], params[:category])
     else
@@ -20,7 +22,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-
+ 
   #create new item
   def new
     if current_user
