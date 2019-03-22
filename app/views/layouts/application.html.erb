@@ -25,8 +25,8 @@
   </head>
 
   <body>
-    <div class="container row1">
-      <div class="colum1 row2">
+    <div class="container top-nav">
+      <div class="brand-column brand-row">
         <a href="/" id="navbar-logo"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
@@ -36,24 +36,22 @@
         </div>
       </div>
   
-      <div class="colum2">
+      <div class="search-column">
         <%= form_tag items_path, method: :get do%>
-          <div class="row1">
-            <div class="colum9" >
+          <div class="top-nav">
+            <div class="search-term-column">
               <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
             </div>
-            <div class="colum8" >
+            <div class="search-category-column" >
               <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
             </div>
-            <div class="colum7" >
+            <div class="search-button-column" >
               <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
             </div>
           </div>
         <% end %>
       </div>
-  
-      
-      <div class="colum3 hideme">
+      <div class="cart-column hideme">
         <a class="nav-link top-cart" style="display: inline-block;" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
       </div>
     </div>

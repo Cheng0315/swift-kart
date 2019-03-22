@@ -350,12 +350,12 @@ footer {
 
 
 
-.row1 {
+.top-nav {
   display: flex;
   flex-wrap: wrap;
 }
 
-.row2 {
+.brand-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -364,19 +364,19 @@ footer {
 
 
 
-.colum1 {
+.brand-column {
   flex: 10%;
   padding-top: 8px;
   padding-bottom: 5px;
 }
 
-.colum2 {
+.search-column {
   flex: 76%;
   padding-top: 8px;
   padding-bottom: 5px;
 }
 
-.colum3 {
+.cart-column {
   flex: 5%;
   padding-top: 8px;
   padding-bottom: 5px;
@@ -395,42 +395,42 @@ li.dropdown .dropdown-menu {
     display: none;
   }
 
-  .row1 {
+  .top-nav {
     flex-direction: column;
   }
 
-  .colum1 {
+  .brand-column {
     flex: 24%;
   }
-  .colum2 {
+  .search-column {
     flex: 57%;
     margin-right: -5px;
   }
-  .colum3 {
+  .cart-column {
     flex: 10%;
     margin-right: -55px;
   }
 
-  .colum9 {
+  .search-term-column {
     flex: 35%;
     margin-right: 3px;
   }
-  .colum8 {
+  .search-category-column {
     flex: 30%;
     margin-right: 3px;
   }
-  .colum7 {
+  .search-button-column {
     flex: 9%;
     margin-right: 3px;
   }
 
-  .row2 .navbar-toggler {
+  .brand-row .navbar-toggler {
     margin-left: auto;
     margin-bottom: -8px;
     margin-right: -18px;
   }
 
-  .row2 .top-cart {
+  .brand-row .top-cart {
     margin-right: -13px;
   }
 
@@ -459,7 +459,7 @@ li.dropdown .dropdown-menu {
     display: none;
   }
 
-  .row1 {
+  .top-nav {
     flex-direction: column;
   }
 
@@ -467,12 +467,12 @@ li.dropdown .dropdown-menu {
     display: inline-block;
   }
 
-  .row2 .navbar-toggler {
+  .brand-row .navbar-toggler {
     margin-left: auto;
     margin-bottom: -8px;
   }
 
-  .row2 .top-cart {
+  .brand-row .top-cart {
     margin-right: -13px;
   }
 
@@ -515,32 +515,32 @@ li.dropdown .dropdown-menu {
     display: inline-block;
   }
 
-  .colum1 {
+  .brand-column {
     flex: 24%;
   }
-  .colum2 {
+  .search-column {
     flex: 57%;
     margin-right: -5px;
   }
-  .colum3 {
+  .cart-column {
     flex: 10%;
     margin-right: -55px;
   }
 
-  .colum9 {
+  .search-term-column {
     flex: 35%;
     margin-right: 3px;
   }
-  .colum8 {
+  .search-category-column {
     flex: 30%;
     margin-right: 3px;
   }
-  .colum7 {
+  .search-button-column {
     flex: 9%;
     margin-right: 3px;
   }
 
-  .row2 .navbar-toggler {
+  .brand-row .navbar-toggler {
     margin-left: auto;
     margin-bottom: -8px;
   }
@@ -584,27 +584,27 @@ li.dropdown .dropdown-menu {
     display: none;
   }
 
-  .colum3{
+  .cart-column {
     display: none;
   }
 
-  .colum1 {
+  .brand-column {
     flex: 10%;
   }
-  .colum2 {
+  .search-column {
     flex: 85%;
     margin-right: -19px;
   }
 
-  .colum9 {
+  .search-term-column {
     flex: 60%;
     margin-right: 3px;
   }
-  .colum8 {
+  .search-category-column {
     flex: 25%;
     margin-right: 3px;
   }
-  .colum7 {
+  .search-button-column {
     flex: 9%;
     margin-right: 3px;
   }
@@ -644,27 +644,27 @@ li.dropdown .dropdown-menu {
     justify-content: flex-end;
   }
 
-  .colum3{
+  .cart-column {
     display: none;
   }
 
-  .colum1 {
+  .brand-column {
     flex: 7%;
   }
-  .colum2 {
+  .search-column {
     flex: 85%;
     margin-right: -19px;
   }
 
-  .colum9 {
+  .search-term-column {
     flex: 65%;
     margin-right: 3px;
   }
-  .colum8 {
+  .search-category-column {
     flex: 25%;
     margin-right: 3px;
   }
-  .colum7 {
+  .search-button-column {
     flex: 9%;
     margin-right: 3px;
   }
