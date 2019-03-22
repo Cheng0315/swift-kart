@@ -78,8 +78,7 @@ function isReviewShowPath(pathname) {
     let price9 = 0; let price19 = 0; let quantity9 = 0; let quantity19 = 0; 
     let price10 = 0; let price20 = 0; let quantity10 = 0; let quantity20 = 0; 
     
-    let totalQuantity = parseInt($("#num-of-items").text());
-
+    let totalQuantity = parseInt($("#total-num-of-items").text());
     
 
     $(".select-quantity").change(function() {
@@ -101,7 +100,9 @@ function isReviewShowPath(pathname) {
       totalQuantitySums = totalQuantity + quantity1 + quantity2 + quantity3 + quantity4 + quantity5 + quantity6 + quantity7 + quantity8 + quantity9 + quantity10 + quantity11 + quantity12 + quantity13 + quantity14 + quantity15 + quantity16 + quantity17 + quantity18 + quantity19 + quantity20;
       
       $("#quantity_price").text("$" + totalPriceSums.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'))
-      $("#num-of-items").text(totalQuantitySums)
+      console.log(totalQuantity)
+      console.log(typeof totalQuantity)
+      $(".num-of-items").text(totalQuantitySums)
       $("#items-total").text(pluralize(totalQuantitySums))
     })
   })
@@ -223,15 +224,12 @@ $(document).on('turbolinks:load', function(){
   $(".add-to-cart-btn").parent().on('click', function(event) {
     
     var id = $(this).children('button').attr('id');
-   
-    console.log(id);
     
     $.ajax({
       type: "POST",
       url: this.action,
       data: $(this).serialize()
     }).done(function(items_count) {
-      console.log(items_count)
       $('.num-of-items').text(items_count)
     })
       

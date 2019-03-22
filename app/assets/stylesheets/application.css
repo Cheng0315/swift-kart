@@ -431,11 +431,15 @@ li.dropdown .dropdown-menu {
   }
 
   .row2 .top-cart {
-    margin-right: -15px;
+    margin-right: -13px;
   }
 
   .lg-sc-cart {
     display:none;
+  }
+
+  nav {
+    display: none;
   }
   
 }
@@ -469,7 +473,7 @@ li.dropdown .dropdown-menu {
   }
 
   .row2 .top-cart {
-    margin-right: -15px;
+    margin-right: -13px;
   }
 
   .lg-sc-cart {

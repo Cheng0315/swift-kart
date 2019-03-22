@@ -61,7 +61,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent" data-turbolinks="false">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto ">
             <li class="nav-item">
               <a class="nav-link" href="/#todays-deals-items" >Todays Deal <span class="sr-only">(current)</span></a>
             </li>
@@ -113,7 +113,7 @@
               </li>
             <% end %>
             <li class="nav-item lg-sc-cart">
-              <a class="nav-link" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items" id="total-num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
@@ -133,8 +133,8 @@
               <h6>Meta</h6>
             </div>
             <div>
-              <a href="/signup">Sign Up</a><br>
-              <a href="/signin">Sign In</a><br>
+              <a href="/signup">Sign In</a><br>
+              <a href="/signin">Sign Up</a><br>
             </div>
           </div>
           <div class="col-md-3">
@@ -142,9 +142,9 @@
               <h6>Get to Know Us</h6>
             </div>
             <div>
-              <a href="#">About SwiftKart</a><br>
-              <a href="#">Blogs</a><br>
+              <a href="#">About Swift-Kart</a><br>
               <a href="#">Reviews</a><br>
+              <a href="#">Blogs</a><br>
             </div>
           </div>
           <div class="col-md-3">
