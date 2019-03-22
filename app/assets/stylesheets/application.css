@@ -243,7 +243,7 @@ select {
 }
 
 .latest-products {
-  margin-top: 155px;
+  margin-top: 50px;
 }
 
 .margin-top {
@@ -342,6 +342,12 @@ select {
   background-color:#e5e5e5; 
   padding: 20px;
 }
+
+#list-reviews #reviews{
+  margin-top: 5px;
+}
+
+
 
 
 
@@ -462,6 +468,14 @@ li.dropdown .dropdown-menu {
   nav {
     display: none;
   }
+
+  .item-info-margin {
+    margin-top: 7px;
+  }
+
+  .item-info-margin hr {
+    margin-top: 7px;
+  }
   
 }
 
@@ -500,6 +514,16 @@ li.dropdown .dropdown-menu {
   .lg-sc-cart {
     display:none;
   }
+
+  .item-info-margin {
+    margin-top: 7px;
+  }
+
+  .item-info-margin hr {
+    margin-top: 7px;
+  }
+
+  
 
 }
 
@@ -569,6 +593,10 @@ li.dropdown .dropdown-menu {
   .lg-sc-cart {
     display:none;
   }
+
+  .item-info-margin {
+    margin-top: -4px;
+  }
 }
 
 
@@ -629,6 +657,10 @@ li.dropdown .dropdown-menu {
     flex: 9%;
     margin-right: 3px;
   }
+
+  .item-info-margin {
+    margin-top: -4px;
+  }
   
 }
 
@@ -688,6 +720,10 @@ li.dropdown .dropdown-menu {
   .search-button-column {
     flex: 9%;
     margin-right: 3px;
+  }
+
+  .item-info-margin {
+    margin-top: -4px;
   }
 
 }

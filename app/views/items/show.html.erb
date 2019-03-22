@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7 ">
+    <div class="col-md-7 item-info-margin">
       <h5><%= @item.name %></h5>
       <hr>
       <%= item_condition(@item)%>
@@ -31,8 +31,10 @@
       <% end %>
     </div>
   </div>
+  <hr style="margin-top: 25px;">
   <div class="row">
     <div class="col-lg-8" id="list-reviews">
+    
       <h3 id="reviews">Reviews</h3>
       <% if !@reviews.blank? %>
         <% @reviews.each do |review|%>
