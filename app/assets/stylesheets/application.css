@@ -84,6 +84,15 @@
 
 select {
   background-color: white;
+  border-radius:3px;
+}
+
+selectBox {
+  border-radius:3px;
+}
+
+.select-quantity {
+  width: 60px;
 }
 
 .error-msg {

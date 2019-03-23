@@ -14,7 +14,6 @@ $(document).on('turbolinks:load', function(){
         review.hollowStars = 5 - review.rating;
       })
       
-      console.log(reviews)
       $('#list-reviews').html(HandlebarsTemplates['sort_reviews'](reviews))
     })
   })

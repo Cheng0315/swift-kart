@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
       if @review.save
         respond_to do |format|
           format.json {render json: @review}
-          format.html {redirect_to item_path(@item, anchor: 'list-reviews')}
+          format.html {redirect_to item_path(@item, anchor: 'reviews')}
         end
       else
         respond_to do |format|
