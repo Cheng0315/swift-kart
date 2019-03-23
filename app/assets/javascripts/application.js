@@ -24,38 +24,11 @@
 
 
 Handlebars.registerHelper('times', function(n, block) {
-  var accum = '';
-  for(var i = 0; i < n; ++i)
+  let accum = '';
+  for(let i = 0; i < n; ++i)
       accum += block.fn(i);
   return accum;
 });
-
-function dateFormat(date) {
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let newD = new Date(date);
-  let d = newD.getDate();
-  let m = newD.getMonth();
-  let y = date.substring(0, 4);
-
-  return monthNames[m] + " " + d + ', ' + y
-}
-
-function pluralize(quantity) {
-  if (quantity === 1) {
-    return '1 items'
-  } else {
-    return `${quantity} items`
-  }
-}
-
-function isReviewShowPath(pathname) {
-  if (pathname == pathname.match(/\/reviews\/\d+$/g)) {
-    return true
-  } else {
-    return false
-  }
-}
-
 
 
 $(document).on('turbolinks:load', function(){
@@ -77,10 +50,9 @@ $(document).on('turbolinks:load', function(){
 })
 
 
-
 $(document).on('turbolinks:load', function(){
   $(".add-to-cart-btn").parent().on('click', function(event) {
-    var id = $(this).children('button').attr('id');
+    const id = $(this).children('button').attr('id');
     
     $.ajax({
       type: "POST",

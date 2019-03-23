@@ -1,3 +1,13 @@
+const dateFormat = (date) => {
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const newD = new Date(date);
+  const d = newD.getDate();
+  const m = newD.getMonth();
+  const y = date.substring(0, 4);
+
+  return monthNames[m] + " " + d + ', ' + y
+}
+
 $(document).on('turbolinks:load', function(){
   $("#dynamic_submit_form").on('submit', function(event) {
     

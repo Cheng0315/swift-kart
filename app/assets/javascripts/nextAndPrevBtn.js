@@ -1,4 +1,4 @@
-function enableAndDisableBtn(review_id, total_reviews) {
+const enableAndDisableBtn = (review_id, total_reviews) => {
   if (review_id >= total_reviews) {
     document.getElementById("next-review").disabled = true;
   } else if (review_id <= 1) {
@@ -6,6 +6,14 @@ function enableAndDisableBtn(review_id, total_reviews) {
   } else {
     document.getElementById("next-review").disabled = false;
     document.getElementById("previous-review").disabled = false;
+  }
+}
+
+const isReviewShowPath = (pathname) => {
+  if (pathname == pathname.match(/\/reviews\/\d+$/g)) {
+    return true
+  } else {
+    return false
   }
 }
 

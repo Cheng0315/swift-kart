@@ -1,3 +1,11 @@
+const pluralize = (quantity) => {
+  if (quantity === 1) {
+    return '1 items'
+  } else {
+    return `${quantity} items`
+  }
+}
+
 $(document).on('turbolinks:load', function(){
   let price1 = 0; let price11 = 0; let quantity1 = 0; let quantity11 = 0; 
   let price2 = 0; let price12 = 0; let quantity2 = 0; let quantity12 = 0; 
@@ -14,11 +22,11 @@ $(document).on('turbolinks:load', function(){
   
 
   $(".select-quantity").change(function() {
-    let idx = parseFloat($(this).attr('data-idx'));
-    let itemPrice = parseFloat($(this).attr('data-price'));
-    let totalPrice = parseFloat($(this).attr('data-total-price'));
-    let quantity = parseFloat($('#' + $(this).attr('id')).val());
-    let quantityPrice = itemPrice * quantity - itemPrice;
+    const idx = parseFloat($(this).attr('data-idx'));
+    const itemPrice = parseFloat($(this).attr('data-price'));
+    const totalPrice = parseFloat($(this).attr('data-total-price'));
+    const quantity = parseFloat($('#' + $(this).attr('id')).val());
+    const quantityPrice = itemPrice * quantity - itemPrice;
     
     if (quantity == 1) {
       eval('price' + (idx + 1) + '= 0;');
@@ -28,12 +36,10 @@ $(document).on('turbolinks:load', function(){
       eval('quantity' + (idx + 1) + `= ${quantity - 1}`);
     }
 
-    totalPriceSums = totalPrice + price1 + price2 + price3 + price4 + price5 + price6 + price7 + price8 + price9 + price10 + price11 + price12 + price13 + price14 + price15 + price16 + price17 + price18 + price19 + price20;
-    totalQuantitySums = totalQuantity + quantity1 + quantity2 + quantity3 + quantity4 + quantity5 + quantity6 + quantity7 + quantity8 + quantity9 + quantity10 + quantity11 + quantity12 + quantity13 + quantity14 + quantity15 + quantity16 + quantity17 + quantity18 + quantity19 + quantity20;
+    const totalPriceSums = totalPrice + price1 + price2 + price3 + price4 + price5 + price6 + price7 + price8 + price9 + price10 + price11 + price12 + price13 + price14 + price15 + price16 + price17 + price18 + price19 + price20;
+    const totalQuantitySums = totalQuantity + quantity1 + quantity2 + quantity3 + quantity4 + quantity5 + quantity6 + quantity7 + quantity8 + quantity9 + quantity10 + quantity11 + quantity12 + quantity13 + quantity14 + quantity15 + quantity16 + quantity17 + quantity18 + quantity19 + quantity20;
     
     $("#quantity_price").text("$" + totalPriceSums.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'))
-    console.log(totalQuantity)
-    console.log(typeof totalQuantity)
     $(".num-of-items").text(totalQuantitySums)
     $("#items-total").text(pluralize(totalQuantitySums))
   })

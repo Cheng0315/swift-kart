@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   $('#stars li').on('mouseover', function(){
-    var onStar = parseInt($(this).data('value'), 10); 
+    let onStar = parseInt($(this).data('value'), 10); 
    
     $(this).parent().children('li.star').each(function(e){
       if (e < onStar) {
@@ -16,8 +16,8 @@ $(document).on('turbolinks:load', function(){
   });
   
   $('#stars li').on('click', function(){
-    var onStar = parseInt($(this).data('value'), 10); 
-    var stars = $(this).parent().children('li.star');
+    let onStar = parseInt($(this).data('value'), 10); 
+    let stars = $(this).parent().children('li.star');
     
     for (i = 0; i < stars.length; i++) {
       $(stars[i]).removeClass('selected');
