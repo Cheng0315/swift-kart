@@ -9,9 +9,13 @@ $(document).on('turbolinks:load', function(){
       url: "/sort_reviews",
       data: {sortBy: sortBy, itemId: itemId}
     }).done(function(reviews) {
-      reviews.forEach(function(ele) {
-        console.log(ele.created_at)
+      reviews.forEach(function(review) {
+        review.created_at = dateFormat(review.created_at);
+        review.hollowStars = 5 - review.rating;
       })
+      
+      console.log(reviews)
+      $('#list-reviews').html(HandlebarsTemplates['sort_reviews'](reviews))
     })
   })
 
