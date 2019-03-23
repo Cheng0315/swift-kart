@@ -86,6 +86,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def sort_items
+    #if highest_reviews
+
+    #elsif lowest_reviews
+
+    #elsif newest_reviews
+
+    #else
+
+    #end
+  end
+
   #find items ordered by the user
   def my_orders
     if current_user

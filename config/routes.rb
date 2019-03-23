@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/my_orders' => 'items#my_orders'
   get '/buyer_orders' => 'items#buyer_orders'
   get '/ship_items' => 'items#ship_items'
+  get '/sort_items' => 'items#sort_items'
 
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
