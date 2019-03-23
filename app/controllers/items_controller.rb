@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
     
 
     if !@item.nil?
-      @reviews = @item.reviews.sort { |a,b| b.created_at <=> a.created_at }
+      @reviews = @item.reviews
       @new_review = Review.new
       if params[:user_id] && params[:user_id].to_i != current_user.id
         redirect_to root_path
@@ -86,16 +86,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  def sort_items
-    #if highest_reviews
-
-    #elsif lowest_reviews
-
-    #elsif newest_reviews
-
-    #else
-
-    #end
+  def sort_reviews
+    if params[:sortBy] == 'oldest'
+      render plain: "oldest"
+    elsif params[:sortBy] == 'most_recent'
+      render plain: "most_recent"
+    elsif params[:sortBy] == 'highest_rating'
+      render plain: "highest"
+    elsif params[:sortBy] == 'lowest_rating'
+      render plain: "lowest"
+    end
   end
 
   #find items ordered by the user

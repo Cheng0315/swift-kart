@@ -41,6 +41,12 @@
     <div class="col-lg-8" id="list-reviews">
       <% if !@reviews.blank? %>
         <h3 id="reviews">Reviews</h3>
+        <select class="sort-reviews" id="sort-reviews">
+          <option value="oldest">Oldest</option>
+          <option value="most_recent">Most Recent</option>
+          <option value="highest_rating">Highest Rating</option>
+          <option value="lowest_rating">Lowest Rating</option>
+        </select>
         <% @reviews.each do |review|%>
           <div><i class="fas fa-user fa-lg review-list-margin"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
           <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
