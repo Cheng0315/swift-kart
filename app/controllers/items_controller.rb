@@ -74,7 +74,6 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     @latest_products = Item.last(3).reverse
     
-
     if !@item.nil?
       @reviews = @item.reviews
       @new_review = Review.new
@@ -87,14 +86,19 @@ class ItemsController < ApplicationController
   end
 
   def sort_reviews
+    @item = Item.find(params[:itemId])
     if params[:sortBy] == 'oldest'
-      render plain: "oldest"
+      @reviews = @item.reviews.sort { |a,b| a.created_at <=> b.created_at }
+      render json: @reviews
     elsif params[:sortBy] == 'most_recent'
-      render plain: "most_recent"
+      @reviews = @item.reviews.sort { |a,b| b.created_at <=> a.created_at }
+      render json: @reviews
     elsif params[:sortBy] == 'highest_rating'
-      render plain: "highest"
+      @reviews = @item.reviews.sort { |a,b| b.rating <=> a.rating }
+      render json: @reviews
     elsif params[:sortBy] == 'lowest_rating'
-      render plain: "lowest"
+      @reviews = @item.reviews.sort { |a,b| a.rating <=> b.rating }
+      render json: @reviews
     end
   end
 

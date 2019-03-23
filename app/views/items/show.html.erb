@@ -41,7 +41,7 @@
     <div class="col-lg-8" id="list-reviews">
       <% if !@reviews.blank? %>
         <h3 id="reviews">Reviews</h3>
-        <select class="sort-reviews" id="sort-reviews">
+        <select class="sort-reviews" id="sort-reviews" data-item_id="<%=@item.id%>">
           <option value="oldest">Oldest</option>
           <option value="most_recent">Most Recent</option>
           <option value="highest_rating">Highest Rating</option>
