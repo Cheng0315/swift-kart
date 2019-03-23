@@ -8,6 +8,11 @@
   font-size: 17px;
 }
 
+.card-body img {
+  height: 350px;
+  object-fit: contain;
+}
+
 .small-image {
   display: block;
 }

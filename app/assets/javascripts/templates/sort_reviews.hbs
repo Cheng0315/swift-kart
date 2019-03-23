@@ -1,5 +1,5 @@
 {{#each this}}
-  <div><i class="fas fa-user fa-lg review-list-margin"></i> <a href="/users/{{user.user_id}}">{{user.first_name}} {{user.last_name}}</a> </div>
+  <div><i class="fas fa-user fa-lg review-list-margin"></i> <a href="/users/{{user_id}}">{{user.first_name}} {{user.last_name}}</a> </div>
   <div class="users-rating"><a href="/reviews/{{id}}">{{#times rating}}<i class="fas fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}{{#times hollowStars}}<i class="far fa-star fa-fw stars-read-only" style="color:orange"></i>{{/times}}</a></div>
   <div> {{created_at}}</div>
   <div> {{comment}}</div>
