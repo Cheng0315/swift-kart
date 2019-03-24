@@ -16,10 +16,6 @@
 //= require turbolinks
 //= require handlebars
 //= require_tree ./templates
-//= require nextAndPrevBtn
-//= require selectQuantity
-//= require starsAndRating
-//= require submitForm
 //= require_tree .
 
 
@@ -33,13 +29,13 @@ Handlebars.registerHelper('times', function(n, block) {
 
 $(document).on('turbolinks:load', function(){
   function toggleDropdown (e) {
-    const _d = $(e.target).closest('.dropdown'),
-      _m = $('.dropdown-menu', _d);
+    const dropdown = $(e.target).closest('.dropdown'),
+      menu = $('.dropdown-menu', dropdown);
     setTimeout(function(){
-      const shouldOpen = e.type !== 'click' && _d.is(':hover');
-      _m.toggleClass('show', shouldOpen);
-      _d.toggleClass('show', shouldOpen);
-      $('[data-toggle="dropdown"]', _d).attr('aria-expanded', shouldOpen);
+      const shouldOpen = e.type !== 'click' && dropdown.is(':hover');
+      menu.toggleClass('show', shouldOpen);
+      dropdown.toggleClass('show', shouldOpen);
+      $('[data-toggle="dropdown"]', dropdown).attr('aria-expanded', shouldOpen);
     }, e.type === 'mouseleave' ? 300 : 0);
   }
   

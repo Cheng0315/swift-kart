@@ -8,6 +8,24 @@ const dateFormat = (date) => {
   return monthNames[m] + " " + d + ', ' + y
 }
 
+class Review {
+  constructor(review) {
+    this.id = review.id
+    this.rating = review.rating
+    this.comment = review.comment
+    this.userId = review.user_id
+    this.itemId = review.item_id
+    this.createdAt = dateFormat(review.created_at);
+    this.hollowStars = 5 - review.rating;
+    this.userFirstName = review.user.first_name
+    this.userLastName = review.user.last_name
+  }
+
+  userFullName () {
+    return this.userFirstName + ' ' + this.userLastName
+  }
+}
+
 $(document).on('turbolinks:load', function(){
   $("#dynamic_submit_form").on('submit', function(event) {
     
@@ -18,13 +36,12 @@ $(document).on('turbolinks:load', function(){
     }).done(function(review) {
 
       if (review) {
-        let user = review.user
-        let total_reviews = parseInt($('a#total_reviews').data('total_reviews'))
-        review.created_at = dateFormat(review.created_at);
-        review.hollowStars = 5 - review.rating;
-        
+        const total_reviews = parseInt($('a#total_reviews').data('total_reviews'))
+        const reviewInfo = new Review(review)
+        console.log(reviewInfo)
+        console.log(reviewInfo.userFullName())
         $('#total_reviews').html(`<a href='#reviews' id='total_reviews' data-total_reviews='${total_reviews + 1}'>${total_reviews + 1} customers reviews</a>`)
-        $('#list-reviews').append(HandlebarsTemplates['append_review']({review: review, user: user}))
+        $('#list-reviews').append(HandlebarsTemplates['append_review'](reviewInfo))
         $("#dynamic_submit_form").hide()
 
       } else {
