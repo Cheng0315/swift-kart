@@ -38,8 +38,7 @@ $(document).on('turbolinks:load', function(){
       if (review) {
         const total_reviews = parseInt($('a#total_reviews').data('total_reviews'))
         const reviewInfo = new Review(review)
-        console.log(reviewInfo)
-        console.log(reviewInfo.userFullName())
+        
         $('#total_reviews').html(`<a href='#reviews' id='total_reviews' data-total_reviews='${total_reviews + 1}'>${total_reviews + 1} customers reviews</a>`)
         $('#list-reviews').append(HandlebarsTemplates['append_review'](reviewInfo))
         $("#dynamic_submit_form").hide()
