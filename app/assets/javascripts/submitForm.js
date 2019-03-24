@@ -26,7 +26,7 @@ class Review {
   }
 }
 
-$(document).on('turbolinks:load', function(){
+$(function(){
   $("#dynamic_submit_form").on('submit', function(event) {
     
     $.ajax({

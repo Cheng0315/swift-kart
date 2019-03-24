@@ -2,7 +2,7 @@
   <% if flash[:notice] %>
     <div class="text-center"><%= flash[:notice].html_safe %></div>
   <% end %>
-  <div class="row" id="show-image-info">
+  <div class="row" id="show-image-info" data-item_id="<%= @item.id %>">
     <div class="col-md-5 mt-auto">
       <a data-target="#modal_img" data-toggle="modal" href="#">
 				<div class="ba-0 tp-s">
@@ -48,12 +48,6 @@
           <option value="lowest_rating">Lowest Rating</option>
         </select>
         <div id="list-reviews">
-          <% @reviews.each do |review|%>
-            <div><i class="fas fa-user fa-lg review-list-margin"></i> <%= link_to user_full_name(review.user), user_path(review.user) %></div>
-            <div class="users-rating"><%= link_to display_stars_rating(review.rating).html_safe, review_path(review) %></div>
-            <div><%= review.created_at.strftime("%B %d, %Y") %></div>
-            <div><%= review.comment %></div>
-          <% end %>
         </div>
       <% end %>
     </div>

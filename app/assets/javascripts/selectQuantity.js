@@ -6,7 +6,7 @@ const pluralize = (quantity) => {
   }
 }
 
-$(document).on('turbolinks:load', function(){
+$(function(){
   let gPrice1 = 0; let gPrice11 = 0; let gQuantity1 = 0; let gQuantity11 = 0; 
   let gPrice2 = 0; let gPrice12 = 0; let gQuantity2 = 0; let gQuantity12 = 0; 
   let gPrice3 = 0; let gPrice13 = 0; let gQuantity3 = 0; let gQuantity13 = 0; 

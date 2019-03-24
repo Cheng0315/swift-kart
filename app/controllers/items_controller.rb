@@ -83,6 +83,7 @@ class ItemsController < ApplicationController
 
   def sort_reviews
     @item = Item.find(params[:itemId])
+    
     if params[:sortBy] == 'oldest'
       @reviews = @item.reviews.sort { |a,b| a.created_at <=> b.created_at }
       render json: @reviews

@@ -13,7 +13,6 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require handlebars
 //= require_tree ./templates
 //= require_tree .
@@ -27,7 +26,8 @@ Handlebars.registerHelper('times', function(n, block) {
 });
 
 
-$(document).on('turbolinks:load', function(){
+$(function(){
+  
   function toggleDropdown (e) {
     const dropdown = $(e.target).closest('.dropdown'),
       menu = $('.dropdown-menu', dropdown);

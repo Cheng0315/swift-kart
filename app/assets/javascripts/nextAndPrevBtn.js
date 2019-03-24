@@ -1,9 +1,8 @@
 let gCurrentReviewId = null;
-let gPathname = window.location.pathname; 
 let gTotalReviews = null;
 let gReviewId = null; 
 
-$(document).on('turbolinks:load', function(){
+$(function(){
 
   (function() {
     gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))

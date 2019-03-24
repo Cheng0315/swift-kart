@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $(".add-to-cart-btn").parent().on('click', function(event) {
     const id = $(this).children('button').attr('id');
     

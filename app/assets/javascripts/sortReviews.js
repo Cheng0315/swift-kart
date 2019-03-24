@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
 
   $(".sort-reviews").change(function() {
     const sortBy = $(this).val();

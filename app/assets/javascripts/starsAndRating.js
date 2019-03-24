@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $('#stars li').on('mouseover', function(){
     let onStar = parseInt($(this).data('value'), 10); 
    
