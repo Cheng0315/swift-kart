@@ -6,20 +6,20 @@ const isReviewShowPath = (pathname) => {
   }
 }
 
-let globalCurrentReviewId = null
-let globalPathname = window.location.pathname; 
-let globalTotalReviews = null;
-let globalReviewId = null;
+let gCurrentReviewId = null
+let gPathname = window.location.pathname; 
+let gTotalReviews = null;
+let gReviewId = null; 
 
 $(document).on('turbolinks:load', function(){
 
-  if (isReviewShowPath(globalPathname)) {
-    globalCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
-    globalTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
+  if (isReviewShowPath(gPathname)) {
+    gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
+    gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
 
-    if (globalCurrentReviewId === globalTotalReviews) {
+    if (gCurrentReviewId === gTotalReviews) {
       document.getElementById("next-review").disabled = true;
-    } else if (globalCurrentReviewId === 1){
+    } else if (gCurrentReviewId === 1){
       document.getElementById("previous-review").disabled = true;
     }
   }
@@ -27,38 +27,38 @@ $(document).on('turbolinks:load', function(){
   $(".reviews-btn").on("click", function() {
 
     if ($(this).attr('id') === 'next-review') {
-      globalReviewId = parseInt($(this).attr('data-next_id'))
+      gReviewId = parseInt($(this).attr('data-next_id'))
       
       document.getElementById("next-review").disabled = false;
       document.getElementById("previous-review").disabled = false;
-      $(this).attr('data-next_id', (globalReviewId + 1))
-      $(this).prev().attr('data-previous_id', (globalReviewId + 1))
-      $.get(`/reviews/${globalReviewId + 1}.json`, function(review) {
+      $(this).attr('data-next_id', (gReviewId + 1))
+      $(this).prev().attr('data-previous_id', (gReviewId + 1))
+      $.get(`/reviews/${gReviewId + 1}.json`, function(review) {
         review.created_at = dateFormat(review.created_at);
         review.hollowStars = 5 - review.rating;
 
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
       })
 
-      if (globalReviewId + 1 >= globalTotalReviews) {
+      if (gReviewId + 1 >= gTotalReviews) {
         document.getElementById("next-review").disabled = true;
       }
       
     } else {
-      globalReviewId = parseInt($(this).attr('data-previous_id'))
+      gReviewId = parseInt($(this).attr('data-previous_id'))
       
       document.getElementById("previous-review").disabled = false;
       document.getElementById("next-review").disabled = false;
-      $(this).attr('data-previous_id', (globalReviewId - 1))
-      $(this).next().attr('data-next_id', (globalReviewId - 1))
-      $.get(`/reviews/${globalReviewId - 1}.json`, function(review) {
+      $(this).attr('data-previous_id', (gReviewId - 1))
+      $(this).next().attr('data-next_id', (gReviewId - 1))
+      $.get(`/reviews/${gReviewId - 1}.json`, function(review) {
         review.created_at = dateFormat(review.created_at);
         review.hollowStars = 5 - review.rating;
 
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
       })
 
-      if (globalReviewId - 1 <= 1) {
+      if (gReviewId - 1 <= 1) {
         document.getElementById("previous-review").disabled = true;
       }
     }
