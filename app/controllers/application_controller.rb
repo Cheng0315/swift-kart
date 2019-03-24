@@ -238,7 +238,7 @@ class ApplicationController < ActionController::Base
   def current_user_bought_the_item(item_id)
     @item = Item.find(item_id)
     current_user.carts.each do |cart|
-      return true if cart.items.include?(@item)
+      return true if cart.items.include?(@item) && !!cart.checkout
     end
 
     false
