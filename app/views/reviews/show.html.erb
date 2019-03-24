@@ -9,7 +9,7 @@
         <%= @review.comment %><br>
       </div>
       <button type="button" class="reviews-btn btn btn-sm btn-primary" id="previous-review" data-previous_id="<%=@review.id%>">Previous</button>
-      <button type="button" class="reviews-btn btn btn-sm btn-primary" id="next-review" data-next_id="<%=@review.id%>">Next</button>
+      <button type="button" class="reviews-btn btn btn-sm btn-primary" id="next-review" data-next_id="<%=@review.id%>" data-total_reviews="<%=@total_reviews%>">Next</button>
     </div>
   </div>
   <%= render partial: 'items/latest_products', locals: {latest_products: Item.last(3).reverse}%>
