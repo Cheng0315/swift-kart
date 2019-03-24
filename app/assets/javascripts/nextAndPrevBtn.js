@@ -1,12 +1,4 @@
-const isReviewShowPath = (pathname) => {
-  if (pathname == pathname.match(/\/reviews\/\d+$/g)) {
-    return true
-  } else {
-    return false
-  }
-}
-
-let gCurrentReviewId = null
+let gCurrentReviewId = null;
 let gPathname = window.location.pathname; 
 let gTotalReviews = null;
 let gReviewId = null; 
@@ -14,17 +6,16 @@ let gReviewId = null;
 $(document).on('turbolinks:load', function(){
 
   (function() {
-    if (isReviewShowPath(gPathname)) {
-      gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
-      gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
+    gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
+    gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
 
-      if (gCurrentReviewId === gTotalReviews) {
-        document.getElementById("next-review").disabled = true;
-      } else if (gCurrentReviewId === 1){
-        document.getElementById("previous-review").disabled = true;
-      }
+    if (gCurrentReviewId === gTotalReviews) {
+      document.getElementById("next-review").disabled = true;
+    } else if (gCurrentReviewId === 1){
+      document.getElementById("previous-review").disabled = true;
     }
   })();
+
   
   $(".reviews-btn").on("click", function() {
 
