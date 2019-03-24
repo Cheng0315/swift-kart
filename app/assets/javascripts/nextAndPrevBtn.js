@@ -13,16 +13,18 @@ let gReviewId = null;
 
 $(document).on('turbolinks:load', function(){
 
-  if (isReviewShowPath(gPathname)) {
-    gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
-    gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
+  (function() {
+    if (isReviewShowPath(gPathname)) {
+      gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
+      gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
 
-    if (gCurrentReviewId === gTotalReviews) {
-      document.getElementById("next-review").disabled = true;
-    } else if (gCurrentReviewId === 1){
-      document.getElementById("previous-review").disabled = true;
+      if (gCurrentReviewId === gTotalReviews) {
+        document.getElementById("next-review").disabled = true;
+      } else if (gCurrentReviewId === 1){
+        document.getElementById("previous-review").disabled = true;
+      }
     }
-  }
+  })();
   
   $(".reviews-btn").on("click", function() {
 
