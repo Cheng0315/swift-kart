@@ -1,0 +1,62 @@
+/*** Users' Margins/Paddings ***/
+.orders-header {
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+
+.search-header {
+  margin-top: 12px;
+}
+
+.user-profile-padding-txt {
+  padding: 9px 15px 10px 20px;
+}
+
+.user-profile-padding-header {
+  padding: 22px 15px 0px 0px;
+  margin-bottom: -4px;
+}
+
+.user-profile-padding-img {
+  padding: 15px 0px 15px 20px;
+}
+
+.user-profile-img {
+  color:white; 
+  background-color:#e5e5e5; 
+  padding: 20px;
+}
+
+
+
+/*** Button ***/
+.edit-btn {
+  margin-bottom: 5px;
+}
+
+.shorter-btn {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+
+
+/*** Footer ***/
+footer a {
+  text-decoration:none;
+  color: white;
+}
+
+footer a:hover {
+  text-decoration:none;
+  color: gray;
+}
+
+footer {
+  padding-top: 50px;
+}
+
+.footer-padding {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

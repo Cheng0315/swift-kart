@@ -26,7 +26,7 @@ $(function(){
       $(this).attr('data-next_id', (gReviewId + 1))
       $(this).prev().attr('data-previous_id', (gReviewId + 1))
       $.get(`/reviews/${gReviewId + 1}.json`, function(review) {
-        review.created_at = dateFormat(review.created_at);
+        review.created_at = dateFormatter(review.created_at);
         review.hollowStars = 5 - review.rating;
 
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))
@@ -44,7 +44,7 @@ $(function(){
       $(this).attr('data-previous_id', (gReviewId - 1))
       $(this).next().attr('data-next_id', (gReviewId - 1))
       $.get(`/reviews/${gReviewId - 1}.json`, function(review) {
-        review.created_at = dateFormat(review.created_at);
+        review.created_at = dateFormatter(review.created_at);
         review.hollowStars = 5 - review.rating;
 
         $("#reviews_show_page").html(HandlebarsTemplates['show_review']({review: review, user: review.user}))

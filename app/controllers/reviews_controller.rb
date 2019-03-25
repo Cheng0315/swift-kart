@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
       @item = Item.find(params[:item_id])
       @review.user_id = current_user.id
       @review.item_id = @item.id
+
       if @review.save
         respond_to do |format|
           format.json {render json: @review}
@@ -38,12 +39,14 @@ class ReviewsController < ApplicationController
 
   def total_reviews
     @total_reviews = Review.all.count
+    
     render json: {total_reviews: @total_reviews}.to_json
   end
 
   def show 
     @review = Review.find(params[:id])
     @total_reviews = Review.all.count
+
     respond_to do |format|
       format.json { render json: @review}
       format.html {render :show}

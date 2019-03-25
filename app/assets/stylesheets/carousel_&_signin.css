@@ -1,0 +1,57 @@
+ /*** Carousel ***/
+ .carousel {
+  width: 100%;
+  padding-top: 25px;
+}
+
+.carousel-caption {
+  color: black;
+}
+
+.carousel-inner{
+  width:100%;
+  max-height: 300px !important;
+}
+
+.carousel img {
+  max-height: 300px;
+  margin: 0 auto;
+}
+
+.slide-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+ }
+ 
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+
+/*** Signin form ***/
+.sign-up-margin {
+  margin-top: 12px;
+  margin-bottom: -8px;
+}
+
+.signin-margin {
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+
+.fb-signin-padding {
+  padding-top: -5px;
+}
+
+.made-with-love {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.fa-heart {
+  color: red;
+}

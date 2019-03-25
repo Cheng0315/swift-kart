@@ -81,6 +81,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  #sort reviews based on the user's selection
   def sort_reviews
     @item = Item.find(params[:itemId])
     

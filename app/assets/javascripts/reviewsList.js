@@ -24,7 +24,7 @@ $(function(){
       if (!!reviews.length) {
         console.log(reviews)
         reviews.forEach(function(review) {
-          review.created_at = dateFormat(review.created_at);
+          review.created_at = dateFormatter(review.created_at);
           review.hollowStars = 5 - review.rating;
         })
         

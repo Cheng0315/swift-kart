@@ -1,13 +1,3 @@
-const dateFormat = (date) => {
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const newD = new Date(date);
-  const d = newD.getDate();
-  const m = newD.getMonth();
-  const y = date.substring(0, 4);
-
-  return monthNames[m] + " " + d + ', ' + y
-}
-
 class Review {
   constructor(review) {
     this.id = review.id
@@ -15,7 +5,7 @@ class Review {
     this.comment = review.comment
     this.userId = review.user_id
     this.itemId = review.item_id
-    this.createdAt = dateFormat(review.created_at);
+    this.createdAt = dateFormatter(review.created_at);
     this.hollowStars = 5 - review.rating;
     this.userFirstName = review.user.first_name
     this.userLastName = review.user.last_name
