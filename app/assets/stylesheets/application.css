@@ -19,8 +19,6 @@
  */
 
 
-
-
 /*** Select tag ***/
 select {
   background-color: white;
@@ -86,7 +84,7 @@ selectBox {
   }
 
   .brand-row .top-cart {
-    margin-right: -13px;
+    margin-right: -10px;
   }
 
   nav {
@@ -148,7 +146,7 @@ selectBox {
   }
 
   .brand-row .top-cart {
-    margin-right: -13px;
+    margin-right: -10px;
   }
 
   .item-info-margin {
