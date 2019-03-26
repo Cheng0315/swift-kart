@@ -19,11 +19,12 @@ class ReviewsController < ApplicationController
       @item = Item.find(params[:item_id])
       @review.user_id = current_user.id
       @review.item_id = @item.id
+      @hide_dynamic_review_form = params[:hide_dynamic_review_form]
 
       if @review.save
         respond_to do |format|
           format.json {render json: @review}
-          format.html {redirect_to item_path(@item, anchor: 'reviews')}
+          format.html {redirect_to item_path(@item, hide_dynamic_review_form: @hide_dynamic_review_form, anchor: 'reviews')}
         end
       else
         respond_to do |format|

@@ -36,6 +36,7 @@
       </ul>
     </div>
     <%= f.hidden_field :rating, :value => ""%>
+    <%= hidden_field_tag 'hide_dynamic_review_form', true %>
     <h5><label class="write-review-comment">Write your review</label></h5>
     <%= f.text_area :comment, rows:"4", style:"width: 100%", class:"review_text_area", placeholder:"What do you like or dislike about this product?"%><br>
     <div class="flex-button">

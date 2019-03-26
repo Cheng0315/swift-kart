@@ -69,6 +69,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @latest_products = Item.last(3).reverse
+    @hide_dynamic_review_form = params[:hide_dynamic_review_form]
     
     if !@item.nil?
       @reviews = @item.reviews

@@ -45,6 +45,7 @@ nav .navbar-nav li .dropdown-menu a{
 .top-nav {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 0.5px;
 }
 
 .brand-row {
