@@ -4,9 +4,9 @@
   <% end %>
   <%= form_tag cart_checkout_path(total_price: total_price(@cart)), method: :post do %>
     <% if !@cart.empty? %>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-9 col-lg-9">
+      <div class="display-cart-r-margin">
+        <div class="display-cart-row">
+          <div class="cart-items-col">
             <% @cart.each_with_index do |item, idx| %>
               <div class="row border " style="margin-top: 15px;">
                 <div class="col-sm-12 col-md-1 col-lg-1 top-bottom-padding">
@@ -38,8 +38,8 @@
               </div>
             <%end%>
           </div>
-          <div class="col-sm-12 col-md-3 col-lg-3 ">
-            <div style="margin-top: 10px;"><strong>Subtotal (<span id="items-total"><%=pluralize(count_items_in_cart, 'item')%></span>): <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
+          <div class="cart-price-col">
+            <div style="margin-top: 10px; "><strong>Subtotal (<span id="items-total"><%=pluralize(count_items_in_cart, 'item')%></span>): <span id='quantity_price'><%= number_to_currency(total_price(@cart)) %></span></strong></div>
             <%= submit_tag "Checkout", class:"btn btn-sm btn-primary btn-block" %>
           </div>
         </div>

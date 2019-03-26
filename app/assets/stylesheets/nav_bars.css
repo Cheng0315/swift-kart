@@ -54,6 +54,12 @@ nav .navbar-nav li .dropdown-menu a{
   justify-content: space-between;
 }
 
+.display-cart-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .brand-column {
   flex: 10%;
   padding-top: 8px;

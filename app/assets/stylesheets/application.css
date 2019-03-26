@@ -37,6 +37,11 @@ selectBox {
   color: red;
 }
 
+.display-cart-r-margin {
+  margin-left: 15px;
+  margin-right: 14px;
+}
+ 
 /*** Media ***/
 @media (max-width: 575px) {
 
@@ -110,6 +115,16 @@ selectBox {
     flex-basis: auto; 
     flex-grow: 1;
   }
+
+  .cart-price-col {
+    flex: 100%;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .cart-items-col {
+    flex: 100%;
+  }
   
 }
 
@@ -167,6 +182,16 @@ selectBox {
     max-width: 767px;
     flex-basis: auto; 
     flex-grow: 1;
+  }
+
+  .cart-price-col {
+    flex: 100%;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .cart-items-col {
+    flex: 100%;
   }
 
 }
@@ -253,6 +278,16 @@ selectBox {
     flex-basis: auto; 
     flex-grow: 1;
   }
+
+  .cart-price-col {
+    flex: 23%;
+    margin-left: 30px;
+    margin-right: -20px;
+  }
+
+  .cart-items-col {
+    flex: 65%;
+  }
 }
 
 
@@ -329,6 +364,16 @@ selectBox {
     flex-basis: auto; 
     flex-grow: 1;
   }
+
+  .cart-price-col {
+    flex: 23%;
+    margin-left: 30px;
+    margin-right: -16px;
+  }
+
+  .cart-items-col {
+    flex: 65%;
+  }
   
 }
 
@@ -404,6 +449,16 @@ selectBox {
     max-width: 300px;
     flex-basis: auto; 
     flex-grow: 1;
+  }
+
+  .cart-price-col {
+    flex: 19%;
+    margin-right: -15px;
+    margin-left: 33px;
+  }
+
+  .cart-items-col {
+    flex: 70%;
   }
 
 }
