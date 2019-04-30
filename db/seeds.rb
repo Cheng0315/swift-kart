@@ -30,6 +30,7 @@ michael = User.create(first_name: 'Michael', last_name: 'Smith', seller: true, e
 amanda = User.create(first_name: 'Amanda', last_name: 'Williams', seller: true, email: 'amandawilliam@yahoo.com', password: 'b')
 jenny = User.create(first_name: 'Jenny', last_name: 'Miller', seller: true, email: 'jennymiller@gmail.com', password: 'c')
 joseph = User.create(first_name: 'Joseph', last_name: 'Peterson', seller: true, email: 'jpeterson@outlook.com', password: 'd')
+demo_account = User.create(first_name: 'Demo', last_name: 'Account', seller: true, email: 'demo@demo.com', password: 'demo')
 
 michaels_items = [['Rare 1940 Antique Gramophone', 5299.99, 'Rare 1940 antique gramophone, great condition.', true, 1, 2, "app/assets/images/items_images/gramophone.png", "gramophone.png"],
   ['SIEMENS Washing Machine', 599.99, '2015 SIEMENS Washing machine, works great!', true, 2, 2, "app/assets/images/items_images/washer.png", "washer.png"],

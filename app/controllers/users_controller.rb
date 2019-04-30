@@ -49,7 +49,10 @@ class UsersController < ApplicationController
 
   #update user info to the database
   def update
-    if current_user
+    if current_user && current_user.id === 5
+      flash[:notice] = demo_acc_err_update_message
+      redirect_to root_path
+    elsif current_user
       update_user_info
     else
       redirect_to signin_path

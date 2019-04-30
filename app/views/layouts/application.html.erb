@@ -101,6 +101,9 @@
               </li>
             <% else %>
               <li class="nav-item dropdown">
+                <li class="nav-item">
+                  <%= link_to 'Demo Account', {:controller => "sessions", :action => "create", :email => 'demo@demo.com', password: 'demo'}, method: 'post', class:'btn btn-sm btn-block btn-success demo-account', style:"margin-top: 5px;" %>
+                </li>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   Account
                 </a>

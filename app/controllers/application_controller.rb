@@ -66,28 +66,35 @@ class ApplicationController < ActionController::Base
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Item already exists in your cart. Please select the quantity you like in the quantity section on checkout.</span>
-    </div>".html_safe
+    </div>"
+  end
+
+  def demo_acc_err_update_message
+    "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
+      <button type='button' class='close' data-dismiss='alert'>&times;</button>
+      <span class='text-center'>Cannot update information on demo account. To use the 'Update My Info' feature, please logout and sign in to your account or signup.</span>
+    </div>"
   end
 
   def display_add_to_cart_msg
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Successfully added item to cart.</span>
-    </div>".html_safe
+    </div>"
   end
 
   def display_review_msg
     "<div class='alert alert-warning alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Please buy the item before you can write a review</span>
-    </div>".html_safe
+    </div>"
   end
 
   def success_checkout_message
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
       <span class='text-center'>Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!</span>
-    </div>".html_safe
+    </div>"
   end
 
   #Helper methods related to items

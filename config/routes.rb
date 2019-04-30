@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
+  get '/demo_account' => 'sessions#demo_account'
   get '/logout' => 'sessions#logout'
   get '/auth/facebook/callback' => 'sessions#create'
 end
