@@ -2,6 +2,7 @@
  .carousel {
   width: 100%;
   padding-top: 25px;
+  z-index: 0;
 }
 
 .carousel-caption {

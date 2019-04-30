@@ -4,6 +4,15 @@ let gReviewId = null;
 
 $(function(){
 
+  function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 (hide it) */
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }
+
   (function() {
     gCurrentReviewId = parseInt($("#next-review").attr('data-next_id'))
     gTotalReviews = parseInt($("#next-review").attr('data-total_reviews'))
