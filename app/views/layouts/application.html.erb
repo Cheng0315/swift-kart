@@ -28,11 +28,40 @@
 
     <div id="overlay" onclick="off()"></div>
 
-    
+    <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/#todays-deals-items">Today's Deals</a>
+      <a href="/#trendings-items">Trendings</a>
+      <a href="/#recommended-items">Recommended</a>
+      <a href="/#featured-items">Featured</a>
 
-    <!--<button class="openbtn">&#9776; Toggle Sidepanel</button> 
-    <h2>Collapsed Sidepanel</h2>
-    <p>Content...</p>-->
+      <% if current_user %>
+        <% if current_user.seller %>
+          <a class="nav-link" href="/users/<%=current_user.id%>/items/new">Add New Item <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/buyer_orders" >Buyers Orders <span class="sr-only">(current)</span></a>
+        <% end %>
+        <a class="nav-link" href="/my_orders" >My Orders <span class="sr-only">(current)</span></a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if current_user.seller %>
+            <a class="dropdown-item" href="/my_items" >My Items</a>
+          <% end %>
+          <a class="dropdown-item" href="/users/<%=current_user.id%>/edit">Update My Info</a>
+          <a class="dropdown-item" href="/logout" >Log Out</a>
+        </div>
+      <% else %>
+        <%= link_to 'Demo Account', {:controller => "sessions", :action => "create", :email => 'demo@demo.com', password: 'demo'}, method: 'post'%>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/signin">Sign In <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" href="/signup" >Sign Up <span class="sr-only">(current)</span></a>
+        </div>
+      <% end %>
+    </div>
 
     <div class="container top-nav">
       <div class="brand-column brand-row">
@@ -109,10 +138,10 @@
                 </div>
               </li>
             <% else %>
+              <li class="nav-item">
+                <%= link_to 'Demo Account', {:controller => "sessions", :action => "create", :email => 'demo@demo.com', password: 'demo'}, method: 'post', class:'btn btn-sm btn-block btn-success demo-account', style:"margin-top: 5px;" %>
+              </li>
               <li class="nav-item dropdown">
-                <li class="nav-item">
-                  <%= link_to 'Demo Account', {:controller => "sessions", :action => "create", :email => 'demo@demo.com', password: 'demo'}, method: 'post', class:'btn btn-sm btn-block btn-success demo-account', style:"margin-top: 5px;" %>
-                </li>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   Account
                 </a>
@@ -131,13 +160,7 @@
     </nav>
     
     <section id="main-content">
-    <div id="mySidepanel" class="sidepanel">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
-    </div>
+    
       <%= yield %>
     </section>
   

@@ -43,7 +43,7 @@ selectBox {
 }
 
 .sidepanel {
-  height: 250px; /* Specify a height */
+  height: 100%; /* Specify a height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 2; /* Stay on top */
