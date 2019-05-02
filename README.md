@@ -1,6 +1,6 @@
 # Swift-Kart
 
-This is a Ruby on Rails e-commerce application on Ruby v2.3.6 and Rails v5.2.2. In this application, users have the option to sign up as a seller or buyer. Buyers can buy items from sellers and sellers can sell items as well as buy items from other sellers.
+Swift-Kart is a Ruby on Rails e-commerce application. When using the application, users can sign up as a seller or buyer. If users sign up as buyer, users can buy items from sellers. If users sign up as seller, users can buy items as well as sell items.
 
 # Usage
 

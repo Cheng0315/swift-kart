@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
   def success_checkout_message
     "<div class='alert alert-success alert-dismissible fade show add-item-msg'>
       <button type='button' class='close' data-dismiss='alert'>&times;</button>
-      <span class='text-center'>Thank you for shopping with Swift Kart! Your order has been placed and we will notify you when your order is shipped!</span>
+      <span class='text-center'>Thank you for shopping with Swift-Kart! Your order was placed and we will notify you when your order is shipped!</span>
     </div>"
   end
 
