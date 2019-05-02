@@ -54,38 +54,38 @@
   </div>
   <% if current_user && current_user_bought_the_item(@item.id) && @item.reviews.count > 0 && !@hide_dynamic_review_form%>
     <div style="margin-top: 20px;">
-      <%= form_for ([@item, @new_review]), html: {id: "dynamic_submit_form"} do |f| %>
-        <div class='rating-stars' data-rating="">
-          <h5>Write a review</h5>
-          <h6>Overall rating</h6>
-          <ul id='stars'>
-            <li class='star' title='Poor' data-value='1'>
-              <i class='fa fa-star fa-fw'></i>
-            </li>
-            <li class='star' title='Fair' data-value='2'>
-              <i class='fa fa-star fa-fw'></i>
-            </li>
-            <li class='star' title='Good' data-value='3'>
-              <i class='fa fa-star fa-fw'></i>
-            </li>
-            <li class='star' title='Excellent' data-value='4'>
-              <i class='fa fa-star fa-fw'></i>
-            </li>
-            <li class='star' title='Amazing' data-value='5'>
-              <i class='fa fa-star fa-fw'></i>
-            </li>
-          </ul>
-        </div>
-        <%= f.hidden_field :rating, :value => ""%>
-        <h6><%= f.label :review, style:"margin-bottom: -20px" %></h6>
-        <div class="flex-review-txt-area">
-          <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
-        </div>
-        <div class="flex-button">
-          <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
-        </div>
-        <% end %>
+    <%= form_for ([@item, @new_review], html: {id: "dynamic_submit_form"}) do |f| %>
+      <div class='rating-stars' data-rating="">
+        <h5>Write a review</h5>
+        <h6>Overall rating</h6>
+        <ul id='stars'>
+          <li class='star' title='Poor' data-value='1'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Fair' data-value='2'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Good' data-value='3'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Excellent' data-value='4'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+          <li class='star' title='Amazing' data-value='5'>
+            <i class='fa fa-star fa-fw'></i>
+          </li>
+        </ul>
       </div>
+      <%= f.hidden_field :rating, :value => ""%>
+      <h6><%= f.label :review, style:"margin-bottom: -20px" %></h6>
+      <div class="flex-review-txt-area">
+        <%= f.text_area :comment, rows:"4", style:"width: 100%;", class:"review_text_area", placeholder:"What do you like or dislike about this product?" %><br>
+      </div>
+      <div class="flex-button">
+        <%= f.submit 'Submit Review', :class => 'btn btn-sm btn-primary shorter-btn submit-review-btn'%><br>
+      </div>
+      <% end %>
+    </div>
     <% end %>
   <%= render partial: 'latest_products', locals: {latest_products: Item.last(3).reverse}%>
 </div>
