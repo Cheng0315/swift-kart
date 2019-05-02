@@ -13,6 +13,25 @@ class ReviewsController < ApplicationController
     end
   end
 
+  #sort reviews based on the user's selection
+  def sort_reviews
+    @item = Item.find(params[:itemId])
+    
+    if params[:sortBy] == 'oldest'
+      @reviews = @item.reviews.sort { |a,b| a.created_at <=> b.created_at }
+      render json: @reviews
+    elsif params[:sortBy] == 'most_recent'
+      @reviews = @item.reviews.sort { |a,b| b.created_at <=> a.created_at }
+      render json: @reviews
+    elsif params[:sortBy] == 'highest_rating'
+      @reviews = @item.reviews.sort { |a,b| b.rating <=> a.rating }
+      render json: @reviews
+    elsif params[:sortBy] == 'lowest_rating'
+      @reviews = @item.reviews.sort { |a,b| a.rating <=> b.rating }
+      render json: @reviews
+    end
+  end
+
   def create
     if current_user
       @review = Review.new(reviews_params)

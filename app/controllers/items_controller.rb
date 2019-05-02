@@ -82,25 +82,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  #sort reviews based on the user's selection
-  def sort_reviews
-    @item = Item.find(params[:itemId])
-    
-    if params[:sortBy] == 'oldest'
-      @reviews = @item.reviews.sort { |a,b| a.created_at <=> b.created_at }
-      render json: @reviews
-    elsif params[:sortBy] == 'most_recent'
-      @reviews = @item.reviews.sort { |a,b| b.created_at <=> a.created_at }
-      render json: @reviews
-    elsif params[:sortBy] == 'highest_rating'
-      @reviews = @item.reviews.sort { |a,b| b.rating <=> a.rating }
-      render json: @reviews
-    elsif params[:sortBy] == 'lowest_rating'
-      @reviews = @item.reviews.sort { |a,b| a.rating <=> b.rating }
-      render json: @reviews
-    end
-  end
-
   #find items ordered by the user
   def my_orders
     if current_user
