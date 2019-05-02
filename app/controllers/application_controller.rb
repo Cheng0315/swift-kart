@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_cart, :guest_cart, :user_full_name, :not_seller_item, :item_is_shipped, :current_user_bought_the_item, :display_stars_rating, :item_overall_rating, :count_items_in_cart
-  
+  #push from visual studio
   def current_cart
     @current_cart ||= Cart.find(session[:cart_id]) if session[:cart_id]
   end
