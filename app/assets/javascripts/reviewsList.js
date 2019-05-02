@@ -14,15 +14,13 @@ $(function(){
   if (isItemShowPath(gPathName)) {
     let sortBy = 'oldest'
     let itemId = $("#show-image-info").attr('data-item_id')
-    console.log(itemId)
+    
     $.ajax({
       type: 'GET',
       url: "/sort_reviews",
       data: {sortBy: sortBy, itemId: itemId}
     }).done(function(reviews) {
-      console.log(!!reviews.length)
       if (!!reviews.length) {
-        console.log(reviews)
         reviews.forEach(function(review) {
           review.created_at = dateFormatter(review.created_at);
           review.hollowStars = 5 - review.rating;

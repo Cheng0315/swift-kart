@@ -69,12 +69,12 @@
   </div>
 </div>
 
-<div class="index-content margin-top" >
-  <div class="container">
-    <div id="todays-deals-items">
-      <h3>Todays Deals</h3>
+<div class="index-content margin-top container" >
+  <div class='todays-deals'>
+    <div id="todays-deals-header">
+      <h3>Today's Deals</h3>
     </div>
-    <div class="row">
+    <div class="todays-deals-items row">
       <% @todays_deal.each_with_index do |item, idx|%>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="card">
@@ -93,11 +93,11 @@
     </div>
   </div>
 
-  <div class="container" >
-    <div id="trendings-items">
+  <div class='trendings'>
+    <div id="trendings-header">
       <h3>Trendings</h3>
     </div>
-    <div class="row">
+    <div class="trendings-items row">
       <% @trending_items.each do |item|%>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="card">
@@ -115,11 +115,11 @@
     </div>
   </div>
 
-  <div class="container" >
-    <div id="recommended-items">
+  <div class='recommended'>
+    <div id="recommended-header">
       <h3>Recommended</h3>
     </div>
-    <div class="row">
+    <div class="recommended-items row">
       <% @recommended_items.each do |item|%>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="card">
@@ -137,11 +137,11 @@
     </div>
   </div>
 
-  <div class="container" >
-    <div id="featured-items">
+  <div class='featured'>
+    <div id="featured-header">
       <h3>Featured</h3>
     </div>
-    <div class="row">
+    <div class="featured-items row">
       <% @featured_items.each do |item|%>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="card">
