@@ -51,7 +51,7 @@ selectBox {
   left: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 10px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
 }
 
@@ -189,6 +189,10 @@ selectBox {
   .cart-items-col {
     flex: 100%;
   }
+
+  nav {
+    display: none !important;
+  }
   
 }
 
@@ -256,6 +260,10 @@ selectBox {
 
   .cart-items-col {
     flex: 100%;
+  }
+
+  nav {
+    display: none !important;
   }
 
 }
@@ -352,6 +360,19 @@ selectBox {
   .cart-items-col {
     flex: 65%;
   }
+
+  nav {
+    display: none !important;
+  }
+
+  .top-nav-margin {
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+
+  .carousel {
+    padding-top: 3px;
+  }
 }
 
 
@@ -439,6 +460,9 @@ selectBox {
     flex: 65%;
   }
   
+  #mySidepanel, #overlay {
+    display: none !important;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -523,6 +547,10 @@ selectBox {
 
   .cart-items-col {
     flex: 70%;
+  }
+
+  #mySidepanel, #overlay {
+    display: none !important;
   }
 
 }

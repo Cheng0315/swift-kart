@@ -29,11 +29,11 @@
     <div id="overlay" onclick="off()"></div>
 
     <div id="mySidepanel" class="sidepanel">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="/#todays-deals-items">Today's Deals</a>
-      <a href="/#trendings-items">Trendings</a>
-      <a href="/#recommended-items">Recommended</a>
-      <a href="/#featured-items">Featured</a>
+      <a href="/" class="side-panel-links"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
+      <a href="/#todays-deals-items" class="side-panel-links">Today's Deals</a>
+      <a href="/#trendings-items" class="side-panel-links">Trendings</a>
+      <a href="/#recommended-items" class="side-panel-links">Recommended</a>
+      <a href="/#featured-items" class="side-panel-links">Featured</a>
 
       <% if current_user %>
         <% if current_user.seller %>
@@ -63,34 +63,36 @@
       <% end %>
     </div>
 
-    <div class="container top-nav">
-      <div class="brand-column brand-row">
-        <a href="/" id="navbar-logo"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
-          <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-        </button>
-        <div class="sm-sc-cart">
-          <a class="nav-link top-cart" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
-        </div>
-      </div> 
-  
-      <div class="search-column">
-        <%= form_tag items_path, method: :get do%>
-          <div class="top-nav">
-            <div class="search-term-column">
-              <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
-            </div>
-            <div class="search-category-column" >
-              <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
-            </div>
-            <div class="search-button-column" >
-              <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
-            </div>
+    <div class="container top-nav-margin">
+      <div class='top-nav'>
+        <div class="brand-column brand-row">
+          <a href="/" id="navbar-logo"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+          <div class="sm-sc-cart">
+            <a class="nav-link top-cart" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
           </div>
-        <% end %>
-      </div>
-      <div class="cart-column md-sc-cart">
-        <a class="nav-link top-cart" style="display: inline-block;" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
+        </div> 
+    
+        <div class="search-column">
+          <%= form_tag items_path, method: :get do%>
+            <div class="top-nav">
+              <div class="search-term-column">
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder:"Search" %>
+              </div>
+              <div class="search-category-column" >
+                <%= collection_select :category, :id, Category.all, :id, :name, {:include_blank => "All Categories"}, {class: "custom-select"}%>
+              </div>
+              <div class="search-button-column" >
+                <%= submit_tag 'Search', :name => nil, :class => "btn btn-outline-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="cart-column md-sc-cart">
+          <a class="nav-link top-cart" style="display: inline-block;" href="/cart" ><i class="fas fa-shopping-cart"></i> <span class="badge badge-light num-of-items"><%=count_items_in_cart%></span><span class="sr-only">(current)</span></a>
+        </div>
       </div>
     </div>
 

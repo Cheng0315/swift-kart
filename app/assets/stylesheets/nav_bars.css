@@ -81,3 +81,18 @@ nav .navbar-nav li .dropdown-menu a{
 li.dropdown .dropdown-menu {
   margin-bottom: 10px;
 }
+
+#mySidepanel a{
+  color: rgb(209, 209, 209);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#mySidepanel .dropdown-item{
+  color: rgb(56, 56, 56);
+  width: 238px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}

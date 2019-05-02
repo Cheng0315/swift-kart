@@ -54,8 +54,6 @@ function off() {
 }
 
 
-
-
 $(function(){
 
   $('#overlay').on('click', function(){
@@ -65,6 +63,11 @@ $(function(){
 
   $('.navbar-toggler-icon').on('click', function(){
     on()
+  })
+
+  $('.side-panel-links').on('click', function(){
+    off()
+    closeNav()
   })
   
   function toggleDropdown (e) {
