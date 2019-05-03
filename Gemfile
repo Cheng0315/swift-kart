@@ -21,7 +21,7 @@ gem 'omniauth-facebook'
 gem 'active_model_serializers'
 gem 'jquery-rails'
 gem 'thin'
-
+gem "google-cloud-storage", "~> 1.8", require: false
 gem 'handlebars_assets'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
