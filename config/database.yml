@@ -7,7 +7,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['SWIFT_KART_USERNAME'] %>
   password: <%= ENV['SWIFT_KART_PASSWORD'] %>
@@ -16,15 +15,16 @@ default: &default
 development:
   <<: *default
   host: localhost
-  database: swiftkart_development
+  database: swift_kart_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: swiftkart_test
+  host: localhost
+  database: swift_kart_test
 
 production:
   <<: *default
-  database: swiftkart_production
+  database: swift_kart_production
