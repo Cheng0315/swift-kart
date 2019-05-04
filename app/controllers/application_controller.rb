@@ -113,6 +113,10 @@ class ApplicationController < ActionController::Base
     @item.user_id = current_user.id
 
     if @item.save
+      if !@item.image.attached?
+        @item.image.attach(io: File.open("app/assets/images/items_images/default_image.png"), filename: "default_image.png")
+      end
+
       @category = Category.find(items_params[:category_id])
       @category.items << @item
       current_user.items << @item
