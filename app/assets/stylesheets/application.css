@@ -193,6 +193,18 @@ selectBox {
   nav {
     display: none !important;
   }
+
+  .footer-meta {
+    margin-bottom: 30px;
+  }
+
+  .footer-about-us {
+    margin-bottom: 30px;
+  }
+
+  .footer-help {
+    margin-bottom: 30px;
+  }
   
 }
 
@@ -372,6 +384,10 @@ selectBox {
 
   .carousel {
     padding-top: 3px;
+  }
+
+  .notice-msg {
+    margin-bottom: 20px; 
   }
 }
 
