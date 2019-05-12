@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application'%>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag '/cart_logo1.png' %>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,9 +28,7 @@
   <body>
 
     <header>
-      <div id="overlay" onclick="off()"></div>
-      
-      <div id="mySidepanel" class="sidepanel">
+      <div id="sidepanel" class="sidepanel">
         <a href="/" class="side-panel-links"><h3><span>Swift-</span><span><i class="fas fa-shopping-cart"></i></h3></span></a>
         <a href="/#todays-deals-header" class="side-panel-links">Today's Deals</a>
         <a href="/#trendings-header" class="side-panel-links">Trendings</a>
@@ -63,6 +62,8 @@
           </div>
         <% end %>
       </div>
+
+      <div id="overlay" onclick="off()"></div>
 
       <div class="container top-nav-margin">
         <div class='top-nav'>

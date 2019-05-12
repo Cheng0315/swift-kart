@@ -82,17 +82,6 @@ li.dropdown .dropdown-menu {
   margin-bottom: 10px;
 }
 
-#mySidepanel a{
-  color: rgb(233, 233, 233);
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-#mySidepanel .dropdown-item{
-  color: rgb(56, 56, 56);
-  width: 238px;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
+.navbar-collapse a{
+  transition: 0.2s ease;
 }

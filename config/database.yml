@@ -15,7 +15,7 @@ default: &default
 development:
   <<: *default
   host: localhost
-  database: swift_kart_development
+  database: swift_kart2_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,8 +23,8 @@ development:
 test:
   <<: *default
   host: localhost
-  database: swift_kart_test
+  database: swift_kart2_test
 
 production:
   <<: *default
-  database: swift_kart_production
+  database: swift_kart2_production
