@@ -487,7 +487,7 @@ selectBox {
     flex: 65%;
   }
   
-  #mySidepanel, #overlay {
+  #sidepanel, #overlay {
     display: none !important;
   }
 }
@@ -576,7 +576,7 @@ selectBox {
     flex: 70%;
   }
 
-  #mySidepanel, #overlay {
+  #sidepanel, #overlay {
     display: none !important;
   }
 
