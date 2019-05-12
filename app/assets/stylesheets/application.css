@@ -388,7 +388,7 @@ selectBox {
     display: none !important;
   }
 
-  .top-nav-margin {
+  .top-nav-container {
     margin-top: 5px;
     margin-bottom: 8px;
   }
