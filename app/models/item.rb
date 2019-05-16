@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :description, presence: true
 
   
-  scope :search, -> (search_term) {where("name LIKE ?", "%#{search_term}%")}
+  scope :search, -> (search_term) {where("lower(name) LIKE ?", "%#{search_term.downcase}%")}
   
   scope :category_search, -> (category_id) {where("category_id = ?", category_id)}
 

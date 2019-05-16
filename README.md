@@ -1,10 +1,12 @@
 # Swift-Kart
 
-Swift-Kart is a Ruby on Rails e-commerce application. When using the application, users can sign up as a seller or buyer. If users sign up as buyer, users can buy items from sellers. If users sign up as seller, users can buy items as well as sell items.
+Swift-Kart is a an E-commerce application built with Ruby on Rails, Javascript, HTML5, CSS3, jQuery, Bootstrap 4, Handlebars, MVC, OAuth, PostgreSQL, and Google Cloud Storage.
 
 # Usage
 
-To use this application, clone this repository, run bundle install, rails active_storage:install, rails db:migrate, rails db:seed, then rails s.
+This application uses PostgreSQL as the database. To fully test out the functions of this application, please make sure you have PostgreSQL install before running the application.
+
+To install the application, clone this repository, run bundle install, rails active_storage:install, rails db:create, rails db:migrate, rails db:seed, then rails s.
 
 # Contributing Bugfixes or Features
 
